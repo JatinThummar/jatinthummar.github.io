@@ -34,6 +34,10 @@
   --color-btn-icon-text: var(--btn-icon-text);
   --color-btn-icon-hover-bg: var(--btn-icon-hover-bg);
   --color-btn-icon-hover-text: var(--btn-icon-hover-text);
+
+  /* -- Modal (email popup) -- */
+  --color-modal-bg: var(--modal-bg);             /* card background */
+  --color-modal-text: var(--modal-text);         /* card heading/body text */
 }
 
 /* ==========================================================
@@ -57,6 +61,8 @@
   --btn-icon-text: #a1a1aa;
   --btn-icon-hover-bg: #3f3f46;
   --btn-icon-hover-text: #ffffff;
+  --modal-bg: #1e1e20;
+  --modal-text: #f4f4f5;
 }
 
 /* ==========================================================
@@ -80,6 +86,8 @@
   --btn-icon-text: #52525b;
   --btn-icon-hover-bg: #e4e4e7;
   --btn-icon-hover-text: #09090b;
+  --modal-bg: #ffffff;
+  --modal-text: #18181b;
 }
 
 /* ==========================================================

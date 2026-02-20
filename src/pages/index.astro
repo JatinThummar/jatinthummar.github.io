@@ -162,15 +162,16 @@ const jsonLd = {
 			</div>
 
 			<nav class="flex flex-col sm:flex-row sm:items-center gap-4" aria-label="Social links">
-				<a
-					href="mailto:thummarjatin1208@gmail.com"
-					class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-btn-primary-bg text-btn-primary-text font-semibold text-base rounded-xl transition-all hover:scale-105 active:scale-95 hover:bg-btn-primary-hover-bg hover:text-btn-primary-hover-text active:bg-btn-primary-active-bg active:text-btn-primary-hover-text sm:py-2.5 sm:px-5"
+				<button
+					id="reach-out-btn"
+					type="button"
+					class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-btn-primary-bg text-btn-primary-text font-semibold text-base rounded-xl transition-all hover:scale-105 active:scale-95 hover:bg-btn-primary-hover-bg hover:text-btn-primary-hover-text active:bg-btn-primary-active-bg active:text-btn-primary-hover-text sm:py-2.5 sm:px-5 cursor-pointer"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
 						<path d="M8 5v14l11-7z" />
 					</svg>
 					Reach out
-				</a>
+				</button>
 				<div class="flex gap-3">
 					<a
 						href="https://github.com/JatinThummar"
@@ -209,9 +210,53 @@ const jsonLd = {
 			</nav>
 		</main>
 
-		<!-- Theme toggle logic -->
+		<!-- Email modal -->
+		<div
+			id="email-modal"
+			class="fixed inset-0 z-50 flex items-center justify-center px-6 opacity-0 pointer-events-none transition-opacity duration-200"
+			aria-hidden="true"
+			role="dialog"
+			aria-labelledby="modal-heading"
+			aria-modal="true"
+		>
+			<div id="email-backdrop" class="absolute inset-0 bg-black/60"></div>
+			<div id="modal-panel" class="relative w-full max-w-sm rounded-2xl bg-modal-bg p-6 shadow-2xl">
+				<div class="flex items-center justify-between mb-5">
+					<h2 id="modal-heading" class="text-xl font-bold text-modal-text">Let's Connect!</h2>
+					<button
+						id="modal-close"
+						type="button"
+						class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-muted hover:text-modal-text transition-colors"
+						aria-label="Close dialog"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<line x1="18" y1="6" x2="6" y2="18" />
+							<line x1="6" y1="6" x2="18" y2="18" />
+						</svg>
+					</button>
+				</div>
+				<p class="font-mono font-semibold text-modal-text text-base sm:text-lg break-all mb-4">thummarjatin1208@gmail.com</p>
+				<button
+					id="copy-email-btn"
+					type="button"
+					class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-btn-primary-text text-btn-primary-bg font-semibold text-sm rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+				>
+					<svg id="icon-clipboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+						<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+					</svg>
+					<svg id="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" aria-hidden="true">
+						<polyline points="20 6 9 17 4 12" />
+					</svg>
+					<span id="copy-text">Copy Email</span>
+				</button>
+			</div>
+		</div>
+
+		<!-- Theme toggle + email modal logic -->
 		<script is:inline>
 			document.addEventListener('DOMContentLoaded', function () {
+				// Theme toggle
 				var toggle = document.getElementById('theme-toggle');
 				var iconSun = document.getElementById('icon-sun');
 				var iconMoon = document.getElementById('icon-moon');
@@ -242,6 +287,68 @@ const jsonLd = {
 
 					document.querySelector('meta[name="theme-color"]')
 						.setAttribute('content', isCurrentlyLight ? '#161618' : '#ffffff');
+				});
+
+				// Email modal
+				var modal = document.getElementById('email-modal');
+				var panel = document.getElementById('modal-panel');
+				var reachOutBtn = document.getElementById('reach-out-btn');
+				var modalClose = document.getElementById('modal-close');
+				var backdrop = document.getElementById('email-backdrop');
+				var copyBtn = document.getElementById('copy-email-btn');
+				var iconClipboard = document.getElementById('icon-clipboard');
+				var iconCheck = document.getElementById('icon-check');
+				var copyText = document.getElementById('copy-text');
+
+				function openModal() {
+					modal.classList.remove('opacity-0', 'pointer-events-none');
+					modal.classList.add('opacity-100');
+					modal.setAttribute('aria-hidden', 'false');
+					copyBtn.focus();
+				}
+
+				function closeModal() {
+					modal.classList.remove('opacity-100');
+					modal.classList.add('opacity-0', 'pointer-events-none');
+					modal.setAttribute('aria-hidden', 'true');
+					reachOutBtn.focus();
+				}
+
+				reachOutBtn.addEventListener('click', openModal);
+				modalClose.addEventListener('click', closeModal);
+				backdrop.addEventListener('click', closeModal);
+
+				document.addEventListener('keydown', function (e) {
+					if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) {
+						closeModal();
+					}
+					// Focus trap within modal
+					if (e.key === 'Tab' && !modal.classList.contains('pointer-events-none')) {
+						var focusable = panel.querySelectorAll('button');
+						var first = focusable[0];
+						var last = focusable[focusable.length - 1];
+						if (e.shiftKey && document.activeElement === first) {
+							e.preventDefault();
+							last.focus();
+						} else if (!e.shiftKey && document.activeElement === last) {
+							e.preventDefault();
+							first.focus();
+						}
+					}
+				});
+
+				copyBtn.addEventListener('click', function () {
+					navigator.clipboard.writeText('thummarjatin1208@gmail.com').then(function () {
+						iconClipboard.classList.add('hidden');
+						iconCheck.classList.remove('hidden');
+						copyText.textContent = 'Copied!';
+
+						setTimeout(function () {
+							iconClipboard.classList.remove('hidden');
+							iconCheck.classList.add('hidden');
+							copyText.textContent = 'Copy Email';
+						}, 2000);
+					});
 				});
 			});
 		</script>
