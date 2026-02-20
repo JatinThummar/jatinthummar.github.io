@@ -35,9 +35,17 @@
   --color-btn-icon-hover-bg: var(--btn-icon-hover-bg);
   --color-btn-icon-hover-text: var(--btn-icon-hover-text);
 
+  /* -- Dividers & cards -- */
+  --color-border: var(--border);                 /* separators, card borders */
+  --color-card-bg: var(--card-bg);               /* project card background */
+
   /* -- Modal (email popup) -- */
   --color-modal-bg: var(--modal-bg);             /* card background */
   --color-modal-text: var(--modal-text);         /* card heading/body text */
+
+  /* -- Copy button (inverted primary) -- */
+  --color-btn-copy-bg: var(--btn-copy-bg);
+  --color-btn-copy-text: var(--btn-copy-text);
 }
 
 /* ==========================================================
@@ -61,8 +69,12 @@
   --btn-icon-text: #a1a1aa;
   --btn-icon-hover-bg: #3f3f46;
   --btn-icon-hover-text: #ffffff;
+  --border: #27272a;
+  --card-bg: #1e1e20;
   --modal-bg: #1e1e20;
   --modal-text: #f4f4f5;
+  --btn-copy-bg: #18181b;
+  --btn-copy-text: #f4f4f5;
 }
 
 /* ==========================================================
@@ -86,8 +98,12 @@
   --btn-icon-text: #52525b;
   --btn-icon-hover-bg: #e4e4e7;
   --btn-icon-hover-text: #09090b;
+  --border: #e4e4e7;
+  --card-bg: #f9f9f9;
   --modal-bg: #ffffff;
   --modal-text: #18181b;
+  --btn-copy-bg: #18181b;
+  --btn-copy-text: #ffffff;
 }
 
 /* ==========================================================
@@ -100,5 +116,19 @@
   }
   html.light {
     color-scheme: light;
+  }
+  /* Invert black logos to white in dark mode, normal in light */
+  .dark-invert {
+    filter: invert(1);
+  }
+  .light .dark-invert {
+    filter: invert(0);
+  }
+  /* Dashed separator */
+  .separator {
+    height: 1px;
+    background-size: 12px 1px;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(to right, var(--border) 6px, transparent 6px);
   }
 }

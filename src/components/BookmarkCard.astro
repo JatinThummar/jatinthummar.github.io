@@ -1,0 +1,38 @@
+---
+interface Props {
+	href: string;
+	title: string;
+	description: string;
+	domain: string;
+	logoSrc: string;
+	logoAlt: string;
+	compact?: boolean;
+}
+
+const { href, title, description, domain, logoSrc, logoAlt, compact = false } = Astro.props;
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	class:list={[
+		'flex items-center gap-3 border border-border transition-all hover:scale-[1.01] active:scale-[0.99]',
+		compact ? 'mt-3 rounded-lg bg-surface p-3' : 'rounded-xl bg-card-bg p-4',
+	]}
+>
+	<img
+		src={logoSrc}
+		alt={logoAlt}
+		width="44"
+		height="44"
+		loading="lazy"
+		decoding="async"
+		class="shrink-0 object-contain dark-invert"
+	/>
+	<div class="min-w-0">
+		<p class="text-sm font-medium text-emphasis truncate">{title}</p>
+		<p class="text-xs text-muted truncate">{description}</p>
+		<p class="text-xs text-muted truncate mt-0.5">{domain}</p>
+	</div>
+</a>
