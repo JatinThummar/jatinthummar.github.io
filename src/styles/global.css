@@ -89,8 +89,8 @@
   --emphasis: #09090b;
   --tag-bg: #f4f4f5;
   --tag-text: #52525b;
-  --btn-primary-bg: #efefef;
-  --btn-primary-text: #333334;
+  --btn-primary-bg: #333334;
+  --btn-primary-text: #ffffff;
   --btn-primary-hover-bg: #2563eb;
   --btn-primary-hover-text: #ffffff;
   --btn-primary-active-bg: #1d4ed8;
@@ -113,6 +113,9 @@
 @layer base {
   html {
     color-scheme: dark;
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
   }
   html.light {
     color-scheme: light;

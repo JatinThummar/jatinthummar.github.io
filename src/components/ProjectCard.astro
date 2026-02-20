@@ -17,7 +17,7 @@ const linkProps = isLink ? { href, target: '_blank', rel: 'noopener noreferrer' 
 	{...linkProps}
 	class:list={[
 		'block rounded-xl bg-card-bg p-5',
-		isLink && 'transition-all hover:scale-[1.01] active:scale-[0.99]',
+		isLink && 'transition-transform hover:scale-[1.01] active:scale-[0.99]',
 		className,
 	]}
 >
