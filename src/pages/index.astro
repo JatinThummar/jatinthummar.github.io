@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+
+const title = 'Jatin Thummar';
+const description = 'Building apps that run on Android, iOS & Web using Expo and React Native.';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="author" content="Jatin Thummar" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="min-h-screen bg-zinc-950 text-zinc-100 flex items-center justify-center px-6">
+		<main class="max-w-xl w-full py-20">
+			<p class="text-zinc-400 text-lg mb-2">Hey there!</p>
+			<h1 class="text-4xl font-bold tracking-tight mb-4">
+				Jatin Thummar
+			</h1>
+			<p class="text-zinc-300 text-lg leading-relaxed mb-8">
+				Building apps that run on
+				<span class="text-white font-medium">Android</span>,
+				<span class="text-white font-medium">iOS</span> &
+				<span class="text-white font-medium">Web</span> using
+				<span class="text-white font-medium">Expo</span>.
+			</p>
+
+			<div class="flex flex-wrap gap-2 mb-10">
+				{['React Native', 'Expo', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS'].map(tech => (
+					<span class="px-3 py-1 text-sm rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700">
+						{tech}
+					</span>
+				))}
+			</div>
+
+			<div class="flex gap-4">
+				<a
+					href="https://github.com/JatinThummar"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-zinc-400 hover:text-white transition-colors"
+				>
+					GitHub
+				</a>
+				<a
+					href="https://flipbitzz.expo.app/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-zinc-400 hover:text-white transition-colors"
+				>
+					FlipBitz
+				</a>
+			</div>
+		</main>
+	</body>
+</html>
