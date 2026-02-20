@@ -1,1 +1,96 @@
 @import "tailwindcss";
+
+/* ==========================================================
+   THEME TOKENS
+
+   Semantic color tokens registered with Tailwind v4.
+   @theme inline generates utilities (bg-surface, text-muted, etc.)
+   that resolve to CSS custom properties swapped by :root / .light.
+   ========================================================== */
+
+@theme inline {
+  /* -- Surface -- */
+  --color-surface: var(--surface);           /* page background */
+  --color-on-surface: var(--on-surface);     /* primary body text */
+
+  /* -- Text hierarchy -- */
+  --color-muted: var(--muted);               /* greeting, secondary text */
+  --color-subtle: var(--subtle);             /* description paragraph */
+  --color-emphasis: var(--emphasis);          /* highlighted keywords */
+
+  /* -- Tech tags -- */
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-text: var(--tag-text);
+
+  /* -- Primary button (Reach out) -- */
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-text: var(--btn-primary-text);
+  --color-btn-primary-hover-bg: var(--btn-primary-hover-bg);
+  --color-btn-primary-hover-text: var(--btn-primary-hover-text);
+  --color-btn-primary-active-bg: var(--btn-primary-active-bg);
+
+  /* -- Icon buttons (GitHub, LinkedIn, X, toggle) -- */
+  --color-btn-icon-bg: var(--btn-icon-bg);
+  --color-btn-icon-text: var(--btn-icon-text);
+  --color-btn-icon-hover-bg: var(--btn-icon-hover-bg);
+  --color-btn-icon-hover-text: var(--btn-icon-hover-text);
+}
+
+/* ==========================================================
+   DARK THEME (default)
+   ========================================================== */
+
+:root {
+  --surface: #161618;
+  --on-surface: #f4f4f5;
+  --muted: #a1a1aa;
+  --subtle: #d4d4d8;
+  --emphasis: #ffffff;
+  --tag-bg: rgb(39 39 42 / 0.6);
+  --tag-text: #a1a1aa;
+  --btn-primary-bg: #efefef;
+  --btn-primary-text: #18181b;
+  --btn-primary-hover-bg: #2563eb;
+  --btn-primary-hover-text: #ffffff;
+  --btn-primary-active-bg: #1d4ed8;
+  --btn-icon-bg: #212122;
+  --btn-icon-text: #a1a1aa;
+  --btn-icon-hover-bg: #3f3f46;
+  --btn-icon-hover-text: #ffffff;
+}
+
+/* ==========================================================
+   LIGHT THEME
+   ========================================================== */
+
+.light {
+  --surface: #ffffff;
+  --on-surface: #1a1a1a;
+  --muted: #71717a;
+  --subtle: #3f3f46;
+  --emphasis: #09090b;
+  --tag-bg: #f4f4f5;
+  --tag-text: #52525b;
+  --btn-primary-bg: #efefef;
+  --btn-primary-text: #333334;
+  --btn-primary-hover-bg: #2563eb;
+  --btn-primary-hover-text: #ffffff;
+  --btn-primary-active-bg: #1d4ed8;
+  --btn-icon-bg: #f1f1f1;
+  --btn-icon-text: #52525b;
+  --btn-icon-hover-bg: #e4e4e7;
+  --btn-icon-hover-text: #09090b;
+}
+
+/* ==========================================================
+   BASE: color-scheme for native UI elements
+   ========================================================== */
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  html.light {
+    color-scheme: light;
+  }
+}

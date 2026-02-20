@@ -44,8 +44,8 @@ const jsonLd = {
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- Theme -->
-		<meta name="theme-color" content="#09090b" />
-		<meta name="msapplication-TileColor" content="#09090b" />
+		<meta name="theme-color" content="#161618" />
+		<meta name="msapplication-TileColor" content="#161618" />
 
 		<!-- Primary Meta Tags -->
 		<title>{title}</title>
@@ -76,8 +76,41 @@ const jsonLd = {
 
 		<!-- JSON-LD Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+		<!-- FOUC prevention: apply saved theme before first paint -->
+		<script is:inline>
+			(function () {
+				var stored = localStorage.getItem('theme');
+				if (stored === 'light') {
+					document.documentElement.classList.add('light');
+				}
+			})();
+		</script>
 	</head>
-	<body class="min-h-screen bg-zinc-950 text-zinc-100 flex items-center justify-center px-6">
+	<body class="min-h-screen bg-surface text-on-surface flex items-center justify-center px-6">
+		<!-- Theme toggle -->
+		<button
+			id="theme-toggle"
+			type="button"
+			class="fixed top-6 right-6 z-50 inline-flex items-center justify-center w-11 h-11 rounded-xl bg-btn-icon-bg text-btn-icon-text hover:bg-btn-icon-hover-bg hover:text-btn-icon-hover-text transition-all hover:scale-105 active:scale-95"
+			aria-label="Toggle theme"
+		>
+			<svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<circle cx="12" cy="12" r="5" />
+				<line x1="12" y1="1" x2="12" y2="3" />
+				<line x1="12" y1="21" x2="12" y2="23" />
+				<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+				<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+				<line x1="1" y1="12" x2="3" y2="12" />
+				<line x1="21" y1="12" x2="23" y2="12" />
+				<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+				<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+			</svg>
+			<svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" aria-hidden="true">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+			</svg>
+		</button>
+
 		<main class="max-w-xl w-full py-20">
 			<!-- Avatar + Heading: stacked on mobile, side by side on sm+ -->
 			<div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-8">
@@ -104,25 +137,25 @@ const jsonLd = {
 					/>
 				</div>
 				<div>
-					<p class="text-zinc-400 text-lg mb-1">Hey there!</p>
+					<p class="text-muted text-lg mb-1">Hey there!</p>
 					<h1 class="text-4xl font-bold tracking-tight">
 						I'm Jatin Thummar
 					</h1>
 				</div>
 			</div>
 
-			<p class="text-zinc-300 text-lg leading-relaxed mb-8">
+			<p class="text-subtle text-lg leading-relaxed mb-8">
 				Frontend Engineer building scalable cross-platform apps for
-				<span class="text-white font-medium">Android</span>,
-				<span class="text-white font-medium">iOS</span> &
-				<span class="text-white font-medium">Web</span> with
-				<span class="text-white font-medium">Expo</span> &
-				<span class="text-white font-medium">React Native</span>.
+				<span class="text-emphasis font-medium">Android</span>,
+				<span class="text-emphasis font-medium">iOS</span> &
+				<span class="text-emphasis font-medium">Web</span> with
+				<span class="text-emphasis font-medium">Expo</span> &
+				<span class="text-emphasis font-medium">React Native</span>.
 			</p>
 
 			<div class="flex flex-wrap gap-2 mb-10">
 				{['React Native', 'Expo', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS'].map(tech => (
-					<span class="px-3 py-1 text-sm rounded-full bg-zinc-800/60 text-zinc-400">
+					<span class="px-3 py-1 text-sm rounded-full bg-tag-bg text-tag-text">
 						{tech}
 					</span>
 				))}
@@ -131,7 +164,7 @@ const jsonLd = {
 			<nav class="flex flex-col sm:flex-row sm:items-center gap-4" aria-label="Social links">
 				<a
 					href="mailto:thummarjatin1208@gmail.com"
-					class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-zinc-100 text-zinc-900 font-semibold text-base rounded-xl transition-all hover:scale-105 active:scale-95 hover:bg-blue-600 hover:text-white active:bg-blue-700 active:text-white sm:py-2.5 sm:px-5"
+					class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-btn-primary-bg text-btn-primary-text font-semibold text-base rounded-xl transition-all hover:scale-105 active:scale-95 hover:bg-btn-primary-hover-bg hover:text-btn-primary-hover-text active:bg-btn-primary-active-bg active:text-btn-primary-hover-text sm:py-2.5 sm:px-5"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
 						<path d="M8 5v14l11-7z" />
@@ -143,7 +176,7 @@ const jsonLd = {
 						href="https://github.com/JatinThummar"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex-1 sm:flex-none inline-flex items-center justify-center h-14 sm:h-11 sm:w-11 rounded-xl bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700 hover:text-white transition-all hover:scale-105 active:scale-95 border border-zinc-700/50"
+						class="flex-1 sm:flex-none inline-flex items-center justify-center h-14 sm:h-11 sm:w-11 rounded-xl bg-btn-icon-bg text-btn-icon-text hover:bg-btn-icon-hover-bg hover:text-btn-icon-hover-text transition-all hover:scale-105 active:scale-95"
 						aria-label="GitHub"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 496" width="22" height="22" fill="currentColor" aria-hidden="true">
@@ -154,7 +187,7 @@ const jsonLd = {
 						href="https://in.linkedin.com/in/jatinthumma"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex-1 sm:flex-none inline-flex items-center justify-center h-14 sm:h-11 sm:w-11 rounded-xl bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700 hover:text-white transition-all hover:scale-105 active:scale-95 border border-zinc-700/50"
+						class="flex-1 sm:flex-none inline-flex items-center justify-center h-14 sm:h-11 sm:w-11 rounded-xl bg-btn-icon-bg text-btn-icon-text hover:bg-btn-icon-hover-bg hover:text-btn-icon-hover-text transition-all hover:scale-105 active:scale-95"
 						aria-label="LinkedIn"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 448" width="22" height="22" fill="currentColor" aria-hidden="true">
@@ -165,7 +198,7 @@ const jsonLd = {
 						href="https://x.com/jatinthummarx"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex-1 sm:flex-none inline-flex items-center justify-center h-14 sm:h-11 sm:w-11 rounded-xl bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700 hover:text-white transition-all hover:scale-105 active:scale-95 border border-zinc-700/50"
+						class="flex-1 sm:flex-none inline-flex items-center justify-center h-14 sm:h-11 sm:w-11 rounded-xl bg-btn-icon-bg text-btn-icon-text hover:bg-btn-icon-hover-bg hover:text-btn-icon-hover-text transition-all hover:scale-105 active:scale-95"
 						aria-label="X (Twitter)"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22" height="22" fill="currentColor" aria-hidden="true">
@@ -175,5 +208,42 @@ const jsonLd = {
 				</div>
 			</nav>
 		</main>
+
+		<!-- Theme toggle logic -->
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', function () {
+				var toggle = document.getElementById('theme-toggle');
+				var iconSun = document.getElementById('icon-sun');
+				var iconMoon = document.getElementById('icon-moon');
+
+				function updateIcons() {
+					var isLight = document.documentElement.classList.contains('light');
+					iconSun.classList.toggle('hidden', isLight);
+					iconSun.classList.toggle('block', !isLight);
+					iconMoon.classList.toggle('hidden', !isLight);
+					iconMoon.classList.toggle('block', isLight);
+				}
+
+				updateIcons();
+
+				toggle.addEventListener('click', function () {
+					var html = document.documentElement;
+					var isCurrentlyLight = html.classList.contains('light');
+
+					if (isCurrentlyLight) {
+						html.classList.remove('light');
+						localStorage.setItem('theme', 'dark');
+					} else {
+						html.classList.add('light');
+						localStorage.setItem('theme', 'light');
+					}
+
+					updateIcons();
+
+					document.querySelector('meta[name="theme-color"]')
+						.setAttribute('content', isCurrentlyLight ? '#161618' : '#ffffff');
+				});
+			});
+		</script>
 	</body>
 </html>
