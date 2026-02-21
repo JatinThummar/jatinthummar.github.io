@@ -159,4 +159,64 @@
   --tw-prose-pre-bg: var(--card-bg);
   --tw-prose-th-borders: var(--border);
   --tw-prose-td-borders: var(--border);
+
+  line-height: 1.75;
+
+  & p {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  & h2 {
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-size: 1.375rem;
+  }
+
+  & h3 {
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+    font-size: 1.125rem;
+  }
+
+  & ul, & ol {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.5em;
+  }
+
+  & li {
+    margin-top: 0.375em;
+    margin-bottom: 0.375em;
+  }
+
+  & blockquote {
+    border-left-width: 3px;
+    padding-left: 1.25em;
+    font-style: normal;
+  }
+
+  & pre {
+    padding: 1.25em;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+  }
+
+  & :not(pre) > code {
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    background-color: var(--card-bg);
+  }
+
+  & a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+
+  & hr {
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+  }
 }

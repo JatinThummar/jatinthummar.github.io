@@ -1,0 +1,3 @@
+- add blog button and the blog post with refre astrowind
+- add refrence to other tech that good refrence to learn react or tech using the react native like that curated list of data
+- add super devs link too for learning from them
