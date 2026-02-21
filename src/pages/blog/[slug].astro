@@ -44,6 +44,7 @@ const jsonLd = {
 	description={post.description}
 	canonicalUrl={`${siteUrl}/blog/${post.slug}`}
 	ogType="article"
+	ogImage={`/og/${post.slug}.png`}
 	jsonLd={jsonLd}
 >
 	<main class="max-w-xl w-full mx-auto py-20">
@@ -57,21 +58,38 @@ const jsonLd = {
 
 		<article>
 			<header class="mb-8">
-				<h1 class="text-3xl font-bold tracking-tight mb-3">{post.title}</h1>
-				<div class="flex items-center gap-2 text-muted text-sm">
-					<time datetime={post.publishDate.toISOString()}>
-						{formatDate(post.publishDate)}
-					</time>
-					<span>&middot;</span>
+				<h1 class="text-2xl font-bold tracking-tight mb-3">{post.title}</h1>
+				<p class="text-muted text-xs">
+					<time datetime={post.publishDate.toISOString()}>{formatDate(post.publishDate)}</time>
+					<span class="mx-1">&middot;</span>
 					<span>{post.readingTime} min read</span>
-				</div>
+				</p>
 				{post.tags.length > 0 && (
-					<div class="flex flex-wrap gap-2 mt-4">
+					<div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
 						{post.tags.map((tag) => (
 							<span class="text-xs text-muted">#{tag}</span>
 						))}
 					</div>
 				)}
+				<div class="flex items-center mt-4 pt-3 border-t border-dashed border-border">
+					<button
+						id="share-btn"
+						type="button"
+						class="inline-flex items-center gap-1.5 text-muted text-sm transition-colors hover:text-emphasis active:scale-[0.98]"
+						aria-label="Share this post"
+						data-title={post.title}
+						data-url={`${siteUrl}/blog/${post.slug}`}
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<circle cx="18" cy="5" r="3" />
+							<circle cx="6" cy="12" r="3" />
+							<circle cx="18" cy="19" r="3" />
+							<line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+							<line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+						</svg>
+						<span id="share-text">Share</span>
+					</button>
+				</div>
 			</header>
 
 			<div class="prose prose-sm prose-custom max-w-none">
@@ -79,4 +97,27 @@ const jsonLd = {
 			</div>
 		</article>
 	</main>
+
+	<script>
+		const shareBtn = document.getElementById('share-btn')!;
+		const shareText = document.getElementById('share-text')!;
+		const title = shareBtn.dataset.title!;
+		const url = shareBtn.dataset.url!;
+
+		shareBtn.addEventListener('click', async () => {
+			if (navigator.share) {
+				try {
+					await navigator.share({ title, url });
+				} catch {
+					// user cancelled — do nothing
+				}
+			} else {
+				await navigator.clipboard.writeText(url);
+				shareText.textContent = 'Link copied!';
+				setTimeout(() => {
+					shareText.textContent = 'Share';
+				}, 2000);
+			}
+		});
+	</script>
 </BaseLayout>

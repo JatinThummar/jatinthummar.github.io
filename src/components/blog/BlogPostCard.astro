@@ -17,17 +17,17 @@ const { post } = Astro.props;
 
 <a
 	href={`/blog/${post.slug}`}
-	class="block rounded-xl bg-card-bg p-5 transition-transform hover:scale-[1.01] active:scale-[0.99]"
+	class="block rounded-xl border border-border p-4 transition-colors hover:border-muted active:scale-[0.99]"
 >
-	<h3 class="text-base font-semibold text-emphasis mb-1">{post.title}</h3>
-	<div class="flex items-center gap-2 text-muted text-xs mb-2">
+	<h3 class="text-base font-semibold text-emphasis">{post.title}</h3>
+	<p class="text-muted text-xs mt-1">
 		<time datetime={post.publishDate.toISOString()}>{formatDate(post.publishDate)}</time>
-		<span>&middot;</span>
+		<span class="mx-1">&middot;</span>
 		<span>{post.readingTime} min read</span>
-	</div>
-	<p class="text-subtle text-sm leading-relaxed mb-3">{post.description}</p>
+	</p>
+	<p class="text-subtle text-sm leading-relaxed mt-2">{post.description}</p>
 	{post.tags.length > 0 && (
-		<div class="flex flex-wrap gap-2">
+		<div class="flex flex-wrap gap-x-2 gap-y-1 mt-3">
 			{post.tags.map((tag) => (
 				<span class="text-xs text-muted">#{tag}</span>
 			))}
