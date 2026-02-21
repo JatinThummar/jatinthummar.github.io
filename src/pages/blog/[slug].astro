@@ -1,0 +1,82 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fetchPosts, formatDate } from '../../utils/blog';
+import type { BlogPost } from '../../utils/blog';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const posts = await fetchPosts();
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+};
+
+interface Props {
+	post: BlogPost;
+}
+
+const { post } = Astro.props;
+const siteUrl = 'https://jatinthummar.github.io';
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	"headline": post.title,
+	"description": post.description,
+	"datePublished": post.publishDate.toISOString(),
+	"dateModified": (post.updatedDate ?? post.publishDate).toISOString(),
+	"author": {
+		"@type": "Person",
+		"name": "Jatin Thummar",
+		"url": siteUrl,
+	},
+	"url": `${siteUrl}/blog/${post.slug}`,
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": `${siteUrl}/blog/${post.slug}`,
+	},
+};
+---
+
+<BaseLayout
+	title={`${post.title} — Jatin Thummar`}
+	description={post.description}
+	canonicalUrl={`${siteUrl}/blog/${post.slug}`}
+	ogType="article"
+	jsonLd={jsonLd}
+>
+	<main class="max-w-xl w-full mx-auto py-20">
+		<a href="/blog" class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<line x1="19" y1="12" x2="5" y2="12" />
+				<polyline points="12 19 5 12 12 5" />
+			</svg>
+			Back to blog
+		</a>
+
+		<article>
+			<header class="mb-8">
+				<h1 class="text-3xl font-bold tracking-tight mb-3">{post.title}</h1>
+				<div class="flex items-center gap-2 text-muted text-sm">
+					<time datetime={post.publishDate.toISOString()}>
+						{formatDate(post.publishDate)}
+					</time>
+					<span>&middot;</span>
+					<span>{post.readingTime} min read</span>
+				</div>
+				{post.tags.length > 0 && (
+					<div class="flex flex-wrap gap-2 mt-4">
+						{post.tags.map((tag) => (
+							<span class="text-xs text-muted">#{tag}</span>
+						))}
+					</div>
+				)}
+			</header>
+
+			<div class="prose prose-sm prose-custom max-w-none">
+				<post.Content />
+			</div>
+		</article>
+	</main>
+</BaseLayout>

@@ -1,0 +1,150 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalUrl?: string;
+	ogType?: string;
+	ogImage?: string;
+	jsonLd?: Record<string, unknown>;
+	bodyClass?: string;
+}
+
+const siteUrl = 'https://jatinthummar.github.io';
+
+const {
+	title,
+	description,
+	canonicalUrl = `${siteUrl}${Astro.url.pathname}`,
+	ogType = 'website',
+	ogImage = '/og-image.png',
+	jsonLd,
+	bodyClass = 'min-h-screen bg-surface text-on-surface px-6',
+} = Astro.props;
+
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Theme -->
+		<meta name="theme-color" content="#161618" />
+		<meta name="msapplication-TileColor" content="#161618" />
+
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Jatin Thummar" />
+		<link rel="canonical" href={canonicalUrl} />
+		<meta name="robots" content="index, follow" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content="Jatin Thummar" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={title} />
+
+		<!-- Twitter / X -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content={ogImageUrl} />
+		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:creator" content="@jatinthummarx" />
+
+		<!-- JSON-LD Structured Data -->
+		{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+		<!-- FOUC prevention: apply saved theme before first paint -->
+		<script is:inline>
+			(function () {
+				var stored = localStorage.getItem('theme');
+				if (stored === 'light') {
+					document.documentElement.classList.add('light');
+				}
+			})();
+		</script>
+	</head>
+	<body class={bodyClass}>
+		<!-- Theme toggle -->
+		<button
+			id="theme-toggle"
+			type="button"
+			class="fixed top-6 right-6 z-50 inline-flex items-center justify-center w-11 h-11 rounded-xl bg-btn-icon-bg text-btn-icon-text hover:bg-btn-icon-hover-bg hover:text-btn-icon-hover-text transition hover:scale-105 active:scale-95"
+			aria-label="Toggle theme"
+		>
+			<svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<circle cx="12" cy="12" r="5" />
+				<line x1="12" y1="1" x2="12" y2="3" />
+				<line x1="12" y1="21" x2="12" y2="23" />
+				<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+				<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+				<line x1="1" y1="12" x2="3" y2="12" />
+				<line x1="21" y1="12" x2="23" y2="12" />
+				<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+				<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+			</svg>
+			<svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" aria-hidden="true">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+			</svg>
+		</button>
+
+		<slot />
+
+		<Footer />
+
+		<!-- Theme toggle logic -->
+		<script>
+			const toggle = document.getElementById('theme-toggle')!;
+			const iconSun = document.getElementById('icon-sun')!;
+			const iconMoon = document.getElementById('icon-moon')!;
+
+			function updateIcons() {
+				const isLight = document.documentElement.classList.contains('light');
+				iconSun.classList.toggle('hidden', isLight);
+				iconSun.classList.toggle('block', !isLight);
+				iconMoon.classList.toggle('hidden', !isLight);
+				iconMoon.classList.toggle('block', isLight);
+			}
+
+			updateIcons();
+
+			toggle.addEventListener('click', () => {
+				const html = document.documentElement;
+				const isCurrentlyLight = html.classList.contains('light');
+
+				if (isCurrentlyLight) {
+					html.classList.remove('light');
+					localStorage.setItem('theme', 'dark');
+				} else {
+					html.classList.add('light');
+					localStorage.setItem('theme', 'light');
+				}
+
+				updateIcons();
+
+				document.querySelector('meta[name="theme-color"]')!
+					.setAttribute('content', isCurrentlyLight ? '#161618' : '#ffffff');
+			});
+		</script>
+	</body>
+</html>

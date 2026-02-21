@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Separator from '../components/Separator.astro';
+import BookmarkCard from '../components/BookmarkCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const title = 'About — Jatin Thummar';
+const description = 'Learn more about Jatin Thummar — Frontend Engineer specializing in cross-platform apps with Expo, React Native, and Next.js.';
+const siteUrl = 'https://jatinthummar.github.io';
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "AboutPage",
+	"name": "About Jatin Thummar",
+	"url": `${siteUrl}/about`,
+	"description": description,
+	"mainEntity": {
+		"@type": "Person",
+		"name": "Jatin Thummar",
+		"jobTitle": "Frontend Engineer",
+		"url": siteUrl,
+		"knowsAbout": [
+			"Cross-Platform App Development",
+			"Frontend Architecture",
+			"React Native",
+			"Expo",
+			"TypeScript",
+			"Next.js"
+		],
+		"sameAs": [
+			"https://github.com/JatinThummar",
+			"https://x.com/jatinthummarx",
+			"https://www.linkedin.com/in/jatinthummar"
+		]
+	}
+};
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={`${siteUrl}/about`}
+	jsonLd={jsonLd}
+>
+	<main class="max-w-xl w-full mx-auto py-20">
+		<a href="/" class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<line x1="19" y1="12" x2="5" y2="12" />
+				<polyline points="12 19 5 12 12 5" />
+			</svg>
+			Back to home
+		</a>
+
+		<h1 class="text-3xl font-bold tracking-tight mb-6">About Me</h1>
+
+		<section aria-labelledby="intro-heading">
+			<h2 id="intro-heading" class="sr-only">Introduction</h2>
+			<p class="text-subtle text-lg leading-relaxed mb-4">
+				Hey! I'm <span class="text-emphasis font-medium">Jatin Thummar</span>, a Frontend Engineer. I specialize in building scalable, production-grade cross-platform applications for <span class="text-emphasis font-medium">Android</span>, <span class="text-emphasis font-medium">iOS</span>, and the <span class="text-emphasis font-medium">Web</span>.
+			</p>
+			<p class="text-subtle text-lg leading-relaxed">
+				I work primarily with <span class="text-emphasis font-medium">Expo</span>, <span class="text-emphasis font-medium">React Native</span>, <span class="text-emphasis font-medium">TypeScript</span>, and <span class="text-emphasis font-medium">Next.js</span> — focusing on well-architected frontends that are fast, maintainable, and a pleasure to work with.
+			</p>
+		</section>
+
+		<Separator class="my-12" />
+
+		<section aria-labelledby="currently-heading">
+			<h2 id="currently-heading" class="text-xl font-bold mb-4">Currently</h2>
+			<p class="text-subtle text-sm leading-relaxed mb-4">
+				Frontend Engineer & Mobile App Developer at The Korean Fashion — building and scaling the mobile app, shipping new features, improving performance, and refining the developer experience.
+			</p>
+			<BookmarkCard
+				href="https://www.thekoreanfashion.com/"
+				title="The Korean Fashion"
+				description="Clothing and Jewelry Online Shop"
+				domain="thekoreanfashion.com"
+				logoSrc="/logos/thekoreanfashion.png"
+				logoAlt="The Korean Fashion"
+			/>
+		</section>
+
+		<Separator class="my-12" />
+
+		<section aria-labelledby="projects-heading">
+			<h2 id="projects-heading" class="text-xl font-bold mb-6">Work & Side Projects</h2>
+			<ProjectCard
+				href="https://flipbitz.netlify.app/web/"
+				title="FlipBitz — Feed App"
+				subtitle="Personal Project"
+				description="Cross-platform feed app for iOS, Android & Web. Browse real-time news, follow curated feeds, and personalize your experience with dynamic color themes and light/dark mode."
+			/>
+			<ProjectCard
+				class="mt-4"
+				title="LEO Mobile App Builder"
+				subtitle="Lead Developer · Softpulse Infotech · 2023 – 2024"
+				description="No-code mobile app builder for Shopify stores. Merchants can create and publish their own e-commerce app to iOS and Android — no coding required."
+			>
+				<BookmarkCard
+					href="https://leoapps.io/"
+					title="LEO Shopify Apps"
+					description="Mobile App Builder, Preloader & Order Editing"
+					domain="leoapps.io"
+					logoSrc="/logos/leoapps.png"
+					logoAlt="LEO Apps"
+					compact
+				/>
+			</ProjectCard>
+			<ProjectCard
+				class="mt-4"
+				title="As a Man Thinketh"
+				subtitle="Personal Project"
+				description="Static reading experience for James Allen's classic book, translated into multiple languages including English, Gujarati, and Hindi. Deployed on GitHub Pages."
+			>
+				<BookmarkCard
+					href="https://jatinthummar.github.io/thinketh/"
+					title="As a Man Thinketh"
+					description="Read the classic by James Allen"
+					domain="jatinthummar.github.io"
+					logoSrc="/logos/thinketh.png"
+					logoAlt="As a Man Thinketh"
+					compact
+				/>
+			</ProjectCard>
+		</section>
+
+		<Separator class="my-12" />
+
+		<section aria-labelledby="approach-heading">
+			<h2 id="approach-heading" class="text-xl font-bold mb-4">How I Work</h2>
+			<p class="text-subtle text-sm leading-relaxed mb-4">
+				I care about the details — clean code, thoughtful architecture, and smooth user experiences. I believe great apps come from understanding both the technical and the human side of development.
+			</p>
+			<p class="text-subtle text-sm leading-relaxed">
+				I prefer keeping things simple and intentional. Whether it's choosing the right abstraction, optimizing a critical render path, or picking the right tool for the job — I lean towards solutions that are practical, not over-engineered.
+			</p>
+		</section>
+
+		<Separator class="my-12" />
+
+		<section aria-labelledby="skills-heading">
+			<h2 id="skills-heading" class="text-xl font-bold mb-4">Tech I Work With</h2>
+			<div class="flex flex-wrap gap-2">
+				{[
+					'React Native', 'Expo', 'TypeScript', 'JavaScript',
+					'Next.js', 'React', 'Tailwind CSS', 'Astro',
+					'Node.js', 'Git', 'Vite', 'GitHub Actions'
+				].map(tech => (
+					<span class="px-3 py-1 text-sm rounded-full bg-tag-bg text-tag-text">
+						{tech}
+					</span>
+				))}
+			</div>
+		</section>
+
+		<Separator class="my-12" />
+
+		<section aria-labelledby="connect-heading">
+			<h2 id="connect-heading" class="text-xl font-bold mb-4">Get in Touch</h2>
+			<p class="text-subtle text-sm leading-relaxed mb-4">
+				Want to collaborate, chat about frontend development, or just say hello? Reach out on any of these platforms.
+			</p>
+			<div class="flex flex-wrap gap-4">
+				<a href="https://github.com/JatinThummar" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-emphasis transition text-sm">GitHub<span class="sr-only"> (opens in new tab)</span></a>
+				<a href="https://www.linkedin.com/in/jatinthummar" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-emphasis transition text-sm">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
+				<a href="https://x.com/jatinthummarx" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-emphasis transition text-sm">X (Twitter)<span class="sr-only"> (opens in new tab)</span></a>
+				<a href="mailto:thummarjatin1208@gmail.com" class="text-muted hover:text-emphasis transition text-sm">Email</a>
+			</div>
+		</section>
+	</main>
+</BaseLayout>

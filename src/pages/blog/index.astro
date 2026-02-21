@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPostCard from '../../components/blog/BlogPostCard.astro';
+import { fetchPosts } from '../../utils/blog';
+
+const posts = await fetchPosts();
+const siteUrl = 'https://jatinthummar.github.io';
+const title = 'Blog — Jatin Thummar';
+const description = 'Thoughts on frontend development, React Native, Expo, and building great user experiences.';
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Blog",
+	"name": "Jatin Thummar's Blog",
+	"url": `${siteUrl}/blog`,
+	"description": description,
+	"author": {
+		"@type": "Person",
+		"name": "Jatin Thummar",
+	},
+};
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={`${siteUrl}/blog`}
+	ogType="blog"
+	jsonLd={jsonLd}
+>
+	<main class="max-w-xl w-full mx-auto py-20">
+		<a href="/" class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<line x1="19" y1="12" x2="5" y2="12" />
+				<polyline points="12 19 5 12 12 5" />
+			</svg>
+			Back to home
+		</a>
+
+		<h1 class="text-3xl font-bold tracking-tight mb-2">Blog</h1>
+		<p class="text-subtle text-lg mb-10">Thoughts and notes on frontend development.</p>
+
+		{posts.length === 0 ? (
+			<p class="text-muted">No posts yet. Check back soon!</p>
+		) : (
+			<div class="space-y-4">
+				{posts.map((post) => (
+					<BlogPostCard post={post} />
+				))}
+			</div>
+		)}
+	</main>
+</BaseLayout>
