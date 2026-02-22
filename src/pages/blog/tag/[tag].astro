@@ -1,0 +1,51 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogPostList from '../../../components/blog/BlogPostList.astro';
+import { fetchPosts, getAllTags } from '../../../utils/blog';
+import type { BlogPost } from '../../../utils/blog';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const posts = await fetchPosts();
+	const tags = getAllTags(posts);
+	return tags.map(({ tag }) => ({
+		params: { tag },
+		props: {
+			tag,
+			posts: posts.filter((p) => p.tags.includes(tag)),
+		},
+	}));
+};
+
+interface Props {
+	tag: string;
+	posts: BlogPost[];
+}
+
+const { tag, posts } = Astro.props;
+const siteUrl = 'https://jatinthummar.github.io';
+const title = `#${tag} — Blog — Jatin Thummar`;
+const description = `Blog posts tagged with "${tag}".`;
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={`${siteUrl}/blog/tag/${tag}`}
+	ogType="blog"
+>
+	<main class="max-w-xl w-full mx-auto py-20">
+		<a href="/blog" class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<line x1="19" y1="12" x2="5" y2="12" />
+				<polyline points="12 19 5 12 12 5" />
+			</svg>
+			Back to blog
+		</a>
+
+		<h1 class="text-3xl font-bold tracking-tight mb-2">#{tag}</h1>
+		<p class="text-subtle text-lg mb-10">{posts.length} {posts.length === 1 ? 'post' : 'posts'} tagged with "{tag}"</p>
+
+		<BlogPostList posts={posts} label={`Posts tagged ${tag}`} />
+	</main>
+</BaseLayout>

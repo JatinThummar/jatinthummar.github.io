@@ -1,0 +1,29 @@
+---
+interface Props {
+	prev?: { slug: string; title: string };
+	next?: { slug: string; title: string };
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+	<nav class="flex items-start gap-6 mt-12 pt-8 border-t border-border" aria-label="Previous and next posts">
+		{prev ? (
+			<a href={`/blog/${prev.slug}`} class="group flex-1 min-w-0 text-left">
+				<span class="text-xs text-muted">Previous</span>
+				<p class="text-sm font-medium text-subtle group-hover:text-emphasis transition line-clamp-2 mt-1">{prev.title}</p>
+			</a>
+		) : (
+			<div class="flex-1" />
+		)}
+		{next ? (
+			<a href={`/blog/${next.slug}`} class="group flex-1 min-w-0 text-right">
+				<span class="text-xs text-muted">Next</span>
+				<p class="text-sm font-medium text-subtle group-hover:text-emphasis transition line-clamp-2 mt-1">{next.title}</p>
+			</a>
+		) : (
+			<div class="flex-1" />
+		)}
+	</nav>
+)}
