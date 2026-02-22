@@ -61,7 +61,6 @@ These are the developers and bloggers I've learned from over the years. Whether 
 
 ## Engineering Blogs & Career
 
-- **[David Heinemeier Hansson (DHH)](https://dhh.dk/)** — Creator of Ruby on Rails. Writes about tech, business, and contrarian takes on software.
 - **[The Pragmatic Engineer](https://blog.pragmaticengineer.com/)** — Gergely Orosz. Deep coverage of tech industry, engineering culture, and career growth.
 - **[Cassidy Williams](https://cassidoo.co/)** — Developer experience, career advice, and web development.
 - **[Michele Riva](https://www.micheleriva.it/)** — Author of *Real-World Next.js*. Full-stack engineering and open source.
