@@ -1,6 +1,6 @@
 ---
-title: "Developers & Blogs Worth Following"
-description: "A curated list of developers, engineers, and bloggers I've learned from — covering React, React Native, Expo, Next.js, and frontend development at large."
+title: "Developers & Engineers to Follow"
+description: "Programmers who've contributed to and built some of the best tech — follow them to level up."
 publishDate: 2025-12-08
 tags: ["resources", "frontend", "react"]
 ---

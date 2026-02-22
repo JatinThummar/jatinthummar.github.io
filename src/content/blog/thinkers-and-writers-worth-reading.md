@@ -1,6 +1,6 @@
 ---
-title: "Thought Leaders & Blogs Worth Reading"
-description: "A curated list of founders, thinkers, and writers whose blogs have shaped how I think about startups, technology, and life."
+title: "Thinkers & Writers Worth Reading"
+description: "Founders, thinkers, and writers who changed how I see tech, startups, and life."
 publishDate: 2026-02-10
 tags: ["resources", "startups", "reading"]
 ---
@@ -38,4 +38,4 @@ Not everything worth reading is about code. These are the founders, investors, a
 
 ---
 
-These are the blogs I keep going back to when I want to think bigger than code. Pair them with my [developer blogs](/blog/developers-and-blogs-worth-following) and [frontend resources](/blog/frontend-resources-and-communities) for the complete reading list.
+These are the blogs I keep going back to when I want to think bigger than code. Pair them with [Developers & Engineers to Follow](/blog/developers-and-engineers-to-follow) and [Frontend Tools & Learning Resources](/blog/frontend-tools-and-learning-resources) for the complete reading list.

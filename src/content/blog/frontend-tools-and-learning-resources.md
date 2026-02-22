@@ -1,6 +1,6 @@
 ---
-title: "Frontend Resources & Communities"
-description: "A collection of resources, communities, and learning platforms for React, Next.js, Remix, and frontend development."
+title: "Frontend Tools & Learning Resources"
+description: "Tools, communities, and platforms that helped me grow as a frontend developer."
 publishDate: 2026-01-14
 tags: ["resources", "community", "frontend"]
 ---
@@ -30,4 +30,4 @@ Beyond individual blogs, these are the communities, curated collections, and lea
 
 ---
 
-Pair these with the developer blogs from my [other post](/blog/developers-and-blogs-worth-following) and you'll have more than enough to keep learning for years.
+Pair these with [Developers & Engineers to Follow](/blog/developers-and-engineers-to-follow) and you'll have more than enough to keep learning for years.
