@@ -1,7 +1,7 @@
 ---
 title: "Frontend Resources & Communities"
 description: "A collection of resources, communities, and learning platforms for React, Next.js, Remix, and frontend development."
-publishDate: 2026-02-21
+publishDate: 2025-09-12
 tags: ["resources", "react", "nextjs", "frontend"]
 ---
 
