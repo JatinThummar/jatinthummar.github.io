@@ -52,26 +52,24 @@ const jsonLd = {
 	<main class="max-w-xl w-full mx-auto py-20">
 		<!-- Avatar + Heading: stacked on mobile, side by side on sm+ -->
 		<div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-8">
-			<div class="relative w-37.5 h-37.5 shrink-0 group">
+			<div class="relative w-37.5 h-37.5 shrink-0 group bg-surface rounded-2xl">
 				<Image
 					src={avatarOutline}
 					alt="Jatin Thummar"
 					width={192}
 					height={192}
-					class="absolute inset-0 rounded-2xl transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0 group-focus-within:opacity-0"
+					class="absolute inset-0 rounded-2xl transition-opacity duration-300 ease-in-out avatar-outline"
 					quality={90}
 					loading="eager"
-					fetchpriority="high"
 				/>
 				<Image
 					src={avatarColor}
 					alt=""
 					width={192}
 					height={192}
-					class="absolute inset-0 rounded-2xl transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+					class="absolute inset-0 rounded-2xl transition-opacity duration-300 ease-in-out avatar-color"
 					quality={90}
 					loading="eager"
-					fetchpriority="low"
 				/>
 			</div>
 			<div>

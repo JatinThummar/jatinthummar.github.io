@@ -121,13 +121,20 @@
   html.light {
     color-scheme: light;
   }
-  /* Invert black logos to white in dark mode, normal in light */
-  .dark-invert {
-    filter: invert(1);
-  }
-  .light .dark-invert {
-    filter: invert(0);
-  }
+  /* Avatar swap: color default in dark, outline default in light */
+  .avatar-color { opacity: 1; }
+  .avatar-outline { opacity: 0; filter: invert(1); mix-blend-mode: lighten; }
+  .group:hover .avatar-color,
+  .group:focus-within .avatar-color { opacity: 0; }
+  .group:hover .avatar-outline,
+  .group:focus-within .avatar-outline { opacity: 1; }
+
+  .light .avatar-color { opacity: 0; }
+  .light .avatar-outline { opacity: 1; filter: none; mix-blend-mode: normal; }
+  .light .group:hover .avatar-color,
+  .light .group:focus-within .avatar-color { opacity: 1; }
+  .light .group:hover .avatar-outline,
+  .light .group:focus-within .avatar-outline { opacity: 0; }
   /* Dashed separator */
   .separator {
     height: 1px;
