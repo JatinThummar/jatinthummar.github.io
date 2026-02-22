@@ -13,40 +13,32 @@ const fontResRegular = await fetch(
 );
 const interRegular = await fontResRegular.arrayBuffer();
 
-const avatarPath = resolve('src/assets/avatar-color.png');
-const avatarBuffer = await readFile(avatarPath);
+// Read all assets from disk — no external image fetches during build
+const avatarBuffer = await readFile(resolve('src/assets/avatar-color.png'));
 const avatarBase64 = `data:image/png;base64,${avatarBuffer.toString('base64')}`;
 
-// Fetch QR code for the site
-const qrRes = await fetch(
-	'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://jatinthummar.github.io&format=png'
-);
-const qrBuffer = Buffer.from(await qrRes.arrayBuffer());
+const qrBuffer = await readFile(resolve('src/assets/qr-code.png'));
 const qrBase64 = `data:image/png;base64,${qrBuffer.toString('base64')}`;
 
-// Fetch official tech logos from devicons CDN at build time
-const devicon = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
-
-async function fetchLogoAsDataUri(url: string): Promise<string> {
-	const res = await fetch(url);
-	const svg = await res.text();
+async function readLogoAsDataUri(filename: string): Promise<string> {
+	const svg = await readFile(resolve(`src/assets/logos/${filename}`), 'utf-8');
 	return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
 }
 
 const logoEntries = [
-	{ name: 'React', url: `${devicon}/react/react-original.svg` },
-	{ name: 'Expo', url: `https://cdn.simpleicons.org/expo/000020` },
-	{ name: 'Next.js', url: `${devicon}/nextjs/nextjs-original.svg` },
-	{ name: 'Vite', url: `${devicon}/vitejs/vitejs-original.svg` },
-	{ name: 'JS', url: `${devicon}/javascript/javascript-original.svg` },
-	{ name: 'TS', url: `${devicon}/typescript/typescript-original.svg` },
-	{ name: 'Git', url: `${devicon}/git/git-original.svg` },
+	{ name: 'React', file: 'react.svg' },
+	{ name: 'Expo', file: 'expo.svg' },
+	{ name: 'Next.js', file: 'nextjs.svg' },
+	{ name: 'Vite', file: 'vite.svg' },
+	{ name: 'JS', file: 'javascript.svg' },
+	{ name: 'TS', file: 'typescript.svg' },
+	{ name: 'Git', file: 'git.svg' },
 ];
 
 const logos = await Promise.all(
 	logoEntries.map(async (entry) => ({
 		name: entry.name,
-		src: await fetchLogoAsDataUri(entry.url),
+		src: await readLogoAsDataUri(entry.file),
 	}))
 );
 
@@ -316,9 +308,6 @@ export async function GET() {
 										src: qrBase64,
 										width: 200,
 										height: 200,
-										style: {
-											borderRadius: '0px',
-										},
 									},
 								},
 								{
