@@ -153,12 +153,18 @@ src/
     global.css                → Tailwind import + theme tokens + prose overrides
 ```
 
-## Deployment
+## Build & Deployment
 
 - **URL:** https://jatinthummar.github.io
-- **Branch:** `main` — every push triggers build + deploy
+- **Branch:** `main` — every push triggers build + deploy via GitHub Actions
 - **Node version:** 22 (set in GitHub Actions workflow)
 - **Install:** `npm ci` (uses lock file for reproducible builds)
+
+### CI Build Rules
+
+- **No external image/asset fetches at build time** — GitHub Actions has limited/unreliable network access to third-party CDNs. Always store images (logos, icons, QR codes) as local files in `src/assets/` and read from disk. Fonts from Google Fonts CDN are the only exception (used by the blog OG image generator and proven reliable).
+- **Always run `npm run build` locally before pushing** — catch satori rendering errors, missing assets, or broken imports before CI fails.
+- **OG image assets live in `src/assets/`** — avatar (`avatar-color.png`), QR code (`qr-code.png`), and tech logos (`logos/*.svg`) are all local. If adding new logos or images to OG generators, download them locally first.
 
 ## Git Conventions
 

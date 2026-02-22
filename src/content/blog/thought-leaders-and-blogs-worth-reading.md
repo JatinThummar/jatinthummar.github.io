@@ -1,8 +1,8 @@
 ---
 title: "Thought Leaders & Blogs Worth Reading"
 description: "A curated list of founders, thinkers, and writers whose blogs have shaped how I think about startups, technology, and life."
-publishDate: 2025-10-05
-tags: ["resources", "startups", "tech"]
+publishDate: 2026-02-10
+tags: ["resources", "startups", "reading"]
 ---
 
 Not everything worth reading is about code. These are the founders, investors, and thinkers whose writing has shaped how I think about building products, startups, and life in general.
