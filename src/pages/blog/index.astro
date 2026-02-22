@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogPostCard from '../../components/blog/BlogPostCard.astro';
+import BlogPostList from '../../components/blog/BlogPostList.astro';
 import { fetchPosts } from '../../utils/blog';
 
 const posts = await fetchPosts();
@@ -40,14 +40,6 @@ const jsonLd = {
 		<h1 class="text-3xl font-bold tracking-tight mb-2">Blog</h1>
 		<p class="text-subtle text-lg mb-10">Thoughts and notes on frontend development.</p>
 
-		{posts.length === 0 ? (
-			<p class="text-muted">No posts yet. Check back soon!</p>
-		) : (
-			<div class="space-y-4">
-				{posts.map((post) => (
-					<BlogPostCard post={post} />
-				))}
-			</div>
-		)}
+		<BlogPostList posts={posts} label="All blog posts" />
 	</main>
 </BaseLayout>

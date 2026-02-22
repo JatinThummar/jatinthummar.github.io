@@ -6,7 +6,7 @@ import avatarOutline from '../assets/avatar-outline.png';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DottedSeparator from '../components/DottedSeparator.astro';
 import SocialButton from '../components/SocialButton.astro';
-import BlogPostCard from '../components/blog/BlogPostCard.astro';
+import BlogPostList from '../components/blog/BlogPostList.astro';
 import { fetchPosts } from '../utils/blog';
 
 const title = 'Jatin Thummar — Frontend Engineer';
@@ -143,15 +143,7 @@ const jsonLd = {
 					</svg>
 				</a>
 			</div>
-			{recentPosts.length > 0 ? (
-				<div class="space-y-4">
-					{recentPosts.map((post) => (
-						<BlogPostCard post={post} />
-					))}
-				</div>
-			) : (
-				<p class="text-muted text-sm">No posts yet. Check back soon!</p>
-			)}
+			<BlogPostList posts={recentPosts} label="Recent blog posts" />
 		</section>
 	</main>
 
