@@ -227,3 +227,48 @@
     margin-bottom: 2.5em;
   }
 }
+
+/* ==========================================================
+   BLOG VIEW TOGGLE: minimal vs detailed
+
+   Default (no data attribute) = detailed view.
+   When html[data-blog-view="minimal"], hide description/read-time,
+   remove card chrome, and rearrange to a compact row layout.
+   ========================================================== */
+
+html[data-blog-view="minimal"] .blog-card__description,
+html[data-blog-view="minimal"] .blog-card__read-time,
+html[data-blog-view="minimal"] .blog-card__date-separator {
+  display: none;
+}
+
+html[data-blog-view="minimal"] .blog-card {
+  border-color: transparent;
+  padding: 0.5rem 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+html[data-blog-view="minimal"] .blog-card:hover {
+  border-color: transparent;
+}
+
+html[data-blog-view="minimal"] .blog-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+html[data-blog-view="minimal"] .blog-card__tags {
+  margin-top: 0.25rem;
+}
+
+html[data-blog-view="minimal"] .blog-list {
+  gap: 0;
+}
+
+html[data-blog-view="minimal"] .blog-list > li + li {
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostList from '../../components/blog/BlogPostList.astro';
+import ViewToggle from '../../components/blog/ViewToggle.astro';
 import { fetchPosts } from '../../utils/blog';
 
 const posts = await fetchPosts();
@@ -37,7 +38,10 @@ const jsonLd = {
 			Back to home
 		</a>
 
-		<h1 class="text-3xl font-bold tracking-tight mb-2">Blog</h1>
+		<div class="flex items-center justify-between mb-2">
+			<h1 class="text-3xl font-bold tracking-tight">Blog</h1>
+			<ViewToggle />
+		</div>
 		<p class="text-subtle text-lg mb-10">Thoughts and notes on frontend development.</p>
 
 		<BlogPostList posts={posts} label="All blog posts" />

@@ -75,12 +75,16 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 		<!-- JSON-LD Structured Data -->
 		{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
-		<!-- FOUC prevention: apply saved theme before first paint -->
+		<!-- FOUC prevention: apply saved theme + blog view before first paint -->
 		<script is:inline>
 			(function () {
 				var stored = localStorage.getItem('theme');
 				if (stored === 'light') {
 					document.documentElement.classList.add('light');
+				}
+				var view = localStorage.getItem('blog-view');
+				if (view) {
+					document.documentElement.dataset.blogView = view;
 				}
 			})();
 		</script>

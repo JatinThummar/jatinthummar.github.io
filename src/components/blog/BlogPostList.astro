@@ -14,7 +14,7 @@ const { posts, label, emptyMessage = 'No posts yet. Check back soon!' } = Astro.
 {posts.length === 0 ? (
 	<p class="text-muted text-sm">{emptyMessage}</p>
 ) : (
-	<ul class="space-y-4" role="list" aria-label={label}>
+	<ul class="blog-list flex flex-col gap-4" role="list" aria-label={label}>
 		{posts.map((post) => (
 			<li>
 				<BlogPostCard post={post} />

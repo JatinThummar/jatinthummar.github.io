@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import BlogPostList from '../../../components/blog/BlogPostList.astro';
+import ViewToggle from '../../../components/blog/ViewToggle.astro';
 import { fetchPosts, getAllTags } from '../../../utils/blog';
 import type { BlogPost } from '../../../utils/blog';
 
@@ -43,7 +44,10 @@ const description = `Blog posts tagged with "${tag}".`;
 			Back to blog
 		</a>
 
-		<h1 class="text-3xl font-bold tracking-tight mb-2">#{tag}</h1>
+		<div class="flex items-center justify-between mb-2">
+			<h1 class="text-3xl font-bold tracking-tight">#{tag}</h1>
+			<ViewToggle />
+		</div>
 		<p class="text-subtle text-lg mb-10">{posts.length} {posts.length === 1 ? 'post' : 'posts'} tagged with "{tag}"</p>
 
 		<BlogPostList posts={posts} label={`Posts tagged ${tag}`} />
