@@ -10,28 +10,28 @@ const { class: className } = Astro.props;
 	<button
 		type="button"
 		class="view-toggle-btn inline-flex items-center justify-center w-8 h-8 rounded-md transition text-btn-icon-text hover:text-btn-icon-hover-text"
-		data-view="detailed"
-		aria-label="Detailed view"
-		aria-checked="true"
-		role="radio"
-	>
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-			<rect x="3" y="3" width="18" height="7" rx="2" />
-			<rect x="3" y="14" width="18" height="7" rx="2" />
-		</svg>
-	</button>
-	<button
-		type="button"
-		class="view-toggle-btn inline-flex items-center justify-center w-8 h-8 rounded-md transition text-btn-icon-text hover:text-btn-icon-hover-text"
 		data-view="minimal"
 		aria-label="Minimal view"
-		aria-checked="false"
+		aria-checked="true"
 		role="radio"
 	>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 			<line x1="3" y1="6" x2="21" y2="6" />
 			<line x1="3" y1="12" x2="21" y2="12" />
 			<line x1="3" y1="18" x2="21" y2="18" />
+		</svg>
+	</button>
+	<button
+		type="button"
+		class="view-toggle-btn inline-flex items-center justify-center w-8 h-8 rounded-md transition text-btn-icon-text hover:text-btn-icon-hover-text"
+		data-view="detailed"
+		aria-label="Detailed view"
+		aria-checked="false"
+		role="radio"
+	>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<rect x="3" y="3" width="18" height="7" rx="2" />
+			<rect x="3" y="14" width="18" height="7" rx="2" />
 		</svg>
 	</button>
 </div>
@@ -52,7 +52,7 @@ const { class: className } = Astro.props;
 	}
 
 	// Initialize from current state (set by FOUC prevention script or default)
-	const current = html.dataset.blogView || 'detailed';
+	const current = html.dataset.blogView || 'minimal';
 	setView(current);
 
 	buttons.forEach((btn) => {
