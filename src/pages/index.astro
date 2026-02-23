@@ -19,10 +19,24 @@ const recentPosts = (await fetchPosts()).slice(0, 5);
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@type": "Person",
+	"@id": `${siteUrl}/#person`,
 	"name": "Jatin Thummar",
+	"givenName": "Jatin",
+	"familyName": "Thummar",
 	"jobTitle": "Frontend Engineer",
 	"url": siteUrl,
+	"mainEntityOfPage": siteUrl,
 	"description": description,
+	"image": `${siteUrl}/og-image.png`,
+	"homeLocation": {
+		"@type": "Country",
+		"name": "India"
+	},
+	"worksFor": {
+		"@type": "Organization",
+		"name": "The Korean Fashion",
+		"url": "https://www.thekoreanfashion.com/"
+	},
 	"knowsAbout": [
 		"Cross-Platform App Development",
 		"Frontend Architecture",
@@ -31,10 +45,11 @@ const jsonLd = {
 		"TypeScript",
 		"Next.js",
 		"Vite",
+		"Shopify App Development",
+		"E-Commerce Mobile Apps",
 		"Scalable Frontend Systems",
 		"Mobile App Development"
 	],
-	"image": `${siteUrl}/og-image.png`,
 	"sameAs": [
 		"https://github.com/JatinThummar",
 		"https://x.com/jatinthummarx",

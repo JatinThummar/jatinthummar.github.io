@@ -16,16 +16,34 @@ const jsonLd = {
 	"description": description,
 	"mainEntity": {
 		"@type": "Person",
+		"@id": `${siteUrl}/#person`,
 		"name": "Jatin Thummar",
+		"givenName": "Jatin",
+		"familyName": "Thummar",
 		"jobTitle": "Frontend Engineer",
 		"url": siteUrl,
+		"mainEntityOfPage": siteUrl,
+		"description": description,
+		"image": `${siteUrl}/og-image.png`,
+		"homeLocation": {
+			"@type": "Country",
+			"name": "India"
+		},
+		"worksFor": {
+			"@type": "Organization",
+			"name": "The Korean Fashion",
+			"url": "https://www.thekoreanfashion.com/"
+		},
 		"knowsAbout": [
 			"Cross-Platform App Development",
 			"Frontend Architecture",
 			"React Native",
 			"Expo",
 			"TypeScript",
-			"Next.js"
+			"Next.js",
+			"Shopify App Development",
+			"E-Commerce Mobile Apps",
+			"Mobile App Development"
 		],
 		"sameAs": [
 			"https://github.com/JatinThummar",
