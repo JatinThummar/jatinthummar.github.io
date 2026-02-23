@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	class?: string;
+}
+
+// Import all images from src/assets/design/
+const designImages = import.meta.glob<{ default: ImageMetadata }>(
+	'/src/assets/design/*.{jpg,jpeg,png,webp}',
+	{ eager: true }
+);
+
+const images = Object.entries(designImages)
+	.map(([path, mod]) => ({
+		src: mod.default,
+		alt: path
+			.split('/')
+			.pop()!
+			.replace(/\.\w+$/, '')
+			.replace(/[-_]/g, ' ')
+			.replace(/^\d+-\s*/, ''),
+	}))
+	.sort((a, b) => a.alt.localeCompare(b.alt));
+
+// Mobile (2-col):  [car full] / [candy][avatar] / [earpods][ring]
+// Desktop (3-col): [car 2col×2row] [candy 2row] / [avatar][earpods][ring]
+const gridClasses = [
+	'col-span-2 aspect-[3/2] md:row-span-2 md:aspect-square',  // 0: car
+	'aspect-square md:row-span-2 md:aspect-auto',               // 1: candy
+	'aspect-square',                                             // 2: avatar
+	'aspect-square',                                             // 3: earpods
+	'aspect-square',                                             // 4: ring
+];
+---
+
+{images.length > 0 && (
+	<div class:list={['grid grid-cols-2 md:grid-cols-3 gap-2', Astro.props.class]}>
+		{images.map((image, i) => (
+			<div
+				class:list={[
+					'overflow-hidden rounded-lg',
+					gridClasses[i] || 'aspect-square',
+				]}
+			>
+				<Image
+					src={image.src}
+					alt={image.alt}
+					width={image.src.width}
+					height={image.src.height}
+					class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+					quality={85}
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+		))}
+	</div>
+)}
