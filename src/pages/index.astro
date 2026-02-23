@@ -153,18 +153,18 @@ const jsonLd = {
 		<section aria-labelledby="recent-posts-heading">
 			<div class="flex items-center justify-between mb-6">
 				<h2 id="recent-posts-heading" class="text-xl font-bold">Recent Posts</h2>
-				<div class="flex items-center gap-3">
-					<ViewToggle />
-					<a href="/blog" class="group inline-flex items-center gap-1.5 text-subtle hover:text-emphasis transition text-sm font-medium" aria-label="View all blog posts">
-						View all
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
-							<line x1="5" y1="12" x2="19" y2="12" />
-							<polyline points="12 5 19 12 12 19" />
-						</svg>
-					</a>
-				</div>
+				<ViewToggle />
 			</div>
 			<BlogPostList posts={recentPosts} label="Recent blog posts" />
+			<div class="mt-6 text-center">
+				<a href="/blog" class="group inline-flex items-center gap-1.5 text-subtle hover:text-emphasis transition text-sm font-medium" aria-label="View all blog posts">
+					View all posts
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+						<line x1="5" y1="12" x2="19" y2="12" />
+						<polyline points="12 5 19 12 12 19" />
+					</svg>
+				</a>
+			</div>
 		</section>
 	</main>
 
