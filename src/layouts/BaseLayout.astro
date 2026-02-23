@@ -52,6 +52,10 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<link rel="alternate" type="application/rss+xml" title="Jatin Thummar's Blog" href="/rss.xml" />
 
+		<!-- AI Discoverability -->
+		<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
+		<link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full content" />
+
 		<!-- Open Graph -->
 		<meta property="og:type" content={ogType} />
 		<meta property="og:url" content={canonicalUrl} />

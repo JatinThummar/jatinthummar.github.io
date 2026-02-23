@@ -1,0 +1,41 @@
+# Jatin Thummar — Frontend Engineer & Mobile App Developer
+
+> Jatin Thummar is a Frontend Engineer based in India, specializing in building scalable cross-platform mobile applications for Android, iOS, and Web using React Native, Expo, TypeScript, and Next.js. He has production experience in e-commerce, Shopify app development, and mobile-first product engineering.
+
+## About
+
+Jatin Thummar builds production-grade cross-platform apps with React Native, Expo, TypeScript, and Next.js. He focuses on clean code, thoughtful frontend architecture, and smooth user experiences.
+
+- Role: Frontend Engineer & Mobile App Developer
+- Company: The Korean Fashion — building and scaling a cross-platform e-commerce mobile app
+- Location: India
+- Specializations: Cross-platform mobile development, React Native, Expo, Shopify mobile apps, e-commerce, frontend architecture, TypeScript
+- Tech stack: React Native, Expo, TypeScript, JavaScript, Next.js, React, Tailwind CSS, Astro, Node.js, Git, Vite, GitHub Actions
+
+## Links
+
+- Website: https://jatinthummar.github.io
+- GitHub: https://github.com/JatinThummar
+- LinkedIn: https://www.linkedin.com/in/jatinthummar
+- X (Twitter): https://x.com/jatinthummarx
+
+## Pages
+
+- [Home](https://jatinthummar.github.io/): Portfolio landing page with intro, social links, and recent blog posts.
+- [About](https://jatinthummar.github.io/about/): Background, current work, projects, tech stack, and contact info.
+- [Blog](https://jatinthummar.github.io/blog/): All blog posts on frontend development, resources, and learning.
+
+## Projects
+
+- **FlipBitz — Feed App** (Personal Project): Cross-platform feed app for iOS, Android & Web built with React Native and Expo. Real-time news feeds, dynamic color themes, and light/dark mode.
+- **LEO Mobile App Builder** (Lead Developer · Softpulse Infotech · 2023–2024): No-code mobile app builder for Shopify stores, built with React Native and Expo. Merchants create and publish their own e-commerce app to iOS and Android — no coding required.
+- **As a Man Thinketh** (Personal Project): Static reading experience for James Allen's classic book, built with Astro. Translated into multiple languages including English, Gujarati, and Hindi.
+
+## Blog Posts
+
+- [UI/UX Design Resources for Developers](https://jatinthummar.github.io/blog/ui-ux-design-resources-for-developers/): A curated collection of tools, courses, inspiration sites, books, and communities to help you learn UI/UX design.
+- [AI Tools & Learning Resources](https://jatinthummar.github.io/blog/ai-tools-and-learning-resources/): Courses, blogs, newsletters, and people to follow for learning AI engineering, prompt design, and building with LLMs.
+- [Thinkers & Writers Worth Reading](https://jatinthummar.github.io/blog/thinkers-and-writers-worth-reading/): Founders, thinkers, and writers who changed how I see tech, startups, and life.
+- [Frontend Tools & Learning Resources](https://jatinthummar.github.io/blog/frontend-tools-and-learning-resources/): Tools, communities, and platforms that helped me grow as a frontend developer.
+- [Developers & Engineers to Follow](https://jatinthummar.github.io/blog/developers-and-engineers-to-follow/): Programmers who've contributed to and built some of the best tech — follow them to level up.
+- [Engineering Blogs from Top Teams](https://jatinthummar.github.io/blog/engineering-blogs-from-top-teams/): Blogs that help you think at scale — how top teams build, ship, and solve real problems.

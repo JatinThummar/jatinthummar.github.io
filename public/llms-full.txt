@@ -1,0 +1,281 @@
+# Jatin Thummar — Frontend Engineer & Mobile App Developer
+
+> Jatin Thummar is a Frontend Engineer based in India, specializing in building scalable cross-platform mobile applications for Android, iOS, and Web using React Native, Expo, TypeScript, and Next.js. He has production experience in e-commerce, Shopify app development, and mobile-first product engineering.
+
+## About
+
+Jatin Thummar builds production-grade cross-platform apps with React Native, Expo, TypeScript, and Next.js. He focuses on clean code, thoughtful frontend architecture, and smooth user experiences.
+
+- Role: Frontend Engineer & Mobile App Developer
+- Company: The Korean Fashion — building and scaling a cross-platform e-commerce mobile app, shipping new features, improving performance, and refining the developer experience
+- Location: India
+- Specializations: Cross-platform mobile development, React Native, Expo, Shopify mobile apps, e-commerce, frontend architecture, TypeScript
+- Tech stack: React Native, Expo, TypeScript, JavaScript, Next.js, React, Tailwind CSS, Astro, Node.js, Git, Vite, GitHub Actions
+- Website: https://jatinthummar.github.io
+- GitHub: https://github.com/JatinThummar
+- LinkedIn: https://www.linkedin.com/in/jatinthummar
+- X (Twitter): https://x.com/jatinthummarx
+
+### How I Work
+
+I care about the details — clean code, thoughtful architecture, and smooth user experiences. I believe great apps come from understanding both the technical and the human side of development. I prefer keeping things simple and intentional. Whether it's choosing the right abstraction, optimizing a critical render path, or picking the right tool for the job — I lean towards solutions that are practical, not over-engineered.
+
+### Projects
+
+**FlipBitz — Feed App** (Personal Project): Cross-platform feed app for iOS, Android & Web built with React Native and Expo. Real-time news feeds, dynamic color themes, and light/dark mode. https://flipbitz.netlify.app/web/
+
+**LEO Mobile App Builder** (Lead Developer · Softpulse Infotech · 2023–2024): No-code mobile app builder for Shopify stores, built with React Native and Expo. Merchants create and publish their own e-commerce app to iOS and Android — no coding required. https://leoapps.io/
+
+**As a Man Thinketh** (Personal Project): Static reading experience for James Allen's classic book, built with Astro. Translated into multiple languages including English, Gujarati, and Hindi. https://jatinthummar.github.io/thinketh/
+
+---
+
+## Blog: UI/UX Design Resources for Developers
+
+A curated collection of tools, courses, inspiration sites, books, and communities to help you learn UI/UX design.
+
+You don't need a design degree to build beautiful, usable interfaces. These are the resources I've found most useful for learning UI/UX — from theory and inspiration to hands-on tools and practice challenges.
+
+### Courses & Learning Platforms
+
+- Google UX Design Course (https://grow.google/intl/en_in/ux-design-course/) — Google's professional certificate on Coursera. Covers the full UX process from research to prototyping.
+- Interaction Design Foundation (https://www.interaction-design.org/) — One of the most comprehensive UX education platforms.
+- Hack Design (https://hackdesign.org/lessons) — Free design lessons curated by top designers, delivered weekly.
+- IBM Design Thinking (https://www.ibm.com/design/thinking/page/courses/Practitioner) — IBM's free practitioner course on applying design thinking at scale.
+- Baseline HQ (https://www.baselinehq.com/course.html) — Typography-focused design course.
+- UXPin Ebooks (https://www.uxpin.com/studio/ebooks/) — Free ebooks on UX design, prototyping, and design systems.
+- Egghead (https://egghead.io/) — Expert-led courses for front-end web developers.
+- Design Better (https://www.designbetter.co/) — Discover the world's best design practices.
+
+### UX Theory & Principles
+
+- Laws of UX (https://lawsofux.com/) — The essential psychological principles that every designer should know.
+- Principles.design (https://principles.design/) — Open source collection of design principles.
+- NN Group (https://www.nngroup.com/articles/) — The gold standard for evidence-based UX research and guidelines.
+- Psychology of Design — 106 Cognitive Biases (https://growth.design/psychology#hicks-law) — Visual reference of cognitive biases that affect design decisions.
+
+### Design Systems
+
+- Material Design 3 (https://m3.material.io/) — Google's design system.
+- Apple Human Interface Guidelines (https://developer.apple.com/design/human-interface-guidelines/) — Apple's design bible.
+- Shopify Polaris (https://polaris.shopify.com/) — One of the best-documented design systems.
+- Carbon Design System (https://carbondesignsystem.com/) — IBM's open-source design system.
+- Design Systems Repo (https://designsystemsrepo.com/design-systems/) — Searchable directory of open-source design systems.
+
+### Case Studies
+
+- Growth.Design (https://growth.design/case-studies) — UX case studies told as visual comic strips.
+- Baymard — E-Commerce Checkout Usability (https://baymard.com/research/checkout-usability) — Original research on checkout UX.
+
+### Inspiration & UI Galleries
+
+- Dribbble (https://dribbble.com/) — The go-to for visual design inspiration.
+- Behance (https://www.behance.net/) — Full case studies and project showcases.
+- Mobbin (https://mobbin.com/browse/ios/apps) — Real-world mobile app screenshots.
+- Land-book (https://land-book.com/) — Hand-picked landing page designs.
+- Refero Design (https://refero.design/) — Real product screenshots from top companies.
+
+### Design & Prototyping Tools
+
+- Figma (https://www.figma.com) — The industry standard for UI design.
+- Framer (https://www.framer.com/) — Design and ship real websites with no code.
+- Excalidraw (https://excalidraw.com/) — Virtual whiteboard for hand-drawn diagrams.
+
+### Color & Typography Tools
+
+- Coolors (https://coolors.co/) — Fast color palette generator.
+- FontJoy (https://fontjoy.com/) — AI-powered font pairing generator.
+- Google Fonts (https://fonts.google.com/) — The free font library.
+- UI Colors (https://uicolors.app/create) — Tailwind CSS color palette generator.
+
+### Books
+
+- Hooked — Nir Eyal: The framework for building habit-forming products.
+- Articulating Design Decisions: How to communicate and defend your design choices.
+- Steal Like an Artist — Austin Kleon: A creative manifesto for finding inspiration everywhere.
+
+---
+
+## Blog: AI Tools & Learning Resources
+
+Courses, blogs, newsletters, and people to follow for learning AI engineering, prompt design, and building with LLMs.
+
+AI is reshaping how we build software. Whether you're integrating LLMs into your app, writing better prompts, or just trying to keep up — these are the resources I've found most useful.
+
+### Courses & Documentation
+
+- Anthropic Courses (https://github.com/anthropics/courses) — Free interactive courses on prompt engineering, Claude API, and building with MCP.
+- Anthropic Learn (https://www.anthropic.com/learn) — Official learning resources and guides from Anthropic.
+- DeepLearning.AI Short Courses (https://www.deeplearning.ai/short-courses/) — 88+ short courses on GenAI, LangChain, RAG, and more.
+- OpenAI Cookbook (https://github.com/openai/openai-cookbook) — Examples and guides for using the OpenAI API.
+- Epic AI (https://www.epicai.pro/) — Kent C. Dodds' course on building AI-powered apps with MCP.
+- Google AI for Developers (https://ai.google.dev/) — Gemini API docs, tutorials, and quickstarts.
+- Microsoft Generative AI for Beginners (https://github.com/microsoft/generative-ai-for-beginners) — 21 lessons to get started building with generative AI.
+- Prompt Engineering Guide (https://www.promptingguide.ai/) — Comprehensive open-source guide to prompt engineering.
+
+### AI Coding Tools & Assistants
+
+- Claude Code (https://docs.anthropic.com/en/docs/claude-code) — Anthropic's CLI coding assistant.
+- Cursor (https://www.cursor.com/) — AI-first code editor built on VSCode.
+- GitHub Copilot (https://github.com/features/copilot) — AI pair programmer from GitHub.
+
+### People to Follow
+
+- Andrej Karpathy (https://karpathy.ai/) — Founding member of OpenAI, former Director of AI at Tesla.
+- Simon Willison (https://simonwillison.net/) — Co-creator of Django, now focused on LLMs.
+- Andrew Ng (https://www.andrewng.org/) — Founder of DeepLearning.AI and Coursera.
+- Lilian Weng (https://lilianweng.github.io/) — Head of Safety Systems at OpenAI.
+- Chip Huyen (https://huyenchip.com/) — Author of Designing Machine Learning Systems.
+
+### Engineering Blogs — AI Teams
+
+- OpenAI Blog (https://openai.com/blog) — Research updates, model releases, and technical deep dives.
+- Anthropic Research (https://www.anthropic.com/research) — Claude model updates and interpretability research.
+- Google DeepMind Blog (https://deepmind.google/discover/blog/) — Gemini, AlphaFold, and frontier AI research.
+- Hugging Face Blog (https://huggingface.co/blog) — Open-source models and transformers library updates.
+
+### Newsletters
+
+- The Batch (https://www.deeplearning.ai/the-batch/) — Andrew Ng's weekly newsletter.
+- TLDR AI (https://tldr.tech/ai) — Daily AI, ML, and data science updates in 5 minutes.
+- Import AI (https://importai.substack.com/) — Weekly deep dives into AI research and policy.
+- Ahead of AI (https://magazine.sebastianraschka.com/) — Sebastian Raschka's newsletter on LLMs and deep learning.
+
+### Open Source & Tools
+
+- Hugging Face (https://huggingface.co/) — The GitHub of AI. Models, datasets, and spaces.
+- LangChain (https://github.com/langchain-ai/langchain) — Framework for building LLM-powered applications.
+- Ollama (https://ollama.com/) — Run open-source LLMs locally.
+- Instructor (https://github.com/jxnl/instructor) — Structured outputs from LLMs using Pydantic.
+
+### Books
+
+- Designing Machine Learning Systems — Chip Huyen: The practical guide to building ML systems in production.
+- Build a Large Language Model (From Scratch) — Sebastian Raschka: Understand LLMs by building one step by step.
+- AI Engineering — Chip Huyen: Building applications with foundation models.
+
+---
+
+## Blog: Thinkers & Writers Worth Reading
+
+Founders, thinkers, and writers who changed how I see tech, startups, and life.
+
+Not everything worth reading is about code. These are the founders, investors, and thinkers whose writing has shaped how I think about building products, startups, and life in general.
+
+### Startups & Venture
+
+- Naval Ravikant (https://nav.al/) — Wealth, leverage, and clear thinking.
+- Paul Graham (http://www.paulgraham.com/) — Co-founder of Y Combinator. Essays on startups and unconventional thinking.
+- Sahil Lavingia (https://sahillavingia.com/) — Founder of Gumroad. Honest writing about bootstrapping.
+- Ryan Hoover (https://www.ryanhoover.me/) — Founder of Product Hunt.
+
+### Building & Business Philosophy
+
+- Jason Fried (https://world.hey.com/jason) — Co-founder of Basecamp and Hey. Calm companies and remote work.
+- DHH (https://dhh.dk/) — Co-founder of Basecamp, creator of Ruby on Rails.
+- Patrick Collison (https://patrickcollison.com/) — Co-founder and CEO of Stripe.
+- Nathan Barry (https://nathanbarry.com/) — Founder of ConvertKit.
+
+### Writing & Thinking
+
+- David Perell (https://perell.com/) — Essays on writing online and the knowledge economy.
+- Farnam Street (https://fs.blog/blog/) — Mental models, decision-making, and clear thinking.
+- Julian Shapiro (https://www.julian.com/) — Handbooks on writing, startup growth, and more.
+
+---
+
+## Blog: Frontend Tools & Learning Resources
+
+Tools, communities, and platforms that helped me grow as a frontend developer.
+
+### React
+
+- Awesome React (https://awesomereact.com/) — The best React videos and playlists on the web.
+- React Resources (https://reactresources.com/) — Curated React articles, tutorials, tools, and libraries.
+- Reactiflux (https://www.reactiflux.com/) — One of the largest React communities.
+- Awesome React Components (https://github.com/brillout/awesome-react-components) — Curated list of React components.
+
+### Next.js
+
+- Next Radar (https://nextradar.dev/content/nextjs) — Top resources, templates, courses, and jobs for Next.js.
+- Awesome Next.js (https://awesomenextjs.com/) — Curated list of Next.js resources.
+
+### JavaScript & Web Fundamentals
+
+- The Modern JavaScript Tutorial (https://javascript.info/) — Comprehensive, beginner-to-advanced JavaScript tutorial.
+- Epic React Articles (https://epicreact.dev/articles) — Articles from Kent C. Dodds' Epic React workshop series.
+- Complete Intro to React v7 (https://btholt.github.io/complete-intro-to-react-v7) — Brian Holt's free React course.
+
+### Frontend Architecture & Patterns
+
+- Frontend at Scale (https://frontendatscale.com/) — Level up your frontend architecture skills.
+- Refactoring Guru (https://refactoring.guru/) — Design patterns and refactoring techniques.
+- Jamstack Generators (https://jamstack.org/generators/) — Compare every static site generator.
+
+---
+
+## Blog: Developers & Engineers to Follow
+
+Programmers who've contributed to and built some of the best tech — follow them to level up.
+
+### React & Frontend Fundamentals
+
+- Josh W Comeau (https://www.joshwcomeau.com/) — CSS, React, and interactive tutorials.
+- Dan Abramov (https://overreacted.io/) — React core team. Deep writing about React internals.
+- Mark Erikson (https://blog.isquaredsoftware.com/) — Redux maintainer.
+- Kent C. Dodds (https://www.epicai.pro/posts) — Testing, React patterns, and AI engineering.
+- Robin Wieruch (https://www.robinwieruch.de/) — Practical React and JavaScript tutorials.
+
+### Expo & React Native
+
+- Evan Bacon (https://evanbacon.dev/) — Expo core team.
+- Fernando Rojo (https://fernandorojo.co/conf) — Built a startup from zero to $10M with React Native + Next.js.
+
+### Next.js & Vercel
+
+- Lee Robinson (https://leerob.com/vercel) — VP of Product at Vercel.
+- Guillermo Rauch (https://rauchg.com/) — CEO of Vercel, creator of Next.js.
+
+### Web Performance & Architecture
+
+- Addy Osmani (https://addyosmani.com/) — Chrome team at Google. Web performance and design patterns.
+- Steve Kinney (https://stevekinney.com/) — Frontend architect. React state management and performance.
+
+### Framework & Ecosystem Contributors
+
+- Ben Holmes (https://bholmes.dev/) — Astro core team.
+- Anthony Fu (https://antfu.me/) — Vue, Vite, Nuxt core team.
+
+---
+
+## Blog: Engineering Blogs from Top Teams
+
+Blogs that help you think at scale — how top teams build, ship, and solve real problems.
+
+### React Native Ecosystem & Tooling
+
+- Expo (https://expo.dev/blog) — Official Expo blog. SDK releases, EAS updates, universal React patterns.
+- Callstack (https://www.callstack.com/blog) — Core React Native contributors. Performance, debugging, New Architecture.
+- Software Mansion (https://blog.swmansion.com/) — Maintainers of Reanimated, Gesture Handler, and Screens.
+- React Native (https://reactnative.dev/blog) — Official release announcements and architecture updates.
+
+### React — Frontend at Scale
+
+- Airbnb Engineering (https://medium.com/airbnb-engineering) — React at scale, smooth upgrades, and open-source tools.
+- Netflix TechBlog (https://netflixtechblog.com/) — High-performance UIs in React, micro frontends.
+- Uber Engineering (https://www.uber.com/blog/engineering/) — Base Web design system, Fusion.js.
+- Stripe Engineering (https://stripe.com/blog/engineering) — Migrating 3.7M lines from Flow to TypeScript.
+- Spotify Engineering (https://engineering.atspotify.com/) — Web player with React + Redux, TypeScript-first architecture.
+
+### React Native — Big Tech & Scale
+
+- Meta Engineering (https://engineering.fb.com/) — Creators of React Native. Performance at scale.
+- Microsoft React Native DevBlog (https://devblogs.microsoft.com/react-native/) — React Native on Windows and macOS.
+- Shopify Engineering (https://shopify.engineering/topics/mobile) — Five years of React Native at Shopify.
+- Coinbase (https://www.coinbase.com/blog/landing) — Migrated 56M users from native to React Native.
+- Discord Engineering (https://discord.com/category/engineering) — Native iOS performance with React Native.
+
+### Next.js & Modern Web
+
+- Vercel (https://vercel.com/blog) — Creators of Next.js. React Server Components, Turbopack, caching.
+- Next.js (https://nextjs.org/blog) — Official release notes and migration guides.
