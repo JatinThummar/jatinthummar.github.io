@@ -52,6 +52,9 @@ These are the developers and bloggers I've learned from over the years. Whether 
 - **[Houssein Djirdeh](https://houssein.me/)** — Web performance and developer tooling at Google.
 - **[Destroy All Software](https://www.destroyallsoftware.com/screencasts)** — Gary Bernhardt's screencasts. Deep dives into software concepts in short, focused sessions.
 - **[SurviveJS](https://survivejs.com/)** — Books and tutorials on webpack, React, and the JavaScript ecosystem.
+- **[Steve Kinney](https://stevekinney.com/)** — Frontend architect. Talks on React state management, performance, and advanced patterns.
+- **[AR Shakir](https://www.arshakir.com/)** — Frontend engineering and design systems.
+- **[OSKRHQ Labs](https://oskrhq.com/)** — Oscar Arzola's design engineering experiments and writing.
 
 ## Framework & Ecosystem Contributors
 

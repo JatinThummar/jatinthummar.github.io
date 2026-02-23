@@ -30,7 +30,7 @@ Not everything worth reading is about code. These are the founders, investors, a
 - **[Julian Shapiro](https://www.julian.com/)** — Handbooks on writing, muscle building, and startup growth. Concise, high-signal content that respects your time.
 - **[Eric Jorgenson](https://www.ejorgenson.com/blog)** — Author of *The Almanack of Naval Ravikant*. Writes about wisdom, business, and applying mental models.
 - **[Farnam Street (Shane Parrish)](https://fs.blog/blog/)** — Mental models, decision-making, and clear thinking. One of the best blogs for mastering ideas that compound over time.
-- **[Visakanv](http://www.visakanv.com/blog/)** — Prolific writer on thinking, creativity, and self-awareness. Raw and reflective.
+- **[Visakanv](https://www.visakanv.com/blog/start-here/)** — Prolific writer on thinking, creativity, and self-awareness. Raw and reflective.
 
 ## Tech & Product
 
