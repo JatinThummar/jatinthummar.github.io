@@ -230,6 +230,7 @@ Rules derived from astrowind's patterns, adapted to our Tailwind v4 + Astro v5 s
 
 - **Always use `<Image>` from `astro:assets`** — never raw `<img>` tags for local images
 - **Always set `width` and `height`** — prevents Cumulative Layout Shift (CLS)
+- **Retina resolution:** set `width`/`height` to **2× the CSS display size** so images are sharp on high-DPI screens. Example: avatar displayed at 150×150px → `width={300} height={300}`. Lighthouse flags this as "serves images with low resolution" if under-sized.
 - **Above-the-fold images:** `loading="eager"` + `fetchpriority="high"` (avatar, hero)
 - **Everything else:** `loading="lazy"` + `decoding="async"` (default behavior)
 - **Always provide `alt` text** — empty `alt=""` only for purely decorative images
@@ -299,6 +300,7 @@ Example pattern for a scroll-animated section:
 
 - **Every button** must have `aria-label` if no visible text
 - **Decorative elements** get `aria-hidden="true"`
+- **Hidden overlays/modals with focusable children:** always pair `aria-hidden="true"` with the `inert` attribute. `aria-hidden` alone does not prevent keyboard focus — `inert` blocks all focus and pointer interaction on descendants. Toggle both in JS: `removeAttribute('inert')` on open, `setAttribute('inert', '')` on close. Lighthouse/axe flags this as "`aria-hidden` elements contain focusable descendants".
 - **Focus management:** visible focus rings, focus traps in modals
 - **Keyboard navigation:** all interactive elements reachable via Tab, Escape closes modals
 - **Color contrast:** minimum 4.5:1 for body text, 3:1 for large text
