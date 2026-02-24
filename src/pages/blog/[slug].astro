@@ -38,7 +38,7 @@ const jsonLd = {
 	'@type': 'BlogPosting',
 	headline: post.title,
 	description: post.description,
-	image: `${siteUrl}/og/${post.slug}.png`,
+	image: `${siteUrl}/og/${post.slug}.png?v=${(post.updatedDate ?? post.publishDate).getTime()}`,
 	datePublished: post.publishDate.toISOString(),
 	dateModified: (post.updatedDate ?? post.publishDate).toISOString(),
 	author: {
@@ -59,7 +59,7 @@ const jsonLd = {
 	description={post.description}
 	canonicalUrl={`${siteUrl}/blog/${post.slug}`}
 	ogType="article"
-	ogImage={`/og/${post.slug}.png`}
+	ogImage={`/og/${post.slug}.png?v=${(post.updatedDate ?? post.publishDate).getTime()}`}
 	jsonLd={jsonLd}
 >
 	<main class="max-w-xl w-full mx-auto py-20">
