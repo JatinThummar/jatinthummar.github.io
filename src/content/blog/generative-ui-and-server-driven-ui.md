@@ -2,7 +2,7 @@
 title: "Generative UI and Server-Driven UI: A React Dev's Intro"
 description: 'Two patterns reshaping how React apps are built: what they are, how they work, and when to use each one.'
 publishDate: 2026-02-24
-tags: ['react', 'frontend', 'architecture', 'ai']
+tags: ['engineering', 'frontend', 'react']
 ---
 
 You've shipped a React app. Product wants to change the homepage layout for a campaign, but that means a PR, review, and deploy. Marketing wants to A/B test three card designs. A user asks your chatbot something, and the right answer isn't text, it's a chart or a form.
