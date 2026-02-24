@@ -75,20 +75,22 @@ const jsonLd = {
 				<Image
 					src={avatarOutline}
 					alt="Jatin Thummar"
-					width={192}
-					height={192}
+					width={300}
+					height={300}
 					class="absolute inset-0 rounded-2xl transition-opacity duration-300 ease-in-out avatar-outline"
 					quality={90}
 					loading="eager"
+					fetchpriority="high"
 				/>
 				<Image
 					src={avatarColor}
 					alt=""
-					width={192}
-					height={192}
+					width={300}
+					height={300}
 					class="absolute inset-0 rounded-2xl transition-opacity duration-300 ease-in-out avatar-color"
 					quality={90}
 					loading="eager"
+					fetchpriority="high"
 				/>
 			</div>
 			<div>
@@ -237,6 +239,7 @@ const jsonLd = {
 		id="email-modal"
 		class="fixed inset-0 z-50 flex items-center justify-center px-6 opacity-0 pointer-events-none transition-opacity duration-200"
 		aria-hidden="true"
+		inert
 		role="dialog"
 		aria-labelledby="modal-heading"
 		aria-modal="true"
@@ -329,6 +332,7 @@ const jsonLd = {
 			modal.classList.remove('opacity-0', 'pointer-events-none');
 			modal.classList.add('opacity-100');
 			modal.setAttribute('aria-hidden', 'false');
+			modal.removeAttribute('inert');
 			copyBtn.focus();
 		}
 
@@ -336,6 +340,7 @@ const jsonLd = {
 			modal.classList.remove('opacity-100');
 			modal.classList.add('opacity-0', 'pointer-events-none');
 			modal.setAttribute('aria-hidden', 'true');
+			modal.setAttribute('inert', '');
 			reachOutBtn.focus();
 		}
 
