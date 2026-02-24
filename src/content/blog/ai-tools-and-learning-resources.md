@@ -1,8 +1,8 @@
 ---
-title: "AI Tools & Learning Resources"
-description: "Courses, blogs, newsletters, and people to follow for learning AI engineering, prompt design, and building with LLMs."
+title: 'AI Tools & Learning Resources'
+description: 'Courses, blogs, newsletters, and people to follow for learning AI engineering, prompt design, and building with LLMs.'
 publishDate: 2026-02-23
-tags: ["resources", "ai", "learning"]
+tags: ['resources', 'ai', 'learning']
 ---
 
 AI is reshaping how we build software. Whether you're integrating LLMs into your app, writing better prompts, or just trying to keep up — these are the resources I've found most useful.
@@ -41,7 +41,7 @@ AI is reshaping how we build software. Whether you're integrating LLMs into your
 - **[Swyx (Shawn Wang)](https://www.swyx.io/)** — Co-founder of Latent Space. Coined "AI Engineer." Writes and podcasts about the AI engineering stack.
 - **[Lilian Weng](https://lilianweng.github.io/)** — Head of Safety Systems at OpenAI. Her blog posts are graduate-level deep dives on transformers, RLHF, and agents.
 - **[Jay Alammar](https://jalammar.github.io/)** — Visual explainers of transformers, BERT, GPT, and attention mechanisms. The best visual AI content on the web.
-- **[Chip Huyen](https://huyenchip.com/)** — Author of *Designing Machine Learning Systems*. Writes about MLOps, real-time ML, and AI infrastructure.
+- **[Chip Huyen](https://huyenchip.com/)** — Author of _Designing Machine Learning Systems_. Writes about MLOps, real-time ML, and AI infrastructure.
 - **[Eugene Yan](https://eugeneyan.com/)** — Applied scientist at Amazon. Writes about recommendation systems, LLMs, and ML engineering in production.
 - **[Hamel Husain](https://hamel.dev/)** — AI engineer and educator. Practical content on fine-tuning, evals, and building with LLMs.
 - **[Jason Liu](https://jxnl.co/)** — Creator of Instructor library. Writes about structured outputs, function calling, and practical LLM patterns.

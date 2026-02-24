@@ -6,4 +6,11 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class:list={["h-px bg-[repeating-linear-gradient(to_right,var(--color-border)_0,var(--color-border)_6px,transparent_6px,transparent_12px)]", className]} role="separator"></div>
+<div
+	class:list={[
+		'h-px bg-[repeating-linear-gradient(to_right,var(--color-border)_0,var(--color-border)_6px,transparent_6px,transparent_12px)]',
+		className,
+	]}
+	role="separator"
+>
+</div>

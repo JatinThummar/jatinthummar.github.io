@@ -12,8 +12,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		params: { slug: post.slug },
 		props: {
 			post,
-			prevPost: index < posts.length - 1 ? { slug: posts[index + 1].slug, title: posts[index + 1].title } : undefined,
-			nextPost: index > 0 ? { slug: posts[index - 1].slug, title: posts[index - 1].title } : undefined,
+			prevPost:
+				index < posts.length - 1
+					? { slug: posts[index + 1].slug, title: posts[index + 1].title }
+					: undefined,
+			nextPost:
+				index > 0 ? { slug: posts[index - 1].slug, title: posts[index - 1].title } : undefined,
 			relatedPosts: getRelatedPosts(post, posts),
 		},
 	}));
@@ -30,22 +34,22 @@ const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const siteUrl = 'https://jatinthummar.github.io';
 
 const jsonLd = {
-	"@context": "https://schema.org",
-	"@type": "BlogPosting",
-	"headline": post.title,
-	"description": post.description,
-	"image": `${siteUrl}/og/${post.slug}.png`,
-	"datePublished": post.publishDate.toISOString(),
-	"dateModified": (post.updatedDate ?? post.publishDate).toISOString(),
-	"author": {
-		"@type": "Person",
-		"name": "Jatin Thummar",
-		"url": siteUrl,
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: post.title,
+	description: post.description,
+	image: `${siteUrl}/og/${post.slug}.png`,
+	datePublished: post.publishDate.toISOString(),
+	dateModified: (post.updatedDate ?? post.publishDate).toISOString(),
+	author: {
+		'@type': 'Person',
+		name: 'Jatin Thummar',
+		url: siteUrl,
 	},
-	"url": `${siteUrl}/blog/${post.slug}`,
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": `${siteUrl}/blog/${post.slug}`,
+	url: `${siteUrl}/blog/${post.slug}`,
+	mainEntityOfPage: {
+		'@type': 'WebPage',
+		'@id': `${siteUrl}/blog/${post.slug}`,
 	},
 };
 ---
@@ -59,10 +63,24 @@ const jsonLd = {
 	jsonLd={jsonLd}
 >
 	<main class="max-w-xl w-full mx-auto py-20">
-		<a href="/blog" class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-				<line x1="19" y1="12" x2="5" y2="12" />
-				<polyline points="12 19 5 12 12 5" />
+		<a
+			href="/blog"
+			class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				width="14"
+				height="14"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<line x1="19" y1="12" x2="5" y2="12"></line>
+				<polyline points="12 19 5 12 12 5"></polyline>
 			</svg>
 			Back to blog
 		</a>
@@ -75,14 +93,23 @@ const jsonLd = {
 					<span class="mx-1">&middot;</span>
 					<span>{post.readingTime} min read</span>
 				</p>
-				{post.tags.length > 0 && (
-					<div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
-						{post.tags.map((tag) => (
-							<a href={`/blog/tag/${tag}`} class="text-xs text-muted hover:text-emphasis transition">#{tag}</a>
-						))}
-					</div>
-				)}
-				<div class="flex items-center gap-2 mt-4 pt-3 border-t border-dashed border-border justify-end">
+				{
+					post.tags.length > 0 && (
+						<div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
+							{post.tags.map((tag) => (
+								<a
+									href={`/blog/tag/${tag}`}
+									class="text-xs text-muted hover:text-emphasis transition"
+								>
+									#{tag}
+								</a>
+							))}
+						</div>
+					)
+				}
+				<div
+					class="flex items-center gap-2 mt-4 pt-3 border-t border-dashed border-border justify-end"
+				>
 					<button
 						id="share-btn"
 						type="button"
@@ -91,12 +118,23 @@ const jsonLd = {
 						data-title={post.title}
 						data-url={`${siteUrl}/blog/${post.slug}`}
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-							<circle cx="18" cy="5" r="3" />
-							<circle cx="6" cy="12" r="3" />
-							<circle cx="18" cy="19" r="3" />
-							<line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-							<line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							width="15"
+							height="15"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<circle cx="18" cy="5" r="3"></circle>
+							<circle cx="6" cy="12" r="3"></circle>
+							<circle cx="18" cy="19" r="3"></circle>
+							<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+							<line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
 						</svg>
 						<span id="share-text">Share</span>
 					</button>
@@ -107,8 +145,17 @@ const jsonLd = {
 						class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-tag-bg text-tag-text transition-colors hover:text-emphasis"
 						aria-label="Share on X"
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="15" height="15" fill="currentColor" aria-hidden="true">
-							<path d="M389.2 48h70.6L305.6 224.2L487 464H345L233.7 318.6L106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z" />
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 512 512"
+							width="15"
+							height="15"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								d="M389.2 48h70.6L305.6 224.2L487 464H345L233.7 318.6L106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"
+							></path>
 						</svg>
 					</a>
 					<a
@@ -118,8 +165,17 @@ const jsonLd = {
 						class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-tag-bg text-tag-text transition-colors hover:text-emphasis"
 						aria-label="Share on LinkedIn"
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 448" width="15" height="15" fill="currentColor" aria-hidden="true">
-							<path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3M447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2c-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3c94 0 111.28 61.9 111.28 142.3V448z" />
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 512 448"
+							width="15"
+							height="15"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3M447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2c-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3c94 0 111.28 61.9 111.28 142.3V448z"
+							></path>
 						</svg>
 					</a>
 				</div>

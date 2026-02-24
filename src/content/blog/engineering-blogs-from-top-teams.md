@@ -1,8 +1,8 @@
 ---
-title: "Engineering Blogs from Top Teams"
-description: "Blogs that help you think at scale — how top teams build, ship, and solve real problems."
+title: 'Engineering Blogs from Top Teams'
+description: 'Blogs that help you think at scale — how top teams build, ship, and solve real problems.'
 publishDate: 2025-11-15
-tags: ["resources", "engineering", "react-native"]
+tags: ['resources', 'engineering', 'react-native']
 ---
 
 One of the best ways to level up is to read how companies at scale solve real frontend and mobile engineering problems. These are engineering blogs from teams actively using React, React Native, Expo, and Next.js in production.

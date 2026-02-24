@@ -6,57 +6,58 @@ import ProjectCard from '../components/ProjectCard.astro';
 import DesignGrid from '../components/DesignGrid.astro';
 
 const title = 'About — Jatin Thummar';
-const description = 'Learn more about Jatin Thummar — Frontend Engineer specializing in cross-platform apps with Expo, React Native, and Next.js.';
+const description =
+	'Learn more about Jatin Thummar — Frontend Engineer specializing in cross-platform apps with Expo, React Native, and Next.js.';
 const siteUrl = 'https://jatinthummar.github.io';
 
 const jsonLd = {
-	"@context": "https://schema.org",
-	"@type": "AboutPage",
-	"name": "About Jatin Thummar",
-	"url": `${siteUrl}/about`,
-	"description": description,
-	"mainEntity": {
-		"@type": "Person",
-		"@id": `${siteUrl}/#person`,
-		"name": "Jatin Thummar",
-		"givenName": "Jatin",
-		"familyName": "Thummar",
-		"jobTitle": "Frontend Engineer",
-		"url": siteUrl,
-		"mainEntityOfPage": siteUrl,
-		"description": description,
-		"image": `${siteUrl}/og-image.png`,
-		"homeLocation": {
-			"@type": "Country",
-			"name": "India"
+	'@context': 'https://schema.org',
+	'@type': 'AboutPage',
+	name: 'About Jatin Thummar',
+	url: `${siteUrl}/about`,
+	description: description,
+	mainEntity: {
+		'@type': 'Person',
+		'@id': `${siteUrl}/#person`,
+		name: 'Jatin Thummar',
+		givenName: 'Jatin',
+		familyName: 'Thummar',
+		jobTitle: 'Frontend Engineer',
+		url: siteUrl,
+		mainEntityOfPage: siteUrl,
+		description: description,
+		image: `${siteUrl}/og-image.png`,
+		homeLocation: {
+			'@type': 'Country',
+			name: 'India',
 		},
-		"worksFor": {
-			"@type": "Organization",
-			"name": "The Korean Fashion",
-			"url": "https://www.thekoreanfashion.com/"
+		worksFor: {
+			'@type': 'Organization',
+			name: 'The Korean Fashion',
+			url: 'https://www.thekoreanfashion.com/',
 		},
-		"knowsAbout": [
-			"Cross-Platform App Development",
-			"Frontend Architecture",
-			"React Native",
-			"Expo",
-			"TypeScript",
-			"Next.js",
-			"Shopify App Development",
-			"E-Commerce Mobile Apps",
-			"Mobile App Development",
-			"Illustration",
-			"Graphic Design",
-			"Visual Design"
+		knowsAbout: [
+			'Cross-Platform App Development',
+			'Frontend Architecture',
+			'React Native',
+			'Expo',
+			'TypeScript',
+			'Next.js',
+			'Shopify App Development',
+			'E-Commerce Mobile Apps',
+			'Mobile App Development',
+			'Illustration',
+			'Graphic Design',
+			'Visual Design',
 		],
-		"sameAs": [
-			"https://github.com/JatinThummar",
-			"https://x.com/jatinthummarx",
-			"https://www.linkedin.com/in/jatinthummar",
-			"https://www.behance.net/jatindesign",
-			"https://medium.com/@jatinthummar"
-		]
-	}
+		sameAs: [
+			'https://github.com/JatinThummar',
+			'https://x.com/jatinthummarx',
+			'https://www.linkedin.com/in/jatinthummar',
+			'https://www.behance.net/jatindesign',
+			'https://medium.com/@jatinthummar',
+		],
+	},
 };
 ---
 
@@ -67,10 +68,24 @@ const jsonLd = {
 	jsonLd={jsonLd}
 >
 	<main class="max-w-xl w-full mx-auto py-20">
-		<a href="/" class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-				<line x1="19" y1="12" x2="5" y2="12" />
-				<polyline points="12 19 5 12 12 5" />
+		<a
+			href="/"
+			class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				width="14"
+				height="14"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<line x1="19" y1="12" x2="5" y2="12"></line>
+				<polyline points="12 19 5 12 12 5"></polyline>
 			</svg>
 			Back to home
 		</a>
@@ -80,10 +95,20 @@ const jsonLd = {
 		<section aria-labelledby="intro-heading">
 			<h2 id="intro-heading" class="sr-only">Introduction</h2>
 			<p class="text-subtle text-lg leading-relaxed mb-4">
-				Hey! I'm <span class="text-emphasis font-medium">Jatin Thummar</span>, a Frontend Engineer. I specialize in building scalable, production-grade cross-platform applications for <span class="text-emphasis font-medium">Android</span>, <span class="text-emphasis font-medium">iOS</span>, and the <span class="text-emphasis font-medium">Web</span>.
+				Hey! I'm <span class="text-emphasis font-medium">Jatin Thummar</span>, a Frontend Engineer.
+				I specialize in building scalable, production-grade cross-platform applications for <span
+					class="text-emphasis font-medium">Android</span
+				>, <span class="text-emphasis font-medium">iOS</span>, and the <span
+					class="text-emphasis font-medium">Web</span
+				>.
 			</p>
 			<p class="text-subtle text-lg leading-relaxed">
-				I work primarily with <span class="text-emphasis font-medium">Expo</span>, <span class="text-emphasis font-medium">React Native</span>, <span class="text-emphasis font-medium">TypeScript</span>, and <span class="text-emphasis font-medium">Next.js</span> — focusing on well-architected frontends that are fast, maintainable, and a pleasure to work with.
+				I work primarily with <span class="text-emphasis font-medium">Expo</span>, <span
+					class="text-emphasis font-medium">React Native</span
+				>, <span class="text-emphasis font-medium">TypeScript</span>, and <span
+					class="text-emphasis font-medium">Next.js</span
+				> — focusing on well-architected frontends that are fast, maintainable, and a pleasure to work
+				with.
 			</p>
 		</section>
 
@@ -92,7 +117,9 @@ const jsonLd = {
 		<section aria-labelledby="currently-heading">
 			<h2 id="currently-heading" class="text-xl font-bold mb-4">Currently</h2>
 			<p class="text-subtle text-sm leading-relaxed mb-4">
-				Frontend Engineer & Mobile App Developer at The Korean Fashion — building and scaling the mobile app, shipping new features, improving performance, and refining the developer experience.
+				Frontend Engineer & Mobile App Developer at The Korean Fashion — building and scaling the
+				mobile app, shipping new features, improving performance, and refining the developer
+				experience.
 			</p>
 			<BookmarkCard
 				href="https://www.thekoreanfashion.com/"
@@ -153,10 +180,14 @@ const jsonLd = {
 		<section aria-labelledby="approach-heading">
 			<h2 id="approach-heading" class="text-xl font-bold mb-4">How I Work</h2>
 			<p class="text-subtle text-sm leading-relaxed mb-4">
-				I care about the details — clean code, thoughtful architecture, and smooth user experiences. I believe great apps come from understanding both the technical and the human side of development.
+				I care about the details — clean code, thoughtful architecture, and smooth user experiences.
+				I believe great apps come from understanding both the technical and the human side of
+				development.
 			</p>
 			<p class="text-subtle text-sm leading-relaxed">
-				I prefer keeping things simple and intentional. Whether it's choosing the right abstraction, optimizing a critical render path, or picking the right tool for the job — I lean towards solutions that are practical, not over-engineered.
+				I prefer keeping things simple and intentional. Whether it's choosing the right abstraction,
+				optimizing a critical render path, or picking the right tool for the job — I lean towards
+				solutions that are practical, not over-engineered.
 			</p>
 		</section>
 
@@ -165,15 +196,24 @@ const jsonLd = {
 		<section aria-labelledby="skills-heading">
 			<h2 id="skills-heading" class="text-xl font-bold mb-4">Tech I Work With</h2>
 			<div class="flex flex-wrap gap-2">
-				{[
-					'React Native', 'Expo', 'TypeScript', 'JavaScript',
-					'Next.js', 'React', 'Tailwind CSS', 'Astro',
-					'Node.js', 'Git', 'Vite', 'GitHub Actions'
-				].map(tech => (
-					<span class="px-3 py-1 text-sm rounded-full bg-tag-bg text-tag-text">
-						{tech}
-					</span>
-				))}
+				{
+					[
+						'React Native',
+						'Expo',
+						'TypeScript',
+						'JavaScript',
+						'Next.js',
+						'React',
+						'Tailwind CSS',
+						'Astro',
+						'Node.js',
+						'Git',
+						'Vite',
+						'GitHub Actions',
+					].map((tech) => (
+						<span class="px-3 py-1 text-sm rounded-full bg-tag-bg text-tag-text">{tech}</span>
+					))
+				}
 			</div>
 		</section>
 
@@ -182,7 +222,10 @@ const jsonLd = {
 		<section aria-labelledby="design-heading">
 			<h2 id="design-heading" class="text-xl font-bold mb-2">Creative Side</h2>
 			<p class="text-subtle text-sm leading-relaxed mb-5">
-				Before I got into coding, I spent a lot of time with graphic design and illustration — mostly self-taught through free online resources, picking up things like color theory, typography, and how to use Illustrator and Photoshop along the way. Here are a few pieces from back then.
+				Before I got into coding, I spent a lot of time with graphic design and illustration —
+				mostly self-taught through free online resources, picking up things like color theory,
+				typography, and how to use Illustrator and Photoshop along the way. Here are a few pieces
+				from back then.
 			</p>
 			<DesignGrid class="mb-5" />
 			<BookmarkCard
@@ -200,13 +243,35 @@ const jsonLd = {
 		<section aria-labelledby="connect-heading">
 			<h2 id="connect-heading" class="text-xl font-bold mb-4">Get in Touch</h2>
 			<p class="text-subtle text-sm leading-relaxed mb-4">
-				Want to collaborate, chat about frontend development, or just say hello? Reach out on any of these platforms.
+				Want to collaborate, chat about frontend development, or just say hello? Reach out on any of
+				these platforms.
 			</p>
 			<div class="flex flex-wrap gap-4">
-				<a href="https://github.com/JatinThummar" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-emphasis transition text-sm">GitHub<span class="sr-only"> (opens in new tab)</span></a>
-				<a href="https://www.linkedin.com/in/jatinthummar" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-emphasis transition text-sm">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
-				<a href="https://x.com/jatinthummarx" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-emphasis transition text-sm">X (Twitter)<span class="sr-only"> (opens in new tab)</span></a>
-				<a href="mailto:thummarjatin1208@gmail.com" class="text-muted hover:text-emphasis transition text-sm">Email</a>
+				<a
+					href="https://github.com/JatinThummar"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-muted hover:text-emphasis transition text-sm"
+					>GitHub<span class="sr-only"> (opens in new tab)</span></a
+				>
+				<a
+					href="https://www.linkedin.com/in/jatinthummar"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-muted hover:text-emphasis transition text-sm"
+					>LinkedIn<span class="sr-only"> (opens in new tab)</span></a
+				>
+				<a
+					href="https://x.com/jatinthummarx"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-muted hover:text-emphasis transition text-sm"
+					>X (Twitter)<span class="sr-only"> (opens in new tab)</span></a
+				>
+				<a
+					href="mailto:thummarjatin1208@gmail.com"
+					class="text-muted hover:text-emphasis transition text-sm">Email</a
+				>
 			</div>
 		</section>
 	</main>

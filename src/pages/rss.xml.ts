@@ -6,7 +6,8 @@ export async function GET(context: APIContext) {
 	const posts = await fetchPosts();
 	return rss({
 		title: "Jatin Thummar's Blog",
-		description: 'Thoughts on frontend development, React Native, Expo, and building great user experiences.',
+		description:
+			'Thoughts on frontend development, React Native, Expo, and building great user experiences.',
 		site: context.site!,
 		items: posts.map((post) => ({
 			title: post.title,

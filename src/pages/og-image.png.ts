@@ -44,7 +44,7 @@ const logos = await Promise.all(
 );
 
 const row1 = logos.slice(0, 4); // React, Expo, Next.js, Vite
-const row2 = logos.slice(4);    // JS, TS, Git
+const row2 = logos.slice(4); // JS, TS, Git
 
 // Bypass ultrahtml's auto-escaping by passing full HTML as a single static string
 function rawHtml(str: string) {
@@ -53,11 +53,11 @@ function rawHtml(str: string) {
 }
 
 export async function GET() {
-	const surface   = '#ffffff';
-	const emphasis  = '#09090b';
-	const muted     = '#71717a';
-	const accent    = '#2563eb';
-	const divider   = '#e4e4e7';
+	const surface = '#ffffff';
+	const emphasis = '#09090b';
+	const muted = '#71717a';
+	const accent = '#2563eb';
+	const divider = '#e4e4e7';
 	const sidebarBg = '#fafafa';
 
 	const logoItem = (logo: { name: string; src: string }) => `

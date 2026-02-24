@@ -1,8 +1,8 @@
 ---
-title: "Developers & Engineers to Follow"
+title: 'Developers & Engineers to Follow'
 description: "Programmers who've contributed to and built some of the best tech — follow them to level up."
 publishDate: 2025-12-08
-tags: ["resources", "frontend", "react"]
+tags: ['resources', 'frontend', 'react']
 ---
 
 These are the developers and bloggers I've learned from over the years. Whether you're into React Native, Next.js, or frontend engineering in general — there's something here for everyone.
@@ -66,7 +66,7 @@ These are the developers and bloggers I've learned from over the years. Whether 
 
 - **[The Pragmatic Engineer](https://blog.pragmaticengineer.com/)** — Gergely Orosz. Deep coverage of tech industry, engineering culture, and career growth.
 - **[Cassidy Williams](https://cassidoo.co/)** — Developer experience, career advice, and web development.
-- **[Michele Riva](https://www.micheleriva.it/)** — Author of *Real-World Next.js*. Full-stack engineering and open source.
+- **[Michele Riva](https://www.micheleriva.it/)** — Author of _Real-World Next.js_. Full-stack engineering and open source.
 
 ---
 

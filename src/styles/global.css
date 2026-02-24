@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
 /* ==========================================================
@@ -10,43 +10,43 @@
    ========================================================== */
 
 @theme inline {
-  /* -- Surface -- */
-  --color-surface: var(--surface);           /* page background */
-  --color-on-surface: var(--on-surface);     /* primary body text */
+	/* -- Surface -- */
+	--color-surface: var(--surface); /* page background */
+	--color-on-surface: var(--on-surface); /* primary body text */
 
-  /* -- Text hierarchy -- */
-  --color-muted: var(--muted);               /* greeting, secondary text */
-  --color-subtle: var(--subtle);             /* description paragraph */
-  --color-emphasis: var(--emphasis);          /* highlighted keywords */
+	/* -- Text hierarchy -- */
+	--color-muted: var(--muted); /* greeting, secondary text */
+	--color-subtle: var(--subtle); /* description paragraph */
+	--color-emphasis: var(--emphasis); /* highlighted keywords */
 
-  /* -- Tech tags -- */
-  --color-tag-bg: var(--tag-bg);
-  --color-tag-text: var(--tag-text);
+	/* -- Tech tags -- */
+	--color-tag-bg: var(--tag-bg);
+	--color-tag-text: var(--tag-text);
 
-  /* -- Primary button (Reach out) -- */
-  --color-btn-primary-bg: var(--btn-primary-bg);
-  --color-btn-primary-text: var(--btn-primary-text);
-  --color-btn-primary-hover-bg: var(--btn-primary-hover-bg);
-  --color-btn-primary-hover-text: var(--btn-primary-hover-text);
-  --color-btn-primary-active-bg: var(--btn-primary-active-bg);
+	/* -- Primary button (Reach out) -- */
+	--color-btn-primary-bg: var(--btn-primary-bg);
+	--color-btn-primary-text: var(--btn-primary-text);
+	--color-btn-primary-hover-bg: var(--btn-primary-hover-bg);
+	--color-btn-primary-hover-text: var(--btn-primary-hover-text);
+	--color-btn-primary-active-bg: var(--btn-primary-active-bg);
 
-  /* -- Icon buttons (GitHub, LinkedIn, X, toggle) -- */
-  --color-btn-icon-bg: var(--btn-icon-bg);
-  --color-btn-icon-text: var(--btn-icon-text);
-  --color-btn-icon-hover-bg: var(--btn-icon-hover-bg);
-  --color-btn-icon-hover-text: var(--btn-icon-hover-text);
+	/* -- Icon buttons (GitHub, LinkedIn, X, toggle) -- */
+	--color-btn-icon-bg: var(--btn-icon-bg);
+	--color-btn-icon-text: var(--btn-icon-text);
+	--color-btn-icon-hover-bg: var(--btn-icon-hover-bg);
+	--color-btn-icon-hover-text: var(--btn-icon-hover-text);
 
-  /* -- Dividers & cards -- */
-  --color-border: var(--border);                 /* separators, card borders */
-  --color-card-bg: var(--card-bg);               /* project card background */
+	/* -- Dividers & cards -- */
+	--color-border: var(--border); /* separators, card borders */
+	--color-card-bg: var(--card-bg); /* project card background */
 
-  /* -- Modal (email popup) -- */
-  --color-modal-bg: var(--modal-bg);             /* card background */
-  --color-modal-text: var(--modal-text);         /* card heading/body text */
+	/* -- Modal (email popup) -- */
+	--color-modal-bg: var(--modal-bg); /* card background */
+	--color-modal-text: var(--modal-text); /* card heading/body text */
 
-  /* -- Copy button (inverted primary) -- */
-  --color-btn-copy-bg: var(--btn-copy-bg);
-  --color-btn-copy-text: var(--btn-copy-text);
+	/* -- Copy button (inverted primary) -- */
+	--color-btn-copy-bg: var(--btn-copy-bg);
+	--color-btn-copy-text: var(--btn-copy-text);
 }
 
 /* ==========================================================
@@ -54,28 +54,28 @@
    ========================================================== */
 
 :root {
-  --surface: #161618;
-  --on-surface: #f4f4f5;
-  --muted: #a1a1aa;
-  --subtle: #d4d4d8;
-  --emphasis: #ffffff;
-  --tag-bg: rgb(39 39 42 / 0.6);
-  --tag-text: #a1a1aa;
-  --btn-primary-bg: #efefef;
-  --btn-primary-text: #18181b;
-  --btn-primary-hover-bg: #2563eb;
-  --btn-primary-hover-text: #ffffff;
-  --btn-primary-active-bg: #1d4ed8;
-  --btn-icon-bg: #212122;
-  --btn-icon-text: #a1a1aa;
-  --btn-icon-hover-bg: #3f3f46;
-  --btn-icon-hover-text: #ffffff;
-  --border: #27272a;
-  --card-bg: #1e1e20;
-  --modal-bg: #1e1e20;
-  --modal-text: #f4f4f5;
-  --btn-copy-bg: #18181b;
-  --btn-copy-text: #f4f4f5;
+	--surface: #161618;
+	--on-surface: #f4f4f5;
+	--muted: #a1a1aa;
+	--subtle: #d4d4d8;
+	--emphasis: #ffffff;
+	--tag-bg: rgb(39 39 42 / 0.6);
+	--tag-text: #a1a1aa;
+	--btn-primary-bg: #efefef;
+	--btn-primary-text: #18181b;
+	--btn-primary-hover-bg: #2563eb;
+	--btn-primary-hover-text: #ffffff;
+	--btn-primary-active-bg: #1d4ed8;
+	--btn-icon-bg: #212122;
+	--btn-icon-text: #a1a1aa;
+	--btn-icon-hover-bg: #3f3f46;
+	--btn-icon-hover-text: #ffffff;
+	--border: #27272a;
+	--card-bg: #1e1e20;
+	--modal-bg: #1e1e20;
+	--modal-text: #f4f4f5;
+	--btn-copy-bg: #18181b;
+	--btn-copy-text: #f4f4f5;
 }
 
 /* ==========================================================
@@ -83,28 +83,28 @@
    ========================================================== */
 
 .light {
-  --surface: #ffffff;
-  --on-surface: #1a1a1a;
-  --muted: #71717a;
-  --subtle: #3f3f46;
-  --emphasis: #09090b;
-  --tag-bg: #f4f4f5;
-  --tag-text: #52525b;
-  --btn-primary-bg: #333334;
-  --btn-primary-text: #ffffff;
-  --btn-primary-hover-bg: #2563eb;
-  --btn-primary-hover-text: #ffffff;
-  --btn-primary-active-bg: #1d4ed8;
-  --btn-icon-bg: #f1f1f1;
-  --btn-icon-text: #52525b;
-  --btn-icon-hover-bg: #e4e4e7;
-  --btn-icon-hover-text: #09090b;
-  --border: #e4e4e7;
-  --card-bg: #f9f9f9;
-  --modal-bg: #ffffff;
-  --modal-text: #18181b;
-  --btn-copy-bg: #18181b;
-  --btn-copy-text: #ffffff;
+	--surface: #ffffff;
+	--on-surface: #1a1a1a;
+	--muted: #71717a;
+	--subtle: #3f3f46;
+	--emphasis: #09090b;
+	--tag-bg: #f4f4f5;
+	--tag-text: #52525b;
+	--btn-primary-bg: #333334;
+	--btn-primary-text: #ffffff;
+	--btn-primary-hover-bg: #2563eb;
+	--btn-primary-hover-text: #ffffff;
+	--btn-primary-active-bg: #1d4ed8;
+	--btn-icon-bg: #f1f1f1;
+	--btn-icon-text: #52525b;
+	--btn-icon-hover-bg: #e4e4e7;
+	--btn-icon-hover-text: #09090b;
+	--border: #e4e4e7;
+	--card-bg: #f9f9f9;
+	--modal-bg: #ffffff;
+	--modal-text: #18181b;
+	--btn-copy-bg: #18181b;
+	--btn-copy-text: #ffffff;
 }
 
 /* ==========================================================
@@ -112,36 +112,56 @@
    ========================================================== */
 
 @layer base {
-  html {
-    color-scheme: dark;
-    @media (prefers-reduced-motion: no-preference) {
-      scroll-behavior: smooth;
-    }
-  }
-  html.light {
-    color-scheme: light;
-  }
-  /* Avatar swap: color default in dark, outline default in light */
-  .avatar-color { opacity: 1; }
-  .avatar-outline { opacity: 0; filter: invert(1); mix-blend-mode: lighten; }
-  .group:hover .avatar-color,
-  .group:focus-within .avatar-color { opacity: 0; }
-  .group:hover .avatar-outline,
-  .group:focus-within .avatar-outline { opacity: 1; }
+	html {
+		color-scheme: dark;
+		@media (prefers-reduced-motion: no-preference) {
+			scroll-behavior: smooth;
+		}
+	}
+	html.light {
+		color-scheme: light;
+	}
+	/* Avatar swap: color default in dark, outline default in light */
+	.avatar-color {
+		opacity: 1;
+	}
+	.avatar-outline {
+		opacity: 0;
+		filter: invert(1);
+		mix-blend-mode: lighten;
+	}
+	.group:hover .avatar-color,
+	.group:focus-within .avatar-color {
+		opacity: 0;
+	}
+	.group:hover .avatar-outline,
+	.group:focus-within .avatar-outline {
+		opacity: 1;
+	}
 
-  .light .avatar-color { opacity: 0; }
-  .light .avatar-outline { opacity: 1; filter: none; mix-blend-mode: normal; }
-  .light .group:hover .avatar-color,
-  .light .group:focus-within .avatar-color { opacity: 1; }
-  .light .group:hover .avatar-outline,
-  .light .group:focus-within .avatar-outline { opacity: 0; }
-  /* Dashed separator */
-  .separator {
-    height: 1px;
-    background-size: 12px 1px;
-    background-repeat: repeat-x;
-    background-image: linear-gradient(to right, var(--border) 6px, transparent 6px);
-  }
+	.light .avatar-color {
+		opacity: 0;
+	}
+	.light .avatar-outline {
+		opacity: 1;
+		filter: none;
+		mix-blend-mode: normal;
+	}
+	.light .group:hover .avatar-color,
+	.light .group:focus-within .avatar-color {
+		opacity: 1;
+	}
+	.light .group:hover .avatar-outline,
+	.light .group:focus-within .avatar-outline {
+		opacity: 0;
+	}
+	/* Dashed separator */
+	.separator {
+		height: 1px;
+		background-size: 12px 1px;
+		background-repeat: repeat-x;
+		background-image: linear-gradient(to right, var(--border) 6px, transparent 6px);
+	}
 }
 
 /* ==========================================================
@@ -150,82 +170,83 @@
    ========================================================== */
 
 .prose-custom {
-  --tw-prose-body: var(--subtle);
-  --tw-prose-headings: var(--emphasis);
-  --tw-prose-lead: var(--subtle);
-  --tw-prose-links: var(--emphasis);
-  --tw-prose-bold: var(--emphasis);
-  --tw-prose-counters: var(--muted);
-  --tw-prose-bullets: var(--muted);
-  --tw-prose-hr: var(--border);
-  --tw-prose-quotes: var(--muted);
-  --tw-prose-quote-borders: var(--border);
-  --tw-prose-captions: var(--muted);
-  --tw-prose-code: var(--emphasis);
-  --tw-prose-pre-code: var(--on-surface);
-  --tw-prose-pre-bg: var(--card-bg);
-  --tw-prose-th-borders: var(--border);
-  --tw-prose-td-borders: var(--border);
+	--tw-prose-body: var(--subtle);
+	--tw-prose-headings: var(--emphasis);
+	--tw-prose-lead: var(--subtle);
+	--tw-prose-links: var(--emphasis);
+	--tw-prose-bold: var(--emphasis);
+	--tw-prose-counters: var(--muted);
+	--tw-prose-bullets: var(--muted);
+	--tw-prose-hr: var(--border);
+	--tw-prose-quotes: var(--muted);
+	--tw-prose-quote-borders: var(--border);
+	--tw-prose-captions: var(--muted);
+	--tw-prose-code: var(--emphasis);
+	--tw-prose-pre-code: var(--on-surface);
+	--tw-prose-pre-bg: var(--card-bg);
+	--tw-prose-th-borders: var(--border);
+	--tw-prose-td-borders: var(--border);
 
-  line-height: 1.75;
+	line-height: 1.75;
 
-  & p {
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-  }
+	& p {
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+	}
 
-  & h2 {
-    margin-top: 2em;
-    margin-bottom: 0.75em;
-    font-size: 1.375rem;
-  }
+	& h2 {
+		margin-top: 2em;
+		margin-bottom: 0.75em;
+		font-size: 1.375rem;
+	}
 
-  & h3 {
-    margin-top: 1.75em;
-    margin-bottom: 0.5em;
-    font-size: 1.125rem;
-  }
+	& h3 {
+		margin-top: 1.75em;
+		margin-bottom: 0.5em;
+		font-size: 1.125rem;
+	}
 
-  & ul, & ol {
-    margin-top: 1.25em;
-    margin-bottom: 1.25em;
-    padding-left: 1.5em;
-  }
+	& ul,
+	& ol {
+		margin-top: 1.25em;
+		margin-bottom: 1.25em;
+		padding-left: 1.5em;
+	}
 
-  & li {
-    margin-top: 0.375em;
-    margin-bottom: 0.375em;
-  }
+	& li {
+		margin-top: 0.375em;
+		margin-bottom: 0.375em;
+	}
 
-  & blockquote {
-    border-left-width: 3px;
-    padding-left: 1.25em;
-    font-style: normal;
-  }
+	& blockquote {
+		border-left-width: 3px;
+		padding-left: 1.25em;
+		font-style: normal;
+	}
 
-  & pre {
-    padding: 1.25em;
-    border-radius: 0.5rem;
-    border: 1px solid var(--border);
-  }
+	& pre {
+		padding: 1.25em;
+		border-radius: 0.5rem;
+		border: 1px solid var(--border);
+	}
 
-  & :not(pre) > code {
-    padding: 0.2em 0.4em;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    background-color: var(--card-bg);
-  }
+	& :not(pre) > code {
+		padding: 0.2em 0.4em;
+		border-radius: 0.25rem;
+		font-size: 0.875em;
+		background-color: var(--card-bg);
+	}
 
-  & a {
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1px;
-  }
+	& a {
+		text-decoration: underline;
+		text-underline-offset: 2px;
+		text-decoration-thickness: 1px;
+	}
 
-  & hr {
-    margin-top: 2.5em;
-    margin-bottom: 2.5em;
-  }
+	& hr {
+		margin-top: 2.5em;
+		margin-bottom: 2.5em;
+	}
 }
 
 /* ==========================================================
@@ -236,46 +257,46 @@
    remove card chrome, and rearrange to a compact row layout.
    ========================================================== */
 
-html[data-blog-view="minimal"] .blog-card__description,
-html[data-blog-view="minimal"] .blog-card__read-time,
-html[data-blog-view="minimal"] .blog-card__date-separator {
-  display: none;
+html[data-blog-view='minimal'] .blog-card__description,
+html[data-blog-view='minimal'] .blog-card__read-time,
+html[data-blog-view='minimal'] .blog-card__date-separator {
+	display: none;
 }
 
-html[data-blog-view="minimal"] .blog-card {
-  border-color: transparent;
-  padding: 0.75rem 0;
-  border-radius: 0;
-  background: transparent;
+html[data-blog-view='minimal'] .blog-card {
+	border-color: transparent;
+	padding: 0.75rem 0;
+	border-radius: 0;
+	background: transparent;
 }
 
-html[data-blog-view="minimal"] .blog-card:hover {
-  border-color: transparent;
+html[data-blog-view='minimal'] .blog-card:hover {
+	border-color: transparent;
 }
 
-html[data-blog-view="minimal"] .blog-card__header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+html[data-blog-view='minimal'] .blog-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
 }
 
 @media (min-width: 640px) {
-  html[data-blog-view="minimal"] .blog-card__header {
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-  }
+	html[data-blog-view='minimal'] .blog-card__header {
+		flex-direction: row;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+	}
 }
 
-html[data-blog-view="minimal"] .blog-card__tags {
-  margin-top: 0.375rem;
+html[data-blog-view='minimal'] .blog-card__tags {
+	margin-top: 0.375rem;
 }
 
-html[data-blog-view="minimal"] .blog-list {
-  gap: 0;
+html[data-blog-view='minimal'] .blog-list {
+	gap: 0;
 }
 
-html[data-blog-view="minimal"] .blog-list > li + li {
-  border-top: 1px solid var(--border);
+html[data-blog-view='minimal'] .blog-list > li + li {
+	border-top: 1px solid var(--border);
 }

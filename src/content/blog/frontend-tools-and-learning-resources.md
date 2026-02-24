@@ -1,8 +1,8 @@
 ---
-title: "Frontend Tools & Learning Resources"
-description: "Tools, communities, and platforms that helped me grow as a frontend developer."
+title: 'Frontend Tools & Learning Resources'
+description: 'Tools, communities, and platforms that helped me grow as a frontend developer.'
 publishDate: 2026-01-14
-tags: ["resources", "community", "frontend"]
+tags: ['resources', 'community', 'frontend']
 ---
 
 Beyond individual blogs, these are the communities, curated collections, and learning platforms that I keep bookmarked. Whether you're looking for tutorials, videos, templates, or just a place to ask questions — this list has you covered.

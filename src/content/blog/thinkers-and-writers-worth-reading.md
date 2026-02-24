@@ -1,8 +1,8 @@
 ---
-title: "Thinkers & Writers Worth Reading"
-description: "Founders, thinkers, and writers who changed how I see tech, startups, and life."
+title: 'Thinkers & Writers Worth Reading'
+description: 'Founders, thinkers, and writers who changed how I see tech, startups, and life.'
 publishDate: 2026-02-10
-tags: ["resources", "startups", "reading"]
+tags: ['resources', 'startups', 'reading']
 ---
 
 Not everything worth reading is about code. These are the founders, investors, and thinkers whose writing has shaped how I think about building products, startups, and life in general.
@@ -28,7 +28,7 @@ Not everything worth reading is about code. These are the founders, investors, a
 
 - **[David Perell](https://perell.com/)** — The "Writing Guy." His essays on writing online, personal monopolies, and the knowledge economy are worth revisiting often.
 - **[Julian Shapiro](https://www.julian.com/)** — Handbooks on writing, muscle building, and startup growth. Concise, high-signal content that respects your time.
-- **[Eric Jorgenson](https://www.ejorgenson.com/blog)** — Author of *The Almanack of Naval Ravikant*. Writes about wisdom, business, and applying mental models.
+- **[Eric Jorgenson](https://www.ejorgenson.com/blog)** — Author of _The Almanack of Naval Ravikant_. Writes about wisdom, business, and applying mental models.
 - **[Farnam Street (Shane Parrish)](https://fs.blog/blog/)** — Mental models, decision-making, and clear thinking. One of the best blogs for mastering ideas that compound over time.
 - **[Visakanv](https://www.visakanv.com/blog/start-here/)** — Prolific writer on thinking, creativity, and self-awareness. Raw and reflective.
 

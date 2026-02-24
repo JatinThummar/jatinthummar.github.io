@@ -36,10 +36,24 @@ const description = `Blog posts tagged with "${tag}".`;
 	ogType="blog"
 >
 	<main class="max-w-xl w-full mx-auto py-20">
-		<a href="/blog" class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-				<line x1="19" y1="12" x2="5" y2="12" />
-				<polyline points="12 19 5 12 12 5" />
+		<a
+			href="/blog"
+			class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				width="14"
+				height="14"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<line x1="19" y1="12" x2="5" y2="12"></line>
+				<polyline points="12 19 5 12 12 5"></polyline>
 			</svg>
 			Back to blog
 		</a>
@@ -48,7 +62,10 @@ const description = `Blog posts tagged with "${tag}".`;
 			<h1 class="text-3xl font-bold tracking-tight">#{tag}</h1>
 			<ViewToggle />
 		</div>
-		<p class="text-subtle text-lg mb-10">{posts.length} {posts.length === 1 ? 'post' : 'posts'} tagged with "{tag}"</p>
+		<p class="text-subtle text-lg mb-10">
+			{posts.length}
+			{posts.length === 1 ? 'post' : 'posts'} tagged with "{tag}"
+		</p>
 
 		<BlogPostList posts={posts} label={`Posts tagged ${tag}`} />
 	</main>

@@ -1,8 +1,8 @@
 ---
-title: "UI/UX Design Resources for Developers"
-description: "A curated collection of tools, courses, inspiration sites, books, and communities to help you learn UI/UX design."
+title: 'UI/UX Design Resources for Developers'
+description: 'A curated collection of tools, courses, inspiration sites, books, and communities to help you learn UI/UX design.'
 publishDate: 2026-02-23
-tags: ["resources", "design", "ui-ux"]
+tags: ['resources', 'design', 'ui-ux']
 ---
 
 You don't need a design degree to build beautiful, usable interfaces. These are the resources I've found most useful for learning UI/UX — from theory and inspiration to hands-on tools and practice challenges.
@@ -191,7 +191,7 @@ You don't need a design degree to build beautiful, usable interfaces. These are 
 - **[Edward Che](https://medium.com/@edwche)** — UX design and career insights.
 - **[Fabricio Teixeira](https://medium.com/@fabriciot)** — Co-founder of UX Collective. Writes about design leadership and industry trends.
 - **[Joey Banks](https://medium.com/@joeyabanks)** — Design systems and UI engineering.
-- **[Nir Eyal](https://medium.com/@nireyal)** — Author of *Hooked*. Writes about behavioral design and habit-forming products.
+- **[Nir Eyal](https://medium.com/@nireyal)** — Author of _Hooked_. Writes about behavioral design and habit-forming products.
 - **[Nir Eyal — Best Articles](https://www.nirandfar.com/best-articles/#focus)** — Curated collection of Nir's best writing on behavioral design.
 - **[Vikalp Kaushik](https://medium.com/@vikalpkaushik99)** — UI/UX design tutorials and case studies.
 - **[A List Apart](https://alistapart.com/articles/)** — Pioneering web design publication. Articles on design, development, and web standards since 1998.

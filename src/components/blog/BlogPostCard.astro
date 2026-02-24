@@ -28,11 +28,13 @@ const { post } = Astro.props;
 		</p>
 	</div>
 	<p class="blog-card__description text-subtle text-sm leading-relaxed mt-2">{post.description}</p>
-	{post.tags.length > 0 && (
-		<div class="blog-card__tags flex flex-wrap gap-x-2 gap-y-1 mt-3">
-			{post.tags.map((tag) => (
-				<span class="text-xs text-muted">#{tag}</span>
-			))}
-		</div>
-	)}
+	{
+		post.tags.length > 0 && (
+			<div class="blog-card__tags flex flex-wrap gap-x-2 gap-y-1 mt-3">
+				{post.tags.map((tag) => (
+					<span class="text-xs text-muted">#{tag}</span>
+				))}
+			</div>
+		)
+	}
 </a>
