@@ -16,6 +16,14 @@ const fontResRegular = await fetch(
 );
 const interRegular = await fontResRegular.arrayBuffer();
 
+// Fetch JetBrains Mono Bold via CSS API (forces a TTF-compatible response)
+const monoFontCss = await fetch(
+	'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700',
+	{ headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/534.54.16' } }
+).then((r) => r.text());
+const monoFontUrl = monoFontCss.match(/src:\s*url\(([^)]+)\)/)?.[1] ?? '';
+const jetBrainsMono = await fetch(monoFontUrl).then((r) => r.arrayBuffer());
+
 const avatarBuffer = await readFile(resolve('src/assets/avatar-color.png'));
 const avatarBase64 = `data:image/png;base64,${avatarBuffer.toString('base64')}`;
 
@@ -65,7 +73,7 @@ export async function GET({ props }: { props: Props }) {
 	const titleSize = title.length > 55 ? 32 : title.length > 35 ? 42 : 54;
 
 	const markup = rawHtml(
-		`<div style="display:flex;width:100%;height:100%;background-color:${surface};position:relative;overflow:hidden;"><div style="position:absolute;right:0;top:0;width:440px;height:100%;display:flex;align-items:flex-end;justify-content:flex-end;overflow:hidden;padding-right:40px;"><div style="display:flex;flex-shrink:0;color:${accent};font-size:680px;font-weight:700;line-height:1;letter-spacing:-0.05em;opacity:0.12;margin-bottom:-60px;">${letter}</div></div><div style="display:flex;flex-shrink:0;width:16px;height:100%;background-color:${accent};"></div><div style="display:flex;flex:1;flex-direction:column;padding:52px 60px;"><div style="display:flex;flex:1;flex-direction:column;gap:18px;max-width:700px;padding-top:20px;"><div style="display:flex;color:${emphasis};font-size:${titleSize}px;font-weight:700;line-height:1.2;letter-spacing:-0.03em;">${title}</div><div style="display:flex;color:${body};font-size:28px;font-weight:400;line-height:1.5;">${description}</div></div><div style="display:flex;height:1px;background:linear-gradient(to right, #e4e4e7, transparent 70%);"></div><div style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;"><div style="display:flex;align-items:center;gap:16px;"><img src="${avatarBase64}" style="width:80px;height:80px;border-radius:14px;mix-blend-mode:multiply;" /><div style="display:flex;flex-direction:column;gap:4px;"><div style="display:flex;color:${emphasis};font-size:24px;font-weight:700;letter-spacing:-0.01em;">Jatin Thummar</div><div style="display:flex;color:${muted};font-size:17px;font-weight:400;">@jatinthummarx</div></div></div></div></div></div>`
+		`<div style="display:flex;width:100%;height:100%;background-color:${surface};position:relative;overflow:hidden;"><div style="position:absolute;right:0;top:0;width:440px;height:100%;display:flex;align-items:flex-end;justify-content:flex-end;overflow:hidden;padding-right:40px;"><div style="display:flex;flex-shrink:0;color:${accent};font-family:JetBrainsMono;font-size:680px;font-weight:700;line-height:1;letter-spacing:-0.05em;opacity:0.15;margin-bottom:-60px;">${letter}</div></div><div style="display:flex;flex-shrink:0;width:16px;height:100%;background-color:${accent};"></div><div style="display:flex;flex:1;flex-direction:column;padding:52px 60px;"><div style="display:flex;flex:1;flex-direction:column;gap:18px;max-width:700px;padding-top:20px;"><div style="display:flex;color:${emphasis};font-size:${titleSize}px;font-weight:700;line-height:1.2;letter-spacing:-0.03em;">${title}</div><div style="display:flex;color:${body};font-size:28px;font-weight:400;line-height:1.5;">${description}</div></div><div style="display:flex;height:1px;background:linear-gradient(to right, #e4e4e7, transparent 70%);"></div><div style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;"><div style="display:flex;align-items:center;gap:16px;"><img src="${avatarBase64}" style="width:80px;height:80px;border-radius:14px;mix-blend-mode:multiply;" /><div style="display:flex;flex-direction:column;gap:4px;"><div style="display:flex;color:${emphasis};font-size:24px;font-weight:700;letter-spacing:-0.01em;">Jatin Thummar</div><div style="display:flex;color:${muted};font-size:17px;font-weight:400;">@jatinthummarx</div></div></div></div></div></div>`
 	);
 
 	const svg = await satori(markup, {
@@ -74,6 +82,7 @@ export async function GET({ props }: { props: Props }) {
 		fonts: [
 			{ name: 'Inter', data: interBold, weight: 700, style: 'normal' },
 			{ name: 'Inter', data: interRegular, weight: 400, style: 'normal' },
+			{ name: 'JetBrainsMono', data: jetBrainsMono, weight: 700, style: 'normal' },
 		],
 	});
 
