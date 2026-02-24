@@ -12,6 +12,7 @@ export interface BlogPost {
 	image?: string;
 	Content: Awaited<ReturnType<typeof render>>['Content'];
 	readingTime: number;
+	order: number;
 }
 
 function estimateReadingTime(text: string): number {
@@ -37,13 +38,18 @@ export async function fetchPosts(): Promise<BlogPost[]> {
 				image: post.data.image,
 				Content,
 				readingTime: estimateReadingTime(post.body ?? ''),
+			order: post.data.order,
 			} satisfies BlogPost;
 		})
 	);
 
 	return normalized
 		.filter((post) => !post.draft)
-		.sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf());
+		.sort((a, b) => {
+			const dateDiff = b.publishDate.valueOf() - a.publishDate.valueOf();
+			if (dateDiff !== 0) return dateDiff;
+			return b.order - a.order;
+		});
 }
 
 export function formatDate(date: Date): string {
