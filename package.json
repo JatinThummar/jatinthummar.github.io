@@ -1,26 +1,27 @@
 {
-  "name": "personal-page",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
-    "@resvg/resvg-js": "^2.6.2",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.2.0",
-    "astro": "^5.17.1",
-    "satori": "^0.19.2",
-    "satori-html": "^0.3.2",
-    "tailwindcss": "^4.2.0"
-  },
-  "devDependencies": {
-    "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1"
-  }
+	"name": "personal-page",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/rss": "^4.0.15",
+		"@astrojs/sitemap": "^3.7.0",
+		"@resvg/resvg-js": "^2.6.2",
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.2.0",
+		"astro": "^5.17.1",
+		"satori": "^0.19.2",
+		"satori-html": "^0.3.2",
+		"tailwindcss": "^4.2.0"
+	},
+	"devDependencies": {
+		"prettier": "^3.8.1",
+		"prettier-plugin-astro": "^0.14.1",
+		"rehype-external-links": "^3.0.0"
+	}
 }

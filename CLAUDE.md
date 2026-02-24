@@ -44,18 +44,18 @@ public/          → Static assets served as-is (favicon, og-image, robots.txt)
 
 ### Color Tokens (semantic, theme-aware via CSS custom properties)
 
-| Token             | Usage                                  | Dark               | Light             |
-|-------------------|----------------------------------------|---------------------|-------------------|
-| `surface`         | Page background                        | #161618             | #ffffff           |
-| `on-surface`      | Primary body text                      | #f4f4f5             | #1a1a1a           |
-| `muted`           | Secondary/greeting text, metadata      | #a1a1aa             | #71717a           |
-| `subtle`          | Description paragraphs                 | #d4d4d8             | #3f3f46           |
-| `emphasis`        | Highlighted keywords, headings, bold   | #ffffff             | #09090b           |
-| `card-bg`         | Card backgrounds                       | #1e1e20             | #f9f9f9           |
-| `border`          | Separators, card borders               | #27272a             | #e4e4e7           |
-| `tag-bg/tag-text` | Pill tags                              | rgba(39,39,42,0.6)  | #f4f4f5/#52525b   |
-| `btn-icon-*`      | Icon buttons (social, theme toggle)    | —                   | —                 |
-| `btn-primary-*`   | Primary CTA button                     | —                   | —                 |
+| Token             | Usage                                | Dark               | Light           |
+| ----------------- | ------------------------------------ | ------------------ | --------------- |
+| `surface`         | Page background                      | #161618            | #ffffff         |
+| `on-surface`      | Primary body text                    | #f4f4f5            | #1a1a1a         |
+| `muted`           | Secondary/greeting text, metadata    | #a1a1aa            | #71717a         |
+| `subtle`          | Description paragraphs               | #d4d4d8            | #3f3f46         |
+| `emphasis`        | Highlighted keywords, headings, bold | #ffffff            | #09090b         |
+| `card-bg`         | Card backgrounds                     | #1e1e20            | #f9f9f9         |
+| `border`          | Separators, card borders             | #27272a            | #e4e4e7         |
+| `tag-bg/tag-text` | Pill tags                            | rgba(39,39,42,0.6) | #f4f4f5/#52525b |
+| `btn-icon-*`      | Icon buttons (social, theme toggle)  | —                  | —               |
+| `btn-primary-*`   | Primary CTA button                   | —                  | —               |
 
 All tokens defined in `src/styles/global.css` via `@theme inline` (Tailwind v4) and swapped between `:root` (dark) and `.light`.
 
@@ -166,6 +166,16 @@ src/
 - **Always run `npm run build` locally before pushing** — catch satori rendering errors, missing assets, or broken imports before CI fails.
 - **OG image assets live in `src/assets/`** — avatar (`avatar-color.png`), QR code (`qr-code.png`), and tech logos (`logos/*.svg`) are all local. If adding new logos or images to OG generators, download them locally first.
 
+## Blog Writing Style
+
+When writing or editing blog posts in `src/content/blog/`:
+
+- **No em dashes unless clearly necessary.** Prefer commas, colons, or rewritten sentences. Em dashes used as casual separators (`— anything`, `— a map of`, `— but`) are almost always better as a comma or rephrased.
+- **Natural prose over formatted lists where possible.** Avoid the `**Name** — description` pattern in tool/resource lists; use a colon instead (`**Name** — description` → `**Name**: description`) or write a short sentence.
+- **Write as a human, not a documentation generator.** Vary sentence length. Use contractions. Don't start every bullet with a noun phrase.
+- **Keep sentences direct.** If a sentence has more than two clauses, split it.
+- **All external links open in a new tab.** Handled automatically by `rehype-external-links` in `astro.config.mjs` for Markdown posts. For `.astro` component links, add `target="_blank" rel="noopener noreferrer"` explicitly.
+
 ## Git Conventions
 
 - Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, etc.
@@ -181,30 +191,30 @@ When Jatin asks to build a new section, page, or component, **check `astrowind/`
 
 ### Quick Lookup Map
 
-| Looking for…                | Check here in `astrowind/src/`                              |
-|-----------------------------|-------------------------------------------------------------|
-| **Page layouts**            | `layouts/` — Layout, PageLayout, LandingLayout, MarkdownLayout |
-| **Hero sections**           | `components/widgets/Hero.astro`, `Hero2.astro`, `HeroText.astro` |
-| **Features / grid sections**| `components/widgets/Features.astro`, `Features2.astro`, `Features3.astro` |
-| **Steps / timeline**        | `components/widgets/Steps.astro`, `Steps2.astro`            |
-| **Testimonials**            | `components/widgets/Testimonials.astro`                     |
-| **Pricing tables**          | `components/widgets/Pricing.astro`                          |
-| **FAQs**                    | `components/widgets/FAQs.astro`                             |
-| **Stats**                   | `components/widgets/Stats.astro`                            |
-| **Call to Action**          | `components/widgets/CallToAction.astro`                     |
-| **Contact form**            | `components/widgets/Contact.astro`                          |
-| **Header / Footer**         | `components/widgets/Header.astro`, `Footer.astro`           |
-| **Brands / logos strip**    | `components/widgets/Brands.astro`                           |
-| **Blog listing / posts**    | `components/widgets/BlogLatestPosts.astro`, `BlogHighlightedPosts.astro` |
-| **Blog content & MDX**      | `content/post/` (markdown files with frontmatter examples)  |
-| **UI primitives**           | `components/ui/` — Button, Form, Headline, Timeline, ItemGrid, Background, WidgetWrapper |
-| **SEO / metadata**          | `components/common/Metadata.astro`, `CommonMeta.astro`, `SiteVerification.astro` |
-| **Theme toggle**            | `components/common/ToggleTheme.astro`, `ApplyColorMode.astro` |
-| **Analytics**               | `components/common/Analytics.astro`, `SplitbeeAnalytics.astro` |
-| **Image optimization**      | `utils/images-optimization.ts`, `utils/images.ts`           |
-| **Config (site, SEO, blog)**| `config.yaml`                                               |
-| **Navigation data**         | `navigation.ts`                                             |
-| **Multi-page examples**     | `pages/` — about, contact, pricing, services, landing/, homes/, blog |
+| Looking for…                 | Check here in `astrowind/src/`                                                           |
+| ---------------------------- | ---------------------------------------------------------------------------------------- |
+| **Page layouts**             | `layouts/` — Layout, PageLayout, LandingLayout, MarkdownLayout                           |
+| **Hero sections**            | `components/widgets/Hero.astro`, `Hero2.astro`, `HeroText.astro`                         |
+| **Features / grid sections** | `components/widgets/Features.astro`, `Features2.astro`, `Features3.astro`                |
+| **Steps / timeline**         | `components/widgets/Steps.astro`, `Steps2.astro`                                         |
+| **Testimonials**             | `components/widgets/Testimonials.astro`                                                  |
+| **Pricing tables**           | `components/widgets/Pricing.astro`                                                       |
+| **FAQs**                     | `components/widgets/FAQs.astro`                                                          |
+| **Stats**                    | `components/widgets/Stats.astro`                                                         |
+| **Call to Action**           | `components/widgets/CallToAction.astro`                                                  |
+| **Contact form**             | `components/widgets/Contact.astro`                                                       |
+| **Header / Footer**          | `components/widgets/Header.astro`, `Footer.astro`                                        |
+| **Brands / logos strip**     | `components/widgets/Brands.astro`                                                        |
+| **Blog listing / posts**     | `components/widgets/BlogLatestPosts.astro`, `BlogHighlightedPosts.astro`                 |
+| **Blog content & MDX**       | `content/post/` (markdown files with frontmatter examples)                               |
+| **UI primitives**            | `components/ui/` — Button, Form, Headline, Timeline, ItemGrid, Background, WidgetWrapper |
+| **SEO / metadata**           | `components/common/Metadata.astro`, `CommonMeta.astro`, `SiteVerification.astro`         |
+| **Theme toggle**             | `components/common/ToggleTheme.astro`, `ApplyColorMode.astro`                            |
+| **Analytics**                | `components/common/Analytics.astro`, `SplitbeeAnalytics.astro`                           |
+| **Image optimization**       | `utils/images-optimization.ts`, `utils/images.ts`                                        |
+| **Config (site, SEO, blog)** | `config.yaml`                                                                            |
+| **Navigation data**          | `navigation.ts`                                                                          |
+| **Multi-page examples**      | `pages/` — about, contact, pricing, services, landing/, homes/, blog                     |
 
 ### AstroWind Stack (differs from ours)
 
@@ -264,6 +274,7 @@ When we add scroll animations, follow this approach:
 8. **Standard animation:** fade-in + slide-up (translateY 2rem → 0) over 1s is the baseline
 
 Example pattern for a scroll-animated section:
+
 ```
 <!-- Container: start invisible, animate on intersection -->
 <div class="motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
