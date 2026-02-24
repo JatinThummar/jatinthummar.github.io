@@ -1,244 +1,92 @@
-import type { GetStaticPaths } from 'astro';
-import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
-import { fetchPosts, formatDate } from '../../utils/blog';
+import { Resvg } from "@resvg/resvg-js";
+import type { GetStaticPaths } from "astro";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import satori from "satori";
+import { html } from "satori-html";
+import { fetchPosts } from "../../utils/blog";
 
 const fontRes = await fetch(
-	'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf'
+  "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
 );
 const interBold = await fontRes.arrayBuffer();
 
 const fontResRegular = await fetch(
-	'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf'
+  "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
 );
 const interRegular = await fontResRegular.arrayBuffer();
 
+const avatarBuffer = await readFile(resolve("src/assets/avatar-color.png"));
+const avatarBase64 = `data:image/png;base64,${avatarBuffer.toString("base64")}`;
+
+// Bypass ultrahtml's auto-escaping by passing the full HTML as a single static string
+function rawHtml(str: string) {
+  const tmpl = Object.assign([str], { raw: [str] }) as TemplateStringsArray;
+  return html(tmpl);
+}
+
+function getAccentColor(tags: string[]): string {
+  if (tags.some(t => ["design", "ui-ux"].includes(t))) return "#e91e8c";
+  if (tags.some(t => ["ai"].includes(t))) return "#00c27a";
+  if (tags.some(t => ["engineering"].includes(t))) return "#7c3aed";
+  if (tags.some(t => ["react-native", "react", "frontend"].includes(t)))
+    return "#00b2d4";
+  if (tags.some(t => ["reading", "startups"].includes(t))) return "#f59000";
+  return "#1d4ed8";
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts = await fetchPosts();
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: {
-			title: post.title,
-			publishDate: post.publishDate,
-		},
-	}));
+  const posts = await fetchPosts();
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: {
+      title: post.title,
+      description: post.description,
+      tags: post.tags,
+    },
+  }));
 };
 
 interface Props {
-	title: string;
-	publishDate: Date;
+  title: string;
+  description: string;
+  tags: string[];
 }
 
 export async function GET({ props }: { props: Props }) {
-	const { title, publishDate } = props;
+  const { title, description, tags } = props;
+  const accent = getAccentColor(tags);
 
-	const dateStr = formatDate(publishDate);
+  const surface = "#fafafa";
+  const emphasis = "#09090b";
+  const body = "#3f3f46";
+  const muted = "#71717a";
 
-	// Light theme tokens
-	const surface = '#fafafa';
-	const onSurface = '#1a1a1a';
-	const muted = '#71717a';
-	const border = '#e4e4e7';
-	const accent = '#2563eb';
+  const letter = title.charAt(0).toLowerCase();
+  const titleSize = title.length > 55 ? 32 : title.length > 35 ? 42 : 54;
 
-	// Large typographic first letter — bold brand element
-	const firstLetter = title.charAt(0).toLowerCase();
+  const markup = rawHtml(
+    `<div style="display:flex;width:100%;height:100%;background-color:${surface};position:relative;overflow:hidden;"><div style="position:absolute;right:0;top:0;width:440px;height:100%;display:flex;align-items:flex-end;justify-content:flex-end;overflow:hidden;padding-right:40px;"><div style="display:flex;flex-shrink:0;color:${accent};font-size:680px;font-weight:700;line-height:1;letter-spacing:-0.05em;opacity:0.12;margin-bottom:-60px;">${letter}</div></div><div style="display:flex;flex-shrink:0;width:16px;height:100%;background-color:${accent};"></div><div style="display:flex;flex:1;flex-direction:column;padding:52px 60px;"><div style="display:flex;flex:1;flex-direction:column;gap:18px;max-width:700px;padding-top:20px;"><div style="display:flex;color:${emphasis};font-size:${titleSize}px;font-weight:700;line-height:1.2;letter-spacing:-0.03em;">${title}</div><div style="display:flex;color:${body};font-size:28px;font-weight:400;line-height:1.5;">${description}</div></div><div style="display:flex;height:1px;background:linear-gradient(to right, #e4e4e7, transparent 70%);"></div><div style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;"><div style="display:flex;align-items:center;gap:16px;"><img src="${avatarBase64}" style="width:80px;height:80px;border-radius:14px;mix-blend-mode:multiply;" /><div style="display:flex;flex-direction:column;gap:4px;"><div style="display:flex;color:${emphasis};font-size:24px;font-weight:700;letter-spacing:-0.01em;">Jatin Thummar</div><div style="display:flex;color:${muted};font-size:17px;font-weight:400;">@jatinthummarx</div></div></div></div></div></div>`,
+  );
 
-	const svg = await satori(
-		{
-			type: 'div',
-			props: {
-				style: {
-					width: '100%',
-					height: '100%',
-					display: 'flex',
-					backgroundColor: surface,
-					position: 'relative',
-				},
-				children: [
-					// Large letter (right side, positioned on root)
-					{
-						type: 'div',
-						props: {
-							style: {
-								position: 'absolute',
-								right: '60px',
-								top: 0,
-								bottom: 0,
-								display: 'flex',
-								alignItems: 'center',
-								justifyContent: 'center',
-								color: onSurface,
-								fontSize: '480px',
-								fontWeight: 700,
-								lineHeight: 1,
-								letterSpacing: '-0.05em',
-								opacity: 0.08,
-							},
-							children: firstLetter,
-						},
-					},
+  const svg = await satori(markup, {
+    width: 1200,
+    height: 630,
+    fonts: [
+      { name: "Inter", data: interBold, weight: 700, style: "normal" },
+      { name: "Inter", data: interRegular, weight: 400, style: "normal" },
+    ],
+  });
 
-					// Left accent strip
-					{
-						type: 'div',
-						props: {
-							style: {
-								display: 'flex',
-								width: '20px',
-								height: '100%',
-								backgroundColor: accent,
-							},
-						},
-					},
+  const resvg = new Resvg(svg, {
+    fitTo: { mode: "width", value: 1800 },
+  });
+  const pngData = resvg.render().asPng();
 
-					// Main content
-					{
-						type: 'div',
-						props: {
-							style: {
-								display: 'flex',
-								flexDirection: 'column',
-								flex: 1,
-								padding: '48px 56px',
-								position: 'relative',
-							},
-							children: [
-								// Top: BLOG label + date
-								{
-									type: 'div',
-									props: {
-										style: {
-											display: 'flex',
-											alignItems: 'center',
-											gap: '12px',
-											position: 'relative',
-										},
-										children: [
-											{
-												type: 'div',
-												props: {
-													style: {
-														color: accent,
-														fontSize: '20px',
-														fontWeight: 700,
-														letterSpacing: '0.08em',
-														display: 'flex',
-													},
-													children: 'BLOG',
-												},
-											},
-											{
-												type: 'div',
-												props: {
-													style: {
-														color: muted,
-														fontSize: '22px',
-														fontWeight: 400,
-														display: 'flex',
-													},
-													children: `—  ${dateStr}`,
-												},
-											},
-										],
-									},
-								},
-
-								// Title — hero
-								{
-									type: 'div',
-									props: {
-										style: {
-											display: 'flex',
-											flex: 1,
-											alignItems: 'center',
-											position: 'relative',
-											maxWidth: '660px',
-										},
-										children: [
-											{
-												type: 'div',
-												props: {
-													style: {
-														color: onSurface,
-														fontSize: title.length > 50 ? 44 : title.length > 30 ? 54 : 64,
-														fontWeight: 700,
-														lineHeight: 1.15,
-														letterSpacing: '-0.03em',
-													},
-													children: title,
-												},
-											},
-										],
-									},
-								},
-
-								// Bottom: name + URL
-								{
-									type: 'div',
-									props: {
-										style: {
-											display: 'flex',
-											alignItems: 'center',
-											justifyContent: 'space-between',
-											paddingTop: '18px',
-											borderTop: `1px solid ${border}`,
-											position: 'relative',
-										},
-										children: [
-											{
-												type: 'div',
-												props: {
-													style: {
-														color: onSurface,
-														fontSize: '24px',
-														fontWeight: 700,
-														display: 'flex',
-														letterSpacing: '-0.01em',
-													},
-													children: 'Jatin Thummar',
-												},
-											},
-											{
-												type: 'div',
-												props: {
-													style: {
-														color: muted,
-														fontSize: '22px',
-														fontWeight: 400,
-														display: 'flex',
-													},
-													children: 'jatinthummar.github.io',
-												},
-											},
-										],
-									},
-								},
-							],
-						},
-					},
-				],
-			},
-		},
-		{
-			width: 1200,
-			height: 630,
-			fonts: [
-				{ name: 'Inter', data: interBold, weight: 700, style: 'normal' },
-				{ name: 'Inter', data: interRegular, weight: 400, style: 'normal' },
-			],
-		}
-	);
-
-	const resvg = new Resvg(svg, {
-		fitTo: { mode: 'width', value: 1200 },
-	});
-	const pngData = resvg.render().asPng();
-
-	return new Response(new Uint8Array(pngData), {
-		headers: {
-			'Content-Type': 'image/png',
-			'Cache-Control': 'public, max-age=31536000, immutable',
-		},
-	});
+  return new Response(new Uint8Array(pngData), {
+    headers: {
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
+  });
 }

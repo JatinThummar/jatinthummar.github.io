@@ -1,4 +1,5 @@
 import satori from 'satori';
+import { html } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -43,303 +44,91 @@ const logos = await Promise.all(
 );
 
 const row1 = logos.slice(0, 4); // React, Expo, Next.js, Vite
-const row2 = logos.slice(4); // JS, TS, Git
+const row2 = logos.slice(4);    // JS, TS, Git
+
+// Bypass ultrahtml's auto-escaping by passing full HTML as a single static string
+function rawHtml(str: string) {
+	const tmpl = Object.assign([str], { raw: [str] }) as TemplateStringsArray;
+	return html(tmpl);
+}
 
 export async function GET() {
-	const cardBg = '#ffffff';
-	const onSurface = '#1a1a1a';
-	const muted = '#71717a';
-	const accent = '#2563eb';
-	const divider = '#e4e4e7';
+	const surface   = '#ffffff';
+	const emphasis  = '#09090b';
+	const muted     = '#71717a';
+	const accent    = '#2563eb';
+	const divider   = '#e4e4e7';
+	const sidebarBg = '#fafafa';
 
-	const svg = await satori(
-		{
-			type: 'div',
-			props: {
-				style: {
-					width: '100%',
-					height: '100%',
-					display: 'flex',
-					backgroundColor: cardBg,
-				},
-				children: [
-					// Left accent strip
-					{
-						type: 'div',
-						props: {
-							style: {
-								display: 'flex',
-								width: '10px',
-								height: '100%',
-								backgroundColor: accent,
-							},
-						},
-					},
+	const logoItem = (logo: { name: string; src: string }) => `
+		<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:80px;">
+			<img src="${logo.src}" style="width:52px;height:52px;" />
+			<div style="display:flex;color:${muted};font-size:13px;font-weight:400;">${logo.name}</div>
+		</div>
+	`;
 
-					// Left content area (~75%)
-					{
-						type: 'div',
-						props: {
-							style: {
-								display: 'flex',
-								flexDirection: 'column',
-								flex: 1,
-								padding: '52px 56px',
-								justifyContent: 'space-between',
-							},
-							children: [
-								// Identity block: avatar + text
-								{
-									type: 'div',
-									props: {
-										style: {
-											display: 'flex',
-											alignItems: 'center',
-											gap: '36px',
-										},
-										children: [
-											{
-												type: 'img',
-												props: {
-													src: avatarBase64,
-													width: 140,
-													height: 140,
-													style: {
-														borderRadius: '24px',
-														border: `2px solid ${divider}`,
-													},
-												},
-											},
-											{
-												type: 'div',
-												props: {
-													style: {
-														display: 'flex',
-														flexDirection: 'column',
-														gap: '4px',
-													},
-													children: [
-														{
-															type: 'div',
-															props: {
-																style: {
-																	color: onSurface,
-																	fontSize: '54px',
-																	fontWeight: 700,
-																	letterSpacing: '-0.03em',
-																	lineHeight: 1.1,
-																	display: 'flex',
-																},
-																children: 'Jatin Thummar',
-															},
-														},
-														{
-															type: 'div',
-															props: {
-																style: {
-																	color: accent,
-																	fontSize: '24px',
-																	fontWeight: 700,
-																	letterSpacing: '0.02em',
-																	display: 'flex',
-																},
-																children: 'Frontend Engineer',
-															},
-														},
-														{
-															type: 'div',
-															props: {
-																style: {
-																	color: muted,
-																	fontSize: '22px',
-																	fontWeight: 400,
-																	display: 'flex',
-																	marginTop: '2px',
-																},
-																children: '@jatinthummarx',
-															},
-														},
-													],
-												},
-											},
-										],
-									},
-								},
+	const markup = rawHtml(`
+		<div style="display:flex;width:100%;height:100%;background-color:${surface};">
 
-								// Tech icons — two rows, no separators
-								{
-									type: 'div',
-									props: {
-										style: {
-											display: 'flex',
-											flexDirection: 'column',
-											gap: '24px',
-										},
-										children: [
-											// Row 1: React, Expo, Next.js, Vite
-											{
-												type: 'div',
-												props: {
-													style: {
-														display: 'flex',
-														alignItems: 'center',
-														gap: '40px',
-													},
-													children: row1.map((logo) => ({
-														type: 'div',
-														props: {
-															style: {
-																display: 'flex',
-																flexDirection: 'column' as const,
-																alignItems: 'center',
-																gap: '10px',
-																width: '80px',
-															},
-															children: [
-																{
-																	type: 'img',
-																	props: {
-																		src: logo.src,
-																		width: 56,
-																		height: 56,
-																	},
-																},
-																{
-																	type: 'div',
-																	props: {
-																		style: {
-																			color: muted,
-																			fontSize: '14px',
-																			fontWeight: 400,
-																			display: 'flex',
-																		},
-																		children: logo.name,
-																	},
-																},
-															],
-														},
-													})),
-												},
-											},
-											// Row 2: JS, TS, Git
-											{
-												type: 'div',
-												props: {
-													style: {
-														display: 'flex',
-														alignItems: 'center',
-														gap: '40px',
-													},
-													children: row2.map((logo) => ({
-														type: 'div',
-														props: {
-															style: {
-																display: 'flex',
-																flexDirection: 'column' as const,
-																alignItems: 'center',
-																gap: '10px',
-																width: '80px',
-															},
-															children: [
-																{
-																	type: 'img',
-																	props: {
-																		src: logo.src,
-																		width: 56,
-																		height: 56,
-																	},
-																},
-																{
-																	type: 'div',
-																	props: {
-																		style: {
-																			color: muted,
-																			fontSize: '14px',
-																			fontWeight: 400,
-																			display: 'flex',
-																		},
-																		children: logo.name,
-																	},
-																},
-															],
-														},
-													})),
-												},
-											},
-										],
-									},
-								},
+			<!-- Left accent strip -->
+			<div style="display:flex;flex-shrink:0;width:16px;height:100%;background-color:${accent};"></div>
 
-								// Footer URL
-								{
-									type: 'div',
-									props: {
-										style: {
-											color: muted,
-											fontSize: '20px',
-											fontWeight: 400,
-											display: 'flex',
-										},
-										children: 'jatinthummar.github.io',
-									},
-								},
-							],
-						},
-					},
+			<!-- Main left content (~75%) -->
+			<div style="display:flex;flex:1;flex-direction:column;justify-content:space-between;padding:52px 56px;">
 
-					// Right section — QR code
-					{
-						type: 'div',
-						props: {
-							style: {
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								justifyContent: 'center',
-								width: '300px',
-								borderLeft: `1px solid ${divider}`,
-								backgroundColor: '#fafafa',
-								gap: '20px',
-							},
-							children: [
-								{
-									type: 'img',
-									props: {
-										src: qrBase64,
-										width: 200,
-										height: 200,
-									},
-								},
-								{
-									type: 'div',
-									props: {
-										style: {
-											color: muted,
-											fontSize: '16px',
-											fontWeight: 400,
-											display: 'flex',
-										},
-										children: 'Scan to visit',
-									},
-								},
-							],
-						},
-					},
-				],
-			},
-		},
-		{
-			width: 1200,
-			height: 630,
-			fonts: [
-				{ name: 'Inter', data: interBold, weight: 700, style: 'normal' },
-				{ name: 'Inter', data: interRegular, weight: 400, style: 'normal' },
-			],
-		}
-	);
+				<!-- Identity: avatar + name + title + handle -->
+				<div style="display:flex;align-items:center;gap:36px;">
+					<img src="${avatarBase64}" style="width:140px;height:140px;border-radius:24px;border:2px solid ${divider};" />
+					<div style="display:flex;flex-direction:column;gap:6px;">
+						<div style="display:flex;color:${emphasis};font-size:54px;font-weight:700;letter-spacing:-0.03em;line-height:1.1;">
+							Jatin Thummar
+						</div>
+						<div style="display:flex;color:${accent};font-size:24px;font-weight:700;letter-spacing:0.02em;">
+							Frontend Engineer
+						</div>
+						<div style="display:flex;color:${muted};font-size:21px;font-weight:400;margin-top:2px;">
+							@jatinthummarx
+						</div>
+					</div>
+				</div>
+
+				<!-- Tech logos — two rows -->
+				<div style="display:flex;flex-direction:column;gap:24px;">
+					<div style="display:flex;align-items:center;gap:40px;">
+						${row1.map(logoItem).join('')}
+					</div>
+					<div style="display:flex;align-items:center;gap:40px;">
+						${row2.map(logoItem).join('')}
+					</div>
+				</div>
+
+				<!-- Footer URL -->
+				<div style="display:flex;color:${muted};font-size:20px;font-weight:400;">
+					jatinthummar.github.io
+				</div>
+
+			</div>
+
+			<!-- Right sidebar — QR code -->
+			<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:300px;border-left:1px solid ${divider};background-color:${sidebarBg};gap:20px;">
+				<img src="${qrBase64}" style="width:200px;height:200px;" />
+				<div style="display:flex;color:${muted};font-size:16px;font-weight:400;">Scan to visit</div>
+			</div>
+
+		</div>
+	`);
+
+	const svg = await satori(markup, {
+		width: 1200,
+		height: 630,
+		fonts: [
+			{ name: 'Inter', data: interBold, weight: 700, style: 'normal' },
+			{ name: 'Inter', data: interRegular, weight: 400, style: 'normal' },
+		],
+	});
 
 	const resvg = new Resvg(svg, {
-		fitTo: { mode: 'width', value: 1200 },
+		fitTo: { mode: 'width', value: 1800 },
 	});
 	const pngData = resvg.render().asPng();
 
