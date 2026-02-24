@@ -1,7 +1,7 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config';
 import rehypeExternalLinks from 'rehype-external-links';
 
 export default defineConfig({
@@ -12,6 +12,9 @@ export default defineConfig({
 	},
 	markdown: {
 		rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]],
+		shikiConfig: {
+			theme: 'github-dark',
+		},
 	},
 	vite: {
 		plugins: [tailwindcss()],

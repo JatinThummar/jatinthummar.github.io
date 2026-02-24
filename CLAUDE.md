@@ -15,6 +15,7 @@ Personal portfolio site for **Jatin Thummar — Frontend Engineer**.
 - `npm run dev` — Start dev server (localhost:4321)
 - `npm run build` — Production build to `dist/`
 - `npm run preview` — Preview production build locally
+- `npm run format` — Format all files with Prettier
 
 ## Project Structure
 
