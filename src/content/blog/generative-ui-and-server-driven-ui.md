@@ -64,6 +64,8 @@ On the web, SDUI shines on high-churn surfaces: homepages, promotions, settings 
 
 The mental model: you build a library of components, describe each one to the AI, and the AI selects and populates them at runtime.
 
+One thing to clear up before the code: **the model is not generating JSX.** It can only call tools you've explicitly defined. Think of it like a menu — you decide what's on it, and the model picks from your list. If a tool isn't registered, the model can't use it.
+
 ```tsx
 import { streamText } from 'ai';
 import { openai } from '@ai-sdk/openai';
@@ -91,6 +93,8 @@ The user asked a plain-language question. The AI understood that a `WeatherCard`
 
 This is the key difference from traditional development: the AI composes the interface contextually rather than you encoding every possible state in advance. You build the components. The AI decides when to show them.
 
+**Business logic lives in your tools, not in the model.** The model decides which tool to call and with what arguments. Your tool's `execute` function handles the real work: database queries, auth checks, pricing rules, validation. The model is a router. Your tools are the actual system.
+
 ### The control spectrum
 
 Not all generative UI is the same. There are roughly three flavors:
@@ -101,7 +105,16 @@ Not all generative UI is the same. There are roughly three flavors:
 
 Most production systems use static or declarative patterns. If you're just starting, static is where to begin.
 
-**The honest tradeoff:** non-determinism. The same input can produce different UI each run. That's usually fine for chat interfaces, but it means you need guardrails: clear tool descriptions, constrained parameter schemas, and testing that accounts for variation.
+**The honest tradeoff:** non-determinism. The same input can produce different UI each run. That's usually fine for conversational interfaces, but it introduces a failure mode that doesn't exist in normal code.
+
+Standard errors — tool throws, API times out, schema validation fails — are handled like any async failure. The trickier case is when the model picks the wrong tool entirely. No crash. No error thrown. Just incorrect UI rendered. That's a cognitive failure, and it's invisible without testing.
+
+Guardrails that help in practice:
+
+- **Write specific tool descriptions.** The model uses these to decide which tool fits the situation. "Show weather" is ambiguous. "Display current temperature and conditions for a city when the user asks about weather, packing, or travel planning" is not.
+- **Use strict schemas.** Loose schemas (`z.object({})`) leave too much room. Constrain inputs explicitly.
+- **Only expose tools relevant to the current context.** If 15 tools are registered but only 2 make sense for a given screen, filter the rest out. More options means more chances to pick the wrong one.
+- **Add a confirmation step for destructive or expensive actions.** Payments, deletions, sends — render a confirmation component instead of executing automatically.
 
 **Reach for generative UI when:**
 
