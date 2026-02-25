@@ -16,6 +16,14 @@ const fontResRegular = await fetch(
 );
 const interRegular = await fontResRegular.arrayBuffer();
 
+// Inter Medium (500) via CSS API — same approach as JetBrains Mono
+const interMediumCss = await fetch(
+	'https://fonts.googleapis.com/css2?family=Inter:wght@500',
+	{ headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/534.54.16' } }
+).then((r) => r.text());
+const interMediumUrl = interMediumCss.match(/src:\s*url\(([^)]+)\)/)?.[1] ?? '';
+const interMedium = await fetch(interMediumUrl).then((r) => r.arrayBuffer());
+
 // Fetch JetBrains Mono Bold via CSS API (forces a TTF-compatible response)
 const monoFontCss = await fetch(
 	'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700',
@@ -36,10 +44,19 @@ function rawHtml(str: string) {
 function getAccentColor(tags: string[]): string {
 	if (tags.some((t) => ['design', 'ui-ux'].includes(t))) return '#e91e8c';
 	if (tags.some((t) => ['ai'].includes(t))) return '#00c27a';
-	if (tags.some((t) => ['engineering'].includes(t))) return '#7c3aed';
+	if (tags.some((t) => ['engineering'].includes(t))) return '#8b5cf6';
 	if (tags.some((t) => ['react-native', 'react', 'frontend'].includes(t))) return '#00b2d4';
 	if (tags.some((t) => ['reading', 'startups'].includes(t))) return '#f59000';
-	return '#1d4ed8';
+	return '#3b82f6';
+}
+
+function getLetterColor(tags: string[]): string {
+	if (tags.some((t) => ['design', 'ui-ux'].includes(t))) return '#fbb6ce';
+	if (tags.some((t) => ['ai'].includes(t))) return '#6ee7b7';
+	if (tags.some((t) => ['engineering'].includes(t))) return '#c4b5fd';
+	if (tags.some((t) => ['react-native', 'react', 'frontend'].includes(t))) return '#67e8f9';
+	if (tags.some((t) => ['reading', 'startups'].includes(t))) return '#fcd34d';
+	return '#93c5fd';
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -63,17 +80,18 @@ interface Props {
 export async function GET({ props }: { props: Props }) {
 	const { title, description, tags } = props;
 	const accent = getAccentColor(tags);
+	const letterColor = getLetterColor(tags);
 
-	const surface = '#fafafa';
-	const emphasis = '#09090b';
-	const body = '#3f3f46';
-	const muted = '#71717a';
+	const surface = '#161618';
+	const emphasis = '#f4f4f5';
+	const body = '#e4e4e7';
+	const muted = '#a1a1aa';
 
 	const letter = title.charAt(0).toLowerCase();
 	const titleSize = title.length > 55 ? 32 : title.length > 35 ? 42 : 54;
 
 	const markup = rawHtml(
-		`<div style="display:flex;width:100%;height:100%;background-color:${surface};overflow:hidden;"><div style="display:flex;flex-shrink:0;width:16px;height:100%;background-color:${accent};"></div><div style="display:flex;flex:1;flex-direction:column;padding:52px 60px;"><div style="display:flex;flex:1;flex-direction:column;gap:18px;max-width:700px;padding-top:20px;"><div style="display:flex;color:${emphasis};font-size:${titleSize}px;font-weight:700;line-height:1.2;letter-spacing:-0.03em;">${title}</div><div style="display:flex;color:${body};font-size:28px;font-weight:400;line-height:1.5;">${description}</div></div><div style="display:flex;height:1px;background:linear-gradient(to right, #e4e4e7, transparent 70%);"></div><div style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;"><div style="display:flex;align-items:center;gap:16px;"><img src="${avatarBase64}" style="width:80px;height:80px;border-radius:14px;mix-blend-mode:multiply;" /><div style="display:flex;flex-direction:column;gap:4px;"><div style="display:flex;color:${emphasis};font-size:24px;font-weight:700;letter-spacing:-0.01em;">Jatin Thummar</div><div style="display:flex;color:${muted};font-size:17px;font-weight:400;">@jatinthummarx</div></div></div></div></div><div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;width:380px;flex-shrink:0;overflow:hidden;padding-right:40px;"><div style="display:flex;flex-shrink:0;color:${accent};font-family:JetBrainsMono;font-size:680px;font-weight:700;line-height:1;letter-spacing:-0.05em;opacity:0.15;">${letter}</div></div></div>`
+		`<div style="display:flex;width:100%;height:100%;background-color:${surface};overflow:hidden;"><div style="display:flex;flex-shrink:0;width:16px;height:100%;background-color:${accent};"></div><div style="display:flex;flex:1;flex-direction:column;padding:52px 60px;"><div style="display:flex;flex:1;flex-direction:column;gap:18px;max-width:700px;padding-top:20px;"><div style="display:flex;color:${emphasis};font-size:${titleSize}px;font-weight:700;line-height:1.2;letter-spacing:-0.03em;">${title}</div><div style="display:flex;color:${body};font-size:28px;font-weight:500;line-height:1.5;">${description}</div></div><div style="display:flex;height:1px;background:linear-gradient(to right, #27272a, transparent 70%);"></div><div style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;"><div style="display:flex;align-items:center;gap:16px;"><img src="${avatarBase64}" style="width:80px;height:80px;border-radius:14px;" /><div style="display:flex;flex-direction:column;gap:4px;"><div style="display:flex;color:${emphasis};font-size:24px;font-weight:700;letter-spacing:-0.01em;">Jatin Thummar</div><div style="display:flex;color:${muted};font-size:17px;font-weight:400;">@jatinthummarx</div></div></div></div></div><div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;width:380px;flex-shrink:0;overflow:hidden;padding-right:40px;"><div style="display:flex;flex-shrink:0;color:${letterColor};font-family:JetBrainsMono;font-size:680px;font-weight:700;line-height:1;letter-spacing:-0.05em;">${letter}</div></div></div>`
 	);
 
 	const svg = await satori(markup, {
@@ -81,6 +99,7 @@ export async function GET({ props }: { props: Props }) {
 		height: 630,
 		fonts: [
 			{ name: 'Inter', data: interBold, weight: 700, style: 'normal' },
+			{ name: 'Inter', data: interMedium, weight: 500, style: 'normal' },
 			{ name: 'Inter', data: interRegular, weight: 400, style: 'normal' },
 			{ name: 'JetBrainsMono', data: jetBrainsMono, weight: 700, style: 'normal' },
 		],

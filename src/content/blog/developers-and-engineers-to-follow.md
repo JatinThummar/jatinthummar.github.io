@@ -65,6 +65,7 @@ These are the developers and bloggers I've learned from over the years. Whether 
 ## Engineering Blogs & Career
 
 - **[The Pragmatic Engineer](https://blog.pragmaticengineer.com/)** — Gergely Orosz. Deep coverage of tech industry, engineering culture, and career growth.
+- **[Kailash Nadh](https://nadh.in/)** — CTO of Zerodha, co-founder of FOSS United. Writes about open source philosophy, tech criticism, and building software that lasts.
 - **[Cassidy Williams](https://cassidoo.co/)** — Developer experience, career advice, and web development.
 - **[Michele Riva](https://www.micheleriva.it/)** — Author of _Real-World Next.js_. Full-stack engineering and open source.
 

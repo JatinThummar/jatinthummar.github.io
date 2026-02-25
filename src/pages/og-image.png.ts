@@ -1,8 +1,8 @@
-import satori from 'satori';
-import { html } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import satori from 'satori';
+import { html } from 'satori-html';
 
 const fontRes = await fetch(
 	'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf'
@@ -31,9 +31,12 @@ const logoEntries = [
 	{ name: 'Expo', file: 'expo.svg' },
 	{ name: 'Next.js', file: 'nextjs.svg' },
 	{ name: 'Vite', file: 'vite.svg' },
+	{ name: 'Tailwind', file: 'tailwind.svg' },
 	{ name: 'JS', file: 'javascript.svg' },
 	{ name: 'TS', file: 'typescript.svg' },
 	{ name: 'Git', file: 'git.svg' },
+	{ name: 'Shopify', file: 'shopify.svg' },
+	{ name: 'Medusa', file: 'medusa.svg' },
 ];
 
 const logos = await Promise.all(
@@ -43,8 +46,8 @@ const logos = await Promise.all(
 	}))
 );
 
-const row1 = logos.slice(0, 4); // React, Expo, Next.js, Vite
-const row2 = logos.slice(4); // JS, TS, Git
+const row1 = logos.slice(0, 5); // React, Expo, Next.js, Vite, Tailwind
+const row2 = logos.slice(5);    // JS, TS, Git, Shopify, Medusa
 
 // Bypass ultrahtml's auto-escaping by passing full HTML as a single static string
 function rawHtml(str: string) {
@@ -53,17 +56,16 @@ function rawHtml(str: string) {
 }
 
 export async function GET() {
-	const surface = '#ffffff';
-	const emphasis = '#09090b';
-	const muted = '#71717a';
-	const accent = '#2563eb';
-	const divider = '#e4e4e7';
-	const sidebarBg = '#fafafa';
+	const surface = '#161618';
+	const emphasis = '#f4f4f5';
+	const muted = '#c4c4c8';
+	const accent = '#3b82f6';
+	const divider = '#27272a';
+	const sidebarBg = '#1e1e20';
 
 	const logoItem = (logo: { name: string; src: string }) => `
-		<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:80px;">
-			<img src="${logo.src}" style="width:52px;height:52px;" />
-			<div style="display:flex;color:${muted};font-size:13px;font-weight:400;">${logo.name}</div>
+		<div style="display:flex;">
+			<img src="${logo.src}" style="width:66px;height:66px;" />
 		</div>
 	`;
 
@@ -77,16 +79,16 @@ export async function GET() {
 			<div style="display:flex;flex:1;flex-direction:column;justify-content:space-between;padding:52px 56px;">
 
 				<!-- Identity: avatar + name + title + handle -->
-				<div style="display:flex;align-items:center;gap:36px;">
-					<img src="${avatarBase64}" style="width:140px;height:140px;border-radius:24px;border:2px solid ${divider};" />
-					<div style="display:flex;flex-direction:column;gap:6px;">
-						<div style="display:flex;color:${emphasis};font-size:54px;font-weight:700;letter-spacing:-0.03em;line-height:1.1;">
+				<div style="display:flex;align-items:center;gap:40px;">
+					<img src="${avatarBase64}" style="width:160px;height:160px;border-radius:24px;border:2px solid ${divider};" />
+					<div style="display:flex;flex-direction:column;gap:8px;">
+						<div style="display:flex;color:${emphasis};font-size:57px;font-weight:700;letter-spacing:-0.03em;line-height:1.05;">
 							Jatin Thummar
 						</div>
-						<div style="display:flex;color:${accent};font-size:24px;font-weight:700;letter-spacing:0.02em;">
+						<div style="display:flex;color:#60a5fa;font-size:32px;font-weight:700;letter-spacing:0.01em;">
 							Frontend Engineer
 						</div>
-						<div style="display:flex;color:${muted};font-size:21px;font-weight:400;margin-top:2px;">
+						<div style="display:flex;color:${muted};font-size:24px;font-weight:400;margin-top:2px;">
 							@jatinthummarx
 						</div>
 					</div>
@@ -94,25 +96,25 @@ export async function GET() {
 
 				<!-- Tech logos — two rows -->
 				<div style="display:flex;flex-direction:column;gap:24px;">
-					<div style="display:flex;align-items:center;gap:40px;">
+					<div style="display:flex;align-items:center;gap:32px;">
 						${row1.map(logoItem).join('')}
 					</div>
-					<div style="display:flex;align-items:center;gap:40px;">
+					<div style="display:flex;align-items:center;gap:32px;">
 						${row2.map(logoItem).join('')}
 					</div>
 				</div>
 
-				<!-- Footer URL -->
-				<div style="display:flex;color:${muted};font-size:20px;font-weight:400;">
-					jatinthummar.github.io
-				</div>
+				<!-- Spacer -->
+				<div style="display:flex;"></div>
 
 			</div>
 
 			<!-- Right sidebar — QR code -->
 			<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:300px;border-left:1px solid ${divider};background-color:${sidebarBg};gap:20px;">
-				<img src="${qrBase64}" style="width:200px;height:200px;" />
-				<div style="display:flex;color:${muted};font-size:16px;font-weight:400;">Scan to visit</div>
+				<div style="display:flex;background-color:#ffffff;padding:12px;border-radius:16px;">
+					<img src="${qrBase64}" style="width:210px;height:210px;" />
+				</div>
+				<div style="display:flex;color:${muted};font-size:22px;font-weight:400;">jatinthummar.github.io</div>
 			</div>
 
 		</div>
