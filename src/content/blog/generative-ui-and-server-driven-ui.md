@@ -157,6 +157,7 @@ SDUI is more pattern than library. Most teams build their own renderer, but if y
 - **[Rise Tools](https://rise.tools/)**: Server-defined rendering for React Native. Update and expand your app's UI in production without rebuilding or redeploying. Works with custom component suites or your own.
 - **[NativeBlocks](https://nativeblocks.io/)**: SDUI platform with native SDKs for iOS (SwiftUI), Android (Jetpack Compose), and React. Push changes without app store reviews.
 - **[DivKit](https://divkit.tech/)**: Yandex's open-source cross-platform SDUI framework (iOS, Android, Web). Includes a visual editor. Production-tested at scale.
+- **[Composify](https://composify.js.org/)**: Visual editing platform for SDUI. Register your existing components, and editors build pages with drag-and-drop or inline code. Stores content as readable JSX strings instead of JSON. Works with Next.js, Expo, React Router, and Tanstack Router.
 - **[Plasmic](https://www.plasmic.app/)**: Visual builder for React that doubles as an SDUI platform. Editors manipulate UI visually, and the result is exposed as JSON via a headless API. Deep integrations with Next.js, Gatsby, and Remix.
 
 ---

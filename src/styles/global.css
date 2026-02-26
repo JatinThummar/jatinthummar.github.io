@@ -76,6 +76,8 @@
 	--modal-text: #f4f4f5;
 	--btn-copy-bg: #18181b;
 	--btn-copy-text: #f4f4f5;
+	--code-inline-bg: #27272a;
+	--code-inline-text: #d2a7ff;
 }
 
 /* ==========================================================
@@ -105,6 +107,8 @@
 	--modal-text: #18181b;
 	--btn-copy-bg: #18181b;
 	--btn-copy-text: #ffffff;
+	--code-inline-bg: #f4f4f5;
+	--code-inline-text: #d63a4a;
 }
 
 /* ==========================================================
@@ -242,9 +246,16 @@
 
 	& :not(pre) > code {
 		padding: 0.2em 0.4em;
-		border-radius: 0.25rem;
-		font-size: 0.875em;
-		background-color: var(--card-bg);
+		border-radius: 0.375rem;
+		font-size: 0.85em;
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+			'Courier New', monospace;
+		background-color: var(--code-inline-bg);
+		color: var(--code-inline-text);
+	}
+	& :not(pre) > code::before,
+	& :not(pre) > code::after {
+		content: none;
 	}
 
 	& a {
