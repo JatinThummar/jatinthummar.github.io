@@ -121,39 +121,49 @@
 	html.light {
 		color-scheme: light;
 	}
-	/* Avatar swap: color default in dark, outline default in light */
+	/* Avatar swap: circular blur-reveal on hover
+	   Dark  → color visible, outline reveals on hover
+	   Light → outline visible, color reveals on hover */
 	.avatar-color {
-		opacity: 1;
+		z-index: 1;
 	}
 	.avatar-outline {
+		z-index: 2;
+		clip-path: circle(0% at 50% 50%);
+		filter: blur(12px);
 		opacity: 0;
-		filter: invert(1);
-		mix-blend-mode: lighten;
+		transition:
+			clip-path 0.4s ease,
+			filter 0.4s ease,
+			opacity 0.4s ease;
 	}
-	.group:hover .avatar-color,
-	.group:focus-within .avatar-color {
-		opacity: 0;
-	}
-	.group:hover .avatar-outline,
-	.group:focus-within .avatar-outline {
+	.group:hover .avatar-outline {
+		clip-path: circle(75% at 50% 50%);
+		filter: blur(0);
 		opacity: 1;
 	}
 
-	.light .avatar-color {
-		opacity: 0;
-	}
 	.light .avatar-outline {
-		opacity: 1;
+		z-index: 1;
+		clip-path: none;
 		filter: none;
-		mix-blend-mode: normal;
-	}
-	.light .group:hover .avatar-color,
-	.light .group:focus-within .avatar-color {
 		opacity: 1;
+		transition: none;
 	}
-	.light .group:hover .avatar-outline,
-	.light .group:focus-within .avatar-outline {
+	.light .avatar-color {
+		z-index: 2;
+		clip-path: circle(0% at 50% 50%);
+		filter: blur(12px);
 		opacity: 0;
+		transition:
+			clip-path 0.4s ease,
+			filter 0.4s ease,
+			opacity 0.4s ease;
+	}
+	.light .group:hover .avatar-color {
+		clip-path: circle(75% at 50% 50%);
+		filter: blur(0);
+		opacity: 1;
 	}
 	/* Dashed separator */
 	.separator {

@@ -167,6 +167,10 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 				const html = document.documentElement;
 				const isCurrentlyLight = html.classList.contains('light');
 
+				// Disable avatar transition during theme swap to prevent flash
+				const avatars = document.querySelectorAll<HTMLElement>('.avatar-color, .avatar-outline');
+				avatars.forEach((el) => (el.style.transition = 'none'));
+
 				if (isCurrentlyLight) {
 					html.classList.remove('light');
 					localStorage.setItem('theme', 'dark');
@@ -180,6 +184,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 				document
 					.querySelector('meta[name="theme-color"]')!
 					.setAttribute('content', isCurrentlyLight ? '#161618' : '#ffffff');
+
+				// Re-enable avatar transition after paint
+				requestAnimationFrame(() => {
+					avatars.forEach((el) => (el.style.transition = ''));
+				});
 			});
 		</script>
 	</body>
