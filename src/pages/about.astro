@@ -12,10 +12,12 @@ const siteUrl = 'https://jatinthummar.github.io';
 
 const jsonLd = {
 	'@context': 'https://schema.org',
-	'@type': 'AboutPage',
+	'@type': 'ProfilePage',
 	name: 'About Jatin Thummar',
 	url: `${siteUrl}/about`,
 	description: description,
+	dateCreated: '2025-06-01',
+	dateModified: new Date().toISOString().split('T')[0],
 	mainEntity: {
 		'@type': 'Person',
 		'@id': `${siteUrl}/#person`,
@@ -24,17 +26,45 @@ const jsonLd = {
 		familyName: 'Thummar',
 		jobTitle: 'Frontend Engineer',
 		url: siteUrl,
-		mainEntityOfPage: siteUrl,
+		mainEntityOfPage: `${siteUrl}/about`,
 		description: description,
 		image: `${siteUrl}/og-image.png`,
-		homeLocation: {
+		nationality: {
 			'@type': 'Country',
 			name: 'India',
+		},
+		homeLocation: {
+			'@type': 'City',
+			name: 'Surat',
+			containedInPlace: {
+				'@type': 'State',
+				name: 'Gujarat',
+				containedInPlace: {
+					'@type': 'Country',
+					name: 'India',
+				},
+			},
 		},
 		worksFor: {
 			'@type': 'Organization',
 			name: 'The Korean Fashion',
 			url: 'https://www.thekoreanfashion.com/',
+		},
+		hasOccupation: {
+			'@type': 'Occupation',
+			name: 'Frontend Engineer',
+			occupationLocation: {
+				'@type': 'Country',
+				name: 'India',
+			},
+			skills: [
+				'React Native',
+				'Expo',
+				'TypeScript',
+				'Next.js',
+				'React',
+				'Cross-Platform App Development',
+			],
 		},
 		knowsAbout: [
 			'Cross-Platform App Development',

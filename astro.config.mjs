@@ -22,5 +22,13 @@ export default defineConfig({
 			cssMinify: true,
 		},
 	},
-	integrations: [sitemap()],
+	integrations: [
+		sitemap({
+			serialize(item) {
+				// Set lastmod to today for all pages — signals freshness to crawlers
+				item.lastmod = new Date().toISOString();
+				return item;
+			},
+		}),
+	],
 });

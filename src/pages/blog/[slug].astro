@@ -34,24 +34,45 @@ interface Props {
 const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const siteUrl = 'https://jatinthummar.github.io';
 
+const postUrl = `${siteUrl}/blog/${post.slug}`;
+const postImage = `${siteUrl}/og/${post.slug}.png?v=${(post.updatedDate ?? post.publishDate).getTime()}`;
+
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'BlogPosting',
 	headline: post.title,
 	description: post.description,
-	image: `${siteUrl}/og/${post.slug}.png?v=${(post.updatedDate ?? post.publishDate).getTime()}`,
+	image: postImage,
 	datePublished: post.publishDate.toISOString(),
 	dateModified: (post.updatedDate ?? post.publishDate).toISOString(),
 	author: {
 		'@type': 'Person',
+		'@id': `${siteUrl}/#person`,
 		name: 'Jatin Thummar',
 		url: siteUrl,
 	},
-	url: `${siteUrl}/blog/${post.slug}`,
+	publisher: {
+		'@type': 'Person',
+		'@id': `${siteUrl}/#person`,
+		name: 'Jatin Thummar',
+		url: siteUrl,
+	},
+	url: postUrl,
 	mainEntityOfPage: {
 		'@type': 'WebPage',
-		'@id': `${siteUrl}/blog/${post.slug}`,
+		'@id': postUrl,
 	},
+	isPartOf: {
+		'@type': 'WebSite',
+		'@id': `${siteUrl}/#website`,
+	},
+	speakable: {
+		'@type': 'SpeakableSpecification',
+		cssSelector: ['article h1', 'article .prose'],
+	},
+	...(post.tags.length > 0 && { keywords: post.tags.join(', ') }),
+	inLanguage: 'en-US',
+	wordCount: post.readingTime * 200,
 };
 ---
 
