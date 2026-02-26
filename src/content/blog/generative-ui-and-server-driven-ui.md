@@ -2,6 +2,7 @@
 title: "Generative UI and Server-Driven UI: A React Dev's Intro"
 description: 'Two patterns reshaping how React apps are built: what they are, how they work, and when to use each one.'
 publishDate: 2026-02-24
+updatedDate: 2026-02-26
 tags: ['engineering', 'frontend', 'react']
 ---
 
@@ -142,18 +143,21 @@ Guardrails that help in practice:
 
 ### For Generative UI
 
-- **[Vercel AI SDK](https://sdk.vercel.ai/docs/ai-sdk-ui/generative-user-interfaces)** — `useChat()` + tool definitions. Start here. Works with any LLM provider and is framework-agnostic. Now on v6.
-- **[CopilotKit](https://docs.copilotkit.ai/generative-ui)** — More opinionated framework for adding AI features to existing React apps. Supports all three patterns (static, declarative, open-ended) and the [AG-UI protocol](https://www.copilotkit.ai/ag-ui-and-a2ui) adopted by Google, LangChain, and AWS.
-- **[assistant-ui](https://www.assistant-ui.com/)** — Composable chat UI components (shadcn/ui-style). Handles the UI layer so you can focus on tools. YC-backed, 50k+ weekly npm downloads.
-- **[Hashbrown](https://hashbrown.dev/)** — You register React components with schemas, and the LLM generates the entire component tree with streamed props. Good option if you want the model to have more layout control.
-- **[Tambo](https://github.com/tambo-ai/tambo)** — Open-source. Register components with Zod prop schemas that automatically become LLM tool definitions. Minimal setup.
+- **[json-render](https://json-render.dev/)**: Guardrailed generative UI from Vercel Labs. You define a component catalog with Zod schemas, the LLM generates JSON that conforms to it, and React renders it progressively as the response streams in. Works with React Native too. The catalog pattern means the AI can only produce UI from components you've approved, making it production-safe.
+- **[Vercel AI SDK](https://sdk.vercel.ai/docs/ai-sdk-ui/generative-user-interfaces)**: `useChat()` + tool definitions. Start here. Works with any LLM provider and is framework-agnostic. Now on v6.
+- **[CopilotKit](https://docs.copilotkit.ai/generative-ui)**: More opinionated framework for adding AI features to existing React apps. Supports all three patterns (static, declarative, open-ended) and the [AG-UI protocol](https://www.copilotkit.ai/ag-ui-and-a2ui) adopted by Google, LangChain, and AWS.
+- **[assistant-ui](https://www.assistant-ui.com/)**: Composable chat UI components (shadcn/ui-style). Handles the UI layer so you can focus on tools. YC-backed, 50k+ weekly npm downloads.
+- **[Hashbrown](https://hashbrown.dev/)**: You register React components with schemas, and the LLM generates the entire component tree with streamed props. Good option if you want the model to have more layout control.
+- **[Tambo](https://github.com/tambo-ai/tambo)**: Open-source. Register components with Zod prop schemas that automatically become LLM tool definitions. Minimal setup.
 
 ### For Server-Driven UI
 
 SDUI is more pattern than library. Most teams build their own renderer, but if you want to explore without starting from scratch:
 
-- **[NativeBlocks](https://nativeblocks.io/)** — SDUI platform with a visual editor and React client.
-- **[DivKit](https://divkit.tech/)** — Yandex's open-source cross-platform SDUI framework. Production-tested at scale.
+- **[Rise Tools](https://rise.tools/)**: Server-defined rendering for React Native. Update and expand your app's UI in production without rebuilding or redeploying. Works with custom component suites or your own.
+- **[NativeBlocks](https://nativeblocks.io/)**: SDUI platform with native SDKs for iOS (SwiftUI), Android (Jetpack Compose), and React. Push changes without app store reviews.
+- **[DivKit](https://divkit.tech/)**: Yandex's open-source cross-platform SDUI framework (iOS, Android, Web). Includes a visual editor. Production-tested at scale.
+- **[Plasmic](https://www.plasmic.app/)**: Visual builder for React that doubles as an SDUI platform. Editors manipulate UI visually, and the result is exposed as JSON via a headless API. Deep integrations with Next.js, Gatsby, and Remix.
 
 ---
 
@@ -161,7 +165,7 @@ SDUI is more pattern than library. Most teams build their own renderer, but if y
 
 These two patterns are converging. In December 2025, Google released [A2UI](https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/) — a protocol where an AI agent selects components from a pre-approved catalog. Structurally, it's identical to an SDUI component registry, but an LLM does the composition instead of a server config. The client still controls what components exist. The AI just decides which ones to use.
 
-That's the direction the industry is moving: a stable component library (SDUI's strength) + AI-driven composition (Generative UI's strength). [CopilotKit already supports this pattern](https://www.copilotkit.ai/ag-ui-and-a2ui) through their AG-UI protocol.
+That's the direction the industry is moving: a stable component library (SDUI's strength) + AI-driven composition (Generative UI's strength). [json-render](https://json-render.dev/) from Vercel Labs is the clearest example of this convergence today: you define a component catalog (just like an SDUI registry), and an LLM composes the UI from it. [CopilotKit already supports this pattern](https://www.copilotkit.ai/ag-ui-and-a2ui) through their AG-UI protocol.
 
 ---
 
@@ -179,11 +183,13 @@ Neither requires an all-in architectural commitment. Start with one surface, pro
 
 ### Generative UI
 
-- **[Vercel AI SDK — Generative UI](https://sdk.vercel.ai/docs/ai-sdk-ui/generative-user-interfaces)** — Official docs for the tool-calling + component rendering pattern.
-- **[CopilotKit — The three kinds of Generative UI](https://www.copilotkit.ai/blog/the-three-kinds-of-generative-ui)** — The clearest taxonomy of static, declarative, and open-ended GenUI patterns.
-- **[Google Research — Generative UI](https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/)** — The academic treatment from Google's November 2025 paper.
-- **[A2UI on GitHub](https://github.com/google/A2UI)** — Google's open protocol for agent-driven interfaces. Worth watching.
-- **[bracesproul/gen-ui](https://github.com/bracesproul/gen-ui)** — Starter template: Next.js + LangChain + shadcn/ui. Good reference codebase.
+- **[json-render docs](https://json-render.dev/)**: Catalog-based generative UI framework. The docs walk through defining components, validation, streaming, and cross-platform rendering.
+- **[json-render on GitHub](https://github.com/vercel-labs/json-render)**: Source code, examples, and the `@json-render/shadcn` package with 36 pre-built components.
+- **[Vercel AI SDK — Generative UI](https://sdk.vercel.ai/docs/ai-sdk-ui/generative-user-interfaces)**: Official docs for the tool-calling + component rendering pattern.
+- **[CopilotKit — The three kinds of Generative UI](https://www.copilotkit.ai/blog/the-three-kinds-of-generative-ui)**: The clearest taxonomy of static, declarative, and open-ended GenUI patterns.
+- **[Google Research — Generative UI](https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/)**: The academic treatment from Google's November 2025 paper.
+- **[A2UI on GitHub](https://github.com/google/A2UI)**: Google's open protocol for agent-driven interfaces. Worth watching.
+- **[bracesproul/gen-ui](https://github.com/bracesproul/gen-ui)**: Starter template: Next.js + LangChain + shadcn/ui. Good reference codebase.
 
 ### Server-Driven UI
 
