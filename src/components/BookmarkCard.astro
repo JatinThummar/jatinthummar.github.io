@@ -21,15 +21,17 @@ const { href, title, description, domain, logoSrc, logoAlt, compact = false } = 
 		compact ? 'mt-3 rounded-lg bg-surface p-3' : 'rounded-xl bg-card-bg p-4',
 	]}
 >
-	<img
-		src={logoSrc}
-		alt={logoAlt}
-		width="44"
-		height="44"
-		loading="lazy"
-		decoding="async"
-		class="shrink-0 object-contain dark-invert"
-	/>
+	<div class="shrink-0 size-11 rounded-lg bg-white/90 flex items-center justify-center">
+		<img
+			src={logoSrc}
+			alt={logoAlt}
+			width="44"
+			height="44"
+			loading="lazy"
+			decoding="async"
+			class="size-8 object-contain"
+		/>
+	</div>
 	<div class="min-w-0">
 		<p class="text-sm font-medium text-emphasis truncate">{title}</p>
 		<p class="text-xs text-muted truncate">{description}</p>
