@@ -28,7 +28,7 @@ const jsonLd = {
 		url: siteUrl,
 		mainEntityOfPage: `${siteUrl}/about`,
 		description: description,
-		image: `${siteUrl}/og-image.png`,
+		image: `${siteUrl}/og-about.png`,
 		nationality: {
 			'@type': 'Country',
 			name: 'India',
@@ -95,6 +95,7 @@ const jsonLd = {
 	title={title}
 	description={description}
 	canonicalUrl={`${siteUrl}/about`}
+	ogImage="/og-about.png"
 	jsonLd={jsonLd}
 >
 	<main class="max-w-xl w-full mx-auto py-20">
