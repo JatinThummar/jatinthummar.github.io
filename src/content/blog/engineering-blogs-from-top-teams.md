@@ -49,6 +49,7 @@ One of the best ways to level up is to read how companies at scale solve real fr
 
 ## General Engineering Blogs
 
+- **[Yelp Engineering](https://engineeringblog.yelp.com/)** — Search, server-driven UI (their CHAOS framework), data pipelines, and cloud infrastructure at scale.
 - **[Zalando Engineering](https://engineering.zalando.com/)** — Europe's largest fashion platform. Frontend architecture, design systems, and web performance at scale.
 - **[Simform Engineering](https://www.simform.com/blog/)** — Practical tutorials and deep dives on React Native, React, and mobile architecture patterns.
 
