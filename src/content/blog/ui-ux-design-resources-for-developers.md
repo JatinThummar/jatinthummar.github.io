@@ -83,6 +83,7 @@ You don't need a design degree to build beautiful, usable interfaces. These are 
 - **[Savee](https://savee.it/)** — Visual bookmarking for design inspiration. Like Pinterest but for designers.
 - **[Recent Design](https://recent.design/)** — Fresh web design inspiration updated regularly.
 - **[Curated Design](https://www.curated.design/)** — Hand-picked web design inspiration catalog.
+- **[No-Code Supply](https://www.nocodesupply.co/)** — Directory of inspiring websites, tools, AI resources, and code snippets for designers and developers.
 - **[Dark Design](https://www.dark.design/)** — Dark-themed web design inspiration specifically.
 - **[Dark Mode Design](https://www.darkmodedesign.com/)** — Showcase of websites with beautiful dark mode implementations.
 - **[Nicely Done](https://nicelydone.club/n/apps)** — Curated gallery of well-designed web apps.
