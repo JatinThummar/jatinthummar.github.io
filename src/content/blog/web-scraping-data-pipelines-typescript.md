@@ -1,19 +1,15 @@
 ---
-title: "Frontend Engineer's Guide to Building Data Products with TypeScript"
-description: 'A practical learning path for frontend developers who want to scrape data, build pipelines, store millions of rows, and visualize everything in a custom dashboard. Simple steps, real tools, no fluff.'
+title: 'Getting Started with Web Scraping and Data Pipelines in TypeScript'
+description: 'A practical learning path for scraping the web, organizing data into pipelines, storing millions of rows, and visualizing it all. Tools, code, and resources to get started with TypeScript.'
 publishDate: 2026-03-14
 tags: ['data-engineering', 'typescript', 'scraping', 'learning-path']
 ---
 
-You know how to build UIs. You can spin up a Next.js app, wire up state, style components, and ship features. That's valuable. But here's something worth thinking about: AI is getting really good at writing frontend code. The gap between "good frontend engineer" and "AI-generated UI" is shrinking every month.
-
-So what's the next edge? **Data.**
-
-Collecting it at scale. Cleaning it. Storing millions of rows so they query fast. Building dashboards that turn raw numbers into decisions. This is the skill set that compounds, and most frontend engineers never learn it.
+Most developers know how to build apps. Fewer know how to collect data at scale, clean it, store millions of rows so they query fast, and build dashboards that turn raw numbers into decisions. That's the skill set that compounds.
 
 The good news? You don't need to become a Python developer. The TypeScript ecosystem for data engineering has grown up. You can scrape websites, run job queues, query analytical databases, and build dashboards, all in TypeScript. Where Python is truly needed (just two tools), you'll barely touch it.
 
-This post is a learning path. It tells you what to learn, in what order, why each piece matters, and where to find the best resources. Whether you're a frontend engineer expanding your skills, a backend developer filling gaps, or a data engineer curious about the TypeScript side, there's something here for you.
+This post is a learning path. It tells you what to learn, in what order, why each piece matters, and where to find the best resources. Whether you're a frontend developer, a backend engineer, or anyone in tech comfortable with TypeScript, there's something here for you.
 
 Let's walk through the full stack, piece by piece.
 
@@ -96,6 +92,7 @@ For proxy rotation, Crawlee has built-in `ProxyConfiguration` that favors proxie
 - **[Apify Academy](https://docs.apify.com/academy)**: Free, structured, and the single best resource. Start with "Web Scraping Basics for JavaScript Devs" and work through to "Advanced Web Scraping."
 - **[Crawlee docs](https://crawlee.dev)**: Official documentation with examples
 - **[Playwright docs](https://playwright.dev)**: Essential for browser automation
+- **[Scrapism](https://scrapism.lav.io/)**: A creative, hands-on guide to web scraping that teaches the fundamentals through art and data journalism projects. Great for building intuition around HTML parsing and data extraction patterns.
 - **[Firecrawl](https://github.com/firecrawl/firecrawl)** (~92k stars): Worth studying for its patterns around batch job management and API design
 
 ---
@@ -144,7 +141,7 @@ You need four types of storage. Each solves a different problem. They're not int
 
 ### Why it matters
 
-Frontend engineers usually know one database (maybe Postgres, maybe MongoDB). Data engineering needs more. Different data shapes need different storage engines. Using the wrong one means slow queries, wasted disk space, or lost data.
+Most developers know one database (maybe Postgres, maybe MongoDB). Data engineering needs more. Different data shapes need different storage engines. Using the wrong one means slow queries, wasted disk space, or lost data.
 
 ### PostgreSQL: your application database
 
@@ -160,7 +157,7 @@ For TypeScript access, you have two good ORMs (Object-Relational Mappers):
 
 ### ClickHouse: your analytical warehouse
 
-This is where most frontend engineers' mental model breaks. **[ClickHouse](https://github.com/ClickHouse/ClickHouse)** is a columnar database designed for analytics. Where Postgres stores data row by row (great for "get user 42's profile"), ClickHouse stores data column by column (great for "count all events by day across 100 million rows").
+This is where the mental model shift happens. **[ClickHouse](https://github.com/ClickHouse/ClickHouse)** is a columnar database designed for analytics. Where Postgres stores data row by row (great for "get user 42's profile"), ClickHouse stores data column by column (great for "count all events by day across 100 million rows").
 
 The result: analytical queries run 100-1000x faster than Postgres on the same data.
 
