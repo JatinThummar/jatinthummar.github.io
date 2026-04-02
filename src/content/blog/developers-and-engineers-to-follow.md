@@ -68,6 +68,7 @@ These are the developers and bloggers I've learned from over the years. Whether 
 - **[Kailash Nadh](https://nadh.in/)** — CTO of Zerodha, co-founder of FOSS United. Writes about open source philosophy, tech criticism, and building software that lasts.
 - **[Cassidy Williams](https://cassidoo.co/)** — Developer experience, career advice, and web development.
 - **[Michele Riva](https://www.micheleriva.it/)** — Author of _Real-World Next.js_. Full-stack engineering and open source.
+- **[Steph Ango](https://stephango.com/)** — CEO of Obsidian. Writes about design philosophy, software quality, and building tools that last.
 
 ---
 
