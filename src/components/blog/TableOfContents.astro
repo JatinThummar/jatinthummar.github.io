@@ -40,8 +40,8 @@ for (const heading of filtered) {
 				role="dialog"
 				aria-label="Table of contents"
 			>
-				<div class="bg-card-bg border border-border rounded-xl max-h-[60vh] shadow-lg overflow-hidden">
-					<nav class="overflow-y-auto overscroll-contain p-4">
+				<div class="bg-card-bg border border-border rounded-xl max-h-[60vh] shadow-lg overflow-y-auto overscroll-contain">
+					<nav class="p-4">
 						<ul class="space-y-2">
 							{toc.map((item) => (
 								<li>
