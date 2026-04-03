@@ -49,6 +49,8 @@ There's a lot of material out there. Most of it is mediocre. Here's what's actua
 
 If you read one thing on this list, make it this one.
 
+Two more resources worth bookmarking at this stage: **[Simon Willison's blog](https://simonwillison.net/)** covers real-world AI patterns, security, and tooling with near-daily updates. And **[Andrej Karpathy's YouTube channel](https://www.youtube.com/@AndrejKarpathy)** is essential for understanding how LLMs actually work under the hood, with talks like "State of GPT" breaking down the training pipeline and inference process.
+
 ### Step 2: See the loop with zero abstraction
 
 **[mini-SWE-agent](https://github.com/SWE-agent/mini-swe-agent)** is roughly 100 lines of Python that scores over 74% on SWE-bench Verified, a serious coding benchmark. It uses bash as its only tool, `subprocess.run` for execution, and a completely linear message history. No frameworks. No custom abstractions. Reading this code takes 15 minutes and gives you a complete mental model of how a coding agent actually works.
@@ -57,7 +59,7 @@ It's Python, not TypeScript. That doesn't matter here. You're reading it for the
 
 ### Step 3: Read a production-quality loop in one file
 
-**[smolagents](https://github.com/huggingface/smolagents)** by Hugging Face (~26.3k stars) has its entire agent logic in about 1,000 lines. Its `CodeAgent` takes an interesting approach: instead of individual JSON tool calls, the model writes Python code snippets as actions, with loops, conditionals, and function nesting. Research shows this "code as action" approach uses [30% fewer steps](https://www.decisioncrafters.com/smolagents-build-powerful-ai-agents-in-1-000-lines-of-code-with-26-3k-github-stars/) than JSON tool calling. Three lines of code gets you a working agent. Hugging Face also offers a [free agents course](https://huggingface.co/docs/smolagents/index) that walks through every concept.
+**[smolagents](https://github.com/huggingface/smolagents)** by Hugging Face (~26.3k stars) has its entire agent logic in about 1,000 lines. Its `CodeAgent` takes an interesting approach: instead of individual JSON tool calls, the model writes Python code snippets as actions, with loops, conditionals, and function nesting. Research shows this "code as action" approach uses [30% fewer steps](https://www.decisioncrafters.com/smolagents-build-powerful-ai-agents-in-1-000-lines-of-code-with-26-3k-github-stars/) than JSON tool calling. Three lines of code gets you a working agent. Hugging Face also offers a [free agents course](https://huggingface.co/learn/agents-course/unit0/introduction) that walks through every concept, from fundamentals to multi-agent systems.
 
 ### Step 4: Learn the API mechanics
 
