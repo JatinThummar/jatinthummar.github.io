@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PrevNextNav from '../../components/blog/PrevNextNav.astro';
 import RelatedPosts from '../../components/blog/RelatedPosts.astro';
+import TableOfContents from '../../components/blog/TableOfContents.astro';
 import Separator from '../../components/Separator.astro';
 import { fetchPosts, formatDate, getRelatedPosts } from '../../utils/blog';
 import type { BlogPost } from '../../utils/blog';
@@ -210,6 +211,8 @@ const jsonLd = {
 		<RelatedPosts posts={relatedPosts} />
 		<PrevNextNav prev={prevPost} next={nextPost} />
 	</main>
+
+	<TableOfContents headings={post.headings} />
 
 	<script>
 		const shareBtn = document.getElementById('share-btn')!;

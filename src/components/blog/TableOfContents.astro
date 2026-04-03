@@ -1,0 +1,270 @@
+---
+interface Props {
+	headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+
+const filtered = headings.filter((h) => h.depth === 2 || h.depth === 3);
+
+interface TocItem {
+	slug: string;
+	text: string;
+	children: { slug: string; text: string }[];
+}
+
+const toc: TocItem[] = [];
+for (const heading of filtered) {
+	if (heading.depth === 2) {
+		toc.push({ slug: heading.slug, text: heading.text, children: [] });
+	} else if (heading.depth === 3 && toc.length > 0) {
+		toc[toc.length - 1].children.push({ slug: heading.slug, text: heading.text });
+	}
+}
+---
+
+{
+	toc.length > 0 && (
+		<>
+			{/* Backdrop */}
+			<div
+				id="toc-backdrop"
+				class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300"
+				aria-hidden="true"
+			/>
+
+			{/* Bottom sheet */}
+			<div
+				id="toc-sheet"
+				class="toc-sheet fixed bottom-20 left-1/2 -translate-x-1/2 z-50 w-full max-w-xl px-6 transition-all duration-300 ease-out opacity-0 translate-y-4 pointer-events-none"
+				role="dialog"
+				aria-label="Table of contents"
+			>
+				<div class="bg-card-bg border border-border rounded-xl max-h-[60vh] shadow-lg overflow-hidden">
+					<nav class="overflow-y-auto overscroll-contain p-4">
+						<ul class="space-y-2">
+							{toc.map((item) => (
+								<li>
+									<div class="flex items-center justify-between gap-2">
+										<a
+											href={`#${item.slug}`}
+											class="toc-link text-[13px] font-medium text-muted hover:text-emphasis transition py-0.5"
+										>
+											{item.text}
+										</a>
+										{item.children.length > 0 && (
+											<button
+												type="button"
+												class="toc-toggle shrink-0 inline-flex items-center justify-center size-6 rounded text-muted/50 hover:text-muted transition-colors"
+												aria-expanded="false"
+												aria-label={`Show subsections of ${item.text}`}
+											>
+												<svg
+													class="toc-toggle-icon size-3.5 transition-transform duration-200"
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													aria-hidden="true"
+												>
+													<polyline points="6 9 12 15 18 9" />
+												</svg>
+											</button>
+										)}
+									</div>
+									{item.children.length > 0 && (
+										<ul class="toc-children hidden pl-3 mt-1.5 ml-0.5 space-y-1 border-l border-border">
+											{item.children.map((child) => (
+												<li>
+													<a
+														href={`#${child.slug}`}
+														class="toc-link text-xs text-muted/70 hover:text-emphasis transition"
+													>
+														{child.text}
+													</a>
+												</li>
+											))}
+										</ul>
+									)}
+								</li>
+							))}
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			{/* Sticky bottom bar: progress + toggle */}
+			<div id="toc-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-xl px-6">
+				<div class="rounded-xl border border-border bg-card-bg/90 backdrop-blur-sm shadow-lg overflow-hidden">
+					{/* Reading progress bar */}
+					<div class="h-0.75 bg-border/30">
+						<div
+							id="toc-progress"
+							class="h-full bg-muted/60 transition-[width] duration-100 ease-out"
+							style="width: 0%"
+						/>
+					</div>
+					{/* Bar content */}
+					<div class="flex items-center justify-between px-4 py-2.5">
+						<span id="toc-current" class="text-xs text-muted truncate mr-3" />
+						<button
+							id="toc-btn"
+							type="button"
+							class="toc-btn shrink-0 relative inline-flex items-center gap-1.5 text-xs text-muted hover:text-emphasis transition-colors"
+							aria-expanded="false"
+							aria-label="Open table of contents"
+						>
+							{/* List icon (default) */}
+							<svg
+								class="toc-icon-open size-3.5 transition-all duration-200"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								aria-hidden="true"
+							>
+								<line x1="3" y1="6" x2="21" y2="6" />
+								<line x1="3" y1="12" x2="15" y2="12" />
+								<line x1="3" y1="18" x2="9" y2="18" />
+							</svg>
+							{/* Close icon (when open) */}
+							<svg
+								class="toc-icon-close size-3.5 absolute transition-all duration-200 opacity-0 scale-50 rotate-90"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								aria-hidden="true"
+							>
+								<line x1="18" y1="6" x2="6" y2="18" />
+								<line x1="6" y1="6" x2="18" y2="18" />
+							</svg>
+							<span class="toc-btn-label transition-opacity duration-200">Contents</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</>
+	)
+}
+
+<script>
+	const tocBtn = document.getElementById('toc-btn');
+	const tocBar = document.getElementById('toc-bar');
+	const tocSheet = document.getElementById('toc-sheet');
+	const tocBackdrop = document.getElementById('toc-backdrop');
+	const tocProgress = document.getElementById('toc-progress');
+	const tocCurrent = document.getElementById('toc-current');
+
+	if (tocBtn && tocSheet && tocBackdrop && tocBar) {
+		let isOpen = false;
+		const iconOpen = tocBtn.querySelector('.toc-icon-open')!;
+		const iconClose = tocBtn.querySelector('.toc-icon-close')!;
+		const btnLabel = tocBtn.querySelector('.toc-btn-label')!;
+
+		function open() {
+			isOpen = true;
+			tocSheet!.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+			tocSheet!.classList.add('opacity-100', 'translate-y-0');
+			tocBackdrop!.classList.remove('opacity-0', 'pointer-events-none');
+			tocBackdrop!.classList.add('opacity-100');
+			// Swap to close icon
+			iconOpen.classList.add('opacity-0', 'scale-50', '-rotate-90');
+			iconClose.classList.remove('opacity-0', 'scale-50', 'rotate-90');
+			iconClose.classList.add('opacity-100', 'scale-100', 'rotate-0');
+			btnLabel.textContent = 'Close';
+		}
+
+		function close() {
+			isOpen = false;
+			tocSheet!.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+			tocSheet!.classList.remove('opacity-100', 'translate-y-0');
+			tocBackdrop!.classList.add('opacity-0', 'pointer-events-none');
+			tocBackdrop!.classList.remove('opacity-100');
+			// Swap to open icon
+			iconOpen.classList.remove('opacity-0', 'scale-50', '-rotate-90');
+			iconClose.classList.add('opacity-0', 'scale-50', 'rotate-90');
+			iconClose.classList.remove('opacity-100', 'scale-100', 'rotate-0');
+			btnLabel.textContent = 'Contents';
+		}
+
+		tocBtn.addEventListener('click', () => {
+			isOpen ? close() : open();
+		});
+		tocBackdrop.addEventListener('click', close);
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && isOpen) close();
+		});
+
+		// Close on link click
+		tocSheet.querySelectorAll('.toc-link').forEach((link) => {
+			link.addEventListener('click', () => close());
+		});
+
+		// Subsection toggles
+		tocSheet.querySelectorAll('.toc-toggle').forEach((btn) => {
+			btn.addEventListener('click', () => {
+				const children = btn.closest('li')!.querySelector('.toc-children')!;
+				const isHidden = children.classList.toggle('hidden');
+				btn.setAttribute('aria-expanded', String(!isHidden));
+			});
+		});
+
+		// Reading progress + current section tracking
+		const article = document.querySelector('article');
+		const headingEls = article
+			? Array.from(article.querySelectorAll('h2, h3')).filter(
+					(el) => el.id
+				) as HTMLElement[]
+			: [];
+
+		function updateProgress() {
+			if (!article) return;
+
+			// Progress bar
+			const rect = article.getBoundingClientRect();
+			const articleTop = rect.top + window.scrollY;
+			const articleHeight = rect.height;
+			const scrolled = window.scrollY - articleTop;
+			const progress = Math.min(100, Math.max(0, (scrolled / (articleHeight - window.innerHeight)) * 100));
+			tocProgress!.style.width = `${progress}%`;
+
+			// Current section
+			let current = '';
+			for (const el of headingEls) {
+				if (el.getBoundingClientRect().top <= 80) {
+					current = el.textContent?.trim() ?? '';
+				}
+			}
+			tocCurrent!.textContent = current;
+		}
+
+		let ticking = false;
+		window.addEventListener('scroll', () => {
+			if (!ticking) {
+				requestAnimationFrame(() => {
+					updateProgress();
+					ticking = false;
+				});
+				ticking = true;
+			}
+		});
+		updateProgress();
+	}
+</script>
+
+<style>
+	.toc-toggle[aria-expanded='true'] .toc-toggle-icon {
+		transform: rotate(180deg);
+	}
+</style>

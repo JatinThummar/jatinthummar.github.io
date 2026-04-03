@@ -11,6 +11,7 @@ export interface BlogPost {
 	draft: boolean;
 	image?: string;
 	Content: Awaited<ReturnType<typeof render>>['Content'];
+	headings: { depth: number; slug: string; text: string }[];
 	readingTime: number;
 	order: number;
 }
@@ -25,7 +26,7 @@ export async function fetchPosts(): Promise<BlogPost[]> {
 	const posts = await getCollection('blog');
 	const normalized = await Promise.all(
 		posts.map(async (post) => {
-			const { Content } = await render(post);
+			const { Content, headings } = await render(post);
 			return {
 				id: post.id,
 				slug: post.id.replace(/\.md$/, ''),
@@ -37,6 +38,7 @@ export async function fetchPosts(): Promise<BlogPost[]> {
 				draft: post.data.draft,
 				image: post.data.image,
 				Content,
+				headings,
 				readingTime: estimateReadingTime(post.body ?? ''),
 			order: post.data.order,
 			} satisfies BlogPost;
