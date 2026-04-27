@@ -183,7 +183,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 
 				document
 					.querySelector('meta[name="theme-color"]')!
-					.setAttribute('content', isCurrentlyLight ? '#161618' : '#ffffff');
+					.setAttribute('content', isCurrentlyLight ? '#161618' : '#f7f7f7');
 
 				// Re-enable avatar transition after paint
 				requestAnimationFrame(() => {

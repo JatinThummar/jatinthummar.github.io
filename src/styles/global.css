@@ -3,6 +3,30 @@
 @plugin "@tailwindcss/typography";
 
 /* ==========================================================
+   BRAND PALETTE
+
+   Static colors available across themes. Pick from these
+   when introducing new accents. Exposed as Tailwind utilities
+   (bg-brand-yellow, text-brand-purple, etc.) and as CSS vars
+   (var(--color-brand-yellow)).
+   ========================================================== */
+
+@theme {
+	--color-brand-coal: #0f0d0e;
+	--color-brand-charcoal: #231f20;
+	--color-brand-charcoal-muted: #1b1918;
+	--color-brand-gray: #262522;
+	--color-brand-yellow: #fcba28;
+	--color-brand-pink: #f38ba3;
+	--color-brand-green: #0ba95b;
+	--color-brand-purple: #7b5ea7;
+	--color-brand-beige: #f9f4da;
+	--color-brand-blue: #12b5e5;
+	--color-brand-orange: #fc7428;
+	--color-brand-red: #ed203d;
+}
+
+/* ==========================================================
    THEME TOKENS
 
    Semantic color tokens registered with Tailwind v4.
@@ -83,6 +107,7 @@
 	--btn-copy-text: #f4f4f5;
 	--code-inline-bg: #27272a;
 	--code-inline-text: #d2a7ff;
+	--link: #ecc63c;
 }
 
 /* ==========================================================
@@ -90,7 +115,7 @@
    ========================================================== */
 
 .light {
-	--surface: #ffffff;
+	--surface: #f7f7f7;
 	--on-surface: #1a1a1a;
 	--muted: #71717a;
 	--subtle: #3f3f46;
@@ -114,6 +139,7 @@
 	--btn-copy-text: #ffffff;
 	--code-inline-bg: #f4f4f5;
 	--code-inline-text: #d63a4a;
+	--link: #7b5ea7;
 }
 
 /* ==========================================================
@@ -193,7 +219,7 @@
 	--tw-prose-body: var(--subtle);
 	--tw-prose-headings: var(--emphasis);
 	--tw-prose-lead: var(--subtle);
-	--tw-prose-links: var(--emphasis);
+	--tw-prose-links: var(--link);
 	--tw-prose-bold: var(--emphasis);
 	--tw-prose-counters: var(--muted);
 	--tw-prose-bullets: var(--muted);
