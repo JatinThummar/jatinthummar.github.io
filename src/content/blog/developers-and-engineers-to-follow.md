@@ -16,6 +16,7 @@ These are the developers and bloggers I've learned from over the years. Whether 
 - **[Kent C. Dodds](https://www.epicai.pro/posts)** — Testing, React patterns, and now AI engineering. Prolific educator.
 - **[Robin Wieruch](https://www.robinwieruch.de/)** — Practical React and JavaScript tutorials. Great for learning by building.
 - **[Philip Roberts](http://latentflip.com/)** — Famous for the JS event loop explainer video. Writes about JavaScript and web fundamentals.
+- **[Philipp Spiess](https://spiess.dev/)** — Ex React DOM team at Meta and Tailwind Labs. Writes at the intersection of UI and AI.
 
 ## Expo & React Native
 
