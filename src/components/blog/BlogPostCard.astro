@@ -1,5 +1,5 @@
 ---
-import { formatDate } from '../../utils/blog';
+import { formatDate, formatDateShort } from '../../utils/blog';
 
 interface Props {
 	post: {
@@ -10,9 +10,12 @@ interface Props {
 		readingTime: number;
 		tags: string[];
 	};
+	/** Drop the year from the date — for lists grouped under a year heading. */
+	hideYear?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, hideYear = false } = Astro.props;
+const displayDate = hideYear ? formatDateShort(post.publishDate) : formatDate(post.publishDate);
 ---
 
 <a
@@ -21,8 +24,8 @@ const { post } = Astro.props;
 >
 	<div class="blog-card__header">
 		<h3 class="text-base font-semibold text-emphasis">{post.title}</h3>
-		<p class="text-muted text-xs mt-1 shrink-0">
-			<time datetime={post.publishDate.toISOString()}>{formatDate(post.publishDate)}</time>
+		<p class="text-muted text-sm mt-1 shrink-0">
+			<time datetime={post.publishDate.toISOString()}>{displayDate}</time>
 			<span class="blog-card__date-separator mx-1">&middot;</span>
 			<span class="blog-card__read-time">{post.readingTime} min read</span>
 		</p>

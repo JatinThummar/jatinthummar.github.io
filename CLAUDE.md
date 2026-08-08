@@ -74,7 +74,7 @@ All tokens defined in `src/styles/global.css` via `@theme inline` (Tailwind v4) 
 
 ### Spacing & Layout
 
-- **Page container:** `max-w-xl w-full mx-auto py-20`
+- **Page container:** `max-w-3xl w-full mx-auto py-20` (768px — shared by all pages, the footer, and the blog TOC bar)
 - **Body wrapper:** `min-h-screen bg-surface text-on-surface px-6`
 - **Home page:** adds `flex items-center justify-center` for vertical centering
 - **Inner pages:** top-aligned flow (no centering), with back-link at top
@@ -115,7 +115,7 @@ All tokens defined in `src/styles/global.css` via `@theme inline` (Tailwind v4) 
 - Each page provides its own SEO props to BaseLayout
 - Canonical URLs are always absolute: `https://jatinthummar.github.io/path`
 - JSON-LD type varies by page: `Person` (home), `AboutPage` (about), `Blog`/`BlogPosting` (blog)
-- Inner pages: same `max-w-xl` container, with a back-link at top (not a navbar)
+- Inner pages: same `max-w-3xl` container, with a back-link at top (not a navbar)
 - Home page uses centered layout (`flex items-center justify-center`), inner pages use top-aligned flow
 
 ### Content Collections (Blog)

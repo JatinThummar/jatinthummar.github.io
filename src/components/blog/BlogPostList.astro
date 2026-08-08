@@ -1,5 +1,6 @@
 ---
 import BlogPostCard from './BlogPostCard.astro';
+import { groupPostsByYear } from '../../utils/blog';
 import type { BlogPost } from '../../utils/blog';
 
 interface Props {
@@ -9,18 +10,34 @@ interface Props {
 }
 
 const { posts, label, emptyMessage = 'No posts yet. Check back soon!' } = Astro.props;
+const groups = groupPostsByYear(posts);
 ---
 
 {
 	posts.length === 0 ? (
 		<p class="text-muted text-sm">{emptyMessage}</p>
 	) : (
-		<ul class="blog-list flex flex-col gap-4" role="list" aria-label={label}>
-			{posts.map((post) => (
-				<li>
-					<BlogPostCard post={post} />
-				</li>
+		<section aria-label={label}>
+			{groups.map(({ year, posts: yearPosts }, index) => (
+				<section
+					aria-labelledby={`year-${year}`}
+					class:list={['blog-year-group', index > 0 && 'mt-10']}
+				>
+					<h2
+						id={`year-${year}`}
+						class="blog-year-heading text-muted text-lg font-semibold tabular-nums pb-3 mb-3 border-b border-border"
+					>
+						{year}
+					</h2>
+					<ul class="blog-list flex flex-col gap-4" role="list">
+						{yearPosts.map((post) => (
+							<li>
+								<BlogPostCard post={post} hideYear />
+							</li>
+						))}
+					</ul>
+				</section>
 			))}
-		</ul>
+		</section>
 	)
 }

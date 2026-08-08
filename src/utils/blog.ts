@@ -40,7 +40,7 @@ export async function fetchPosts(): Promise<BlogPost[]> {
 				Content,
 				headings,
 				readingTime: estimateReadingTime(post.body ?? ''),
-			order: post.data.order,
+				order: post.data.order,
 			} satisfies BlogPost;
 		})
 	);
@@ -54,12 +54,40 @@ export async function fetchPosts(): Promise<BlogPost[]> {
 		});
 }
 
+/* Frontmatter dates parse as UTC midnight, so every read below is UTC-based.
+   Formatting in local time would drift a day in negative-offset timezones and
+   could land a post under a year heading its own date contradicts. */
+
 export function formatDate(date: Date): string {
 	return date.toLocaleDateString('en-US', {
 		year: 'numeric',
 		month: 'short',
 		day: 'numeric',
+		timeZone: 'UTC',
 	});
+}
+
+/** "Aug 8" — for lists that already carry the year in a group heading. */
+export function formatDateShort(date: Date): string {
+	return date.toLocaleDateString('en-US', {
+		month: 'short',
+		day: 'numeric',
+		timeZone: 'UTC',
+	});
+}
+
+/** Posts bucketed by publish year, newest year first, order within a year preserved. */
+export function groupPostsByYear(posts: BlogPost[]): { year: number; posts: BlogPost[] }[] {
+	const groups = new Map<number, BlogPost[]>();
+	for (const post of posts) {
+		const year = post.publishDate.getUTCFullYear();
+		const bucket = groups.get(year);
+		if (bucket) bucket.push(post);
+		else groups.set(year, [post]);
+	}
+	return Array.from(groups.entries())
+		.map(([year, posts]) => ({ year, posts }))
+		.sort((a, b) => b.year - a.year);
 }
 
 export function getRelatedPosts(current: BlogPost, allPosts: BlogPost[], limit = 2): BlogPost[] {

@@ -85,7 +85,7 @@ const jsonLd = {
 	ogImage={`/og/${post.slug}.png?v=${(post.updatedDate ?? post.publishDate).getTime()}`}
 	jsonLd={jsonLd}
 >
-	<main class="max-w-152.5 w-full mx-auto py-20">
+	<main class="max-w-3xl w-full mx-auto py-20">
 		<a
 			href="/blog"
 			class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10"
@@ -109,20 +109,22 @@ const jsonLd = {
 		</a>
 
 		<article>
-			<header class="mb-8">
-				<h1 class="text-3xl font-bold tracking-tight mb-3">{post.title}</h1>
-				<p class="text-muted text-xs">
+			<header class="mb-10">
+				<h1 class="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.2] mb-4">
+					{post.title}
+				</h1>
+				<p class="text-muted text-base">
 					<time datetime={post.publishDate.toISOString()}>{formatDate(post.publishDate)}</time>
-					<span class="mx-1">&middot;</span>
+					<span class="mx-1.5">&middot;</span>
 					<span>{post.readingTime} min read</span>
 				</p>
 				{
 					post.tags.length > 0 && (
-						<div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
+						<div class="flex flex-wrap gap-x-3 gap-y-1 mt-3">
 							{post.tags.map((tag) => (
 								<a
 									href={`/blog/tag/${tag}`}
-									class="text-xs text-muted hover:text-emphasis transition"
+									class="text-base text-muted hover:text-emphasis transition"
 								>
 									#{tag}
 								</a>
@@ -130,7 +132,7 @@ const jsonLd = {
 						</div>
 					)
 				}
-				<Separator class="mt-4" />
+				<Separator class="mt-6" />
 				<div class="flex items-center gap-2 mt-3 justify-end">
 					<button
 						id="share-btn"
