@@ -23,7 +23,7 @@ const jsonLd = {
 		{
 			'@type': 'WebSite',
 			'@id': `${siteUrl}/#website`,
-			url: siteUrl,
+			url: `${siteUrl}/`,
 			name: 'Jatin Thummar',
 			description: description,
 			publisher: { '@id': `${siteUrl}/#person` },
@@ -32,7 +32,7 @@ const jsonLd = {
 		{
 			'@type': 'WebPage',
 			'@id': `${siteUrl}/#webpage`,
-			url: siteUrl,
+			url: `${siteUrl}/`,
 			name: title,
 			isPartOf: { '@id': `${siteUrl}/#website` },
 			about: { '@id': `${siteUrl}/#person` },
@@ -46,7 +46,7 @@ const jsonLd = {
 			givenName: 'Jatin',
 			familyName: 'Thummar',
 			jobTitle: 'Frontend Engineer',
-			url: siteUrl,
+			url: `${siteUrl}/`,
 			mainEntityOfPage: { '@id': `${siteUrl}/#webpage` },
 			description: description,
 			image: `${siteUrl}/og-image.png`,

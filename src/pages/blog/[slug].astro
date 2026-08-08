@@ -35,7 +35,7 @@ interface Props {
 const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const siteUrl = 'https://jatinthummar.github.io';
 
-const postUrl = `${siteUrl}/blog/${post.slug}`;
+const postUrl = `${siteUrl}/blog/${post.slug}/`;
 const postImage = `${siteUrl}/og/${post.slug}.png?v=${(post.updatedDate ?? post.publishDate).getTime()}`;
 
 const jsonLd = {
@@ -50,13 +50,13 @@ const jsonLd = {
 		'@type': 'Person',
 		'@id': `${siteUrl}/#person`,
 		name: 'Jatin Thummar',
-		url: siteUrl,
+		url: `${siteUrl}/`,
 	},
 	publisher: {
 		'@type': 'Person',
 		'@id': `${siteUrl}/#person`,
 		name: 'Jatin Thummar',
-		url: siteUrl,
+		url: `${siteUrl}/`,
 	},
 	url: postUrl,
 	mainEntityOfPage: {

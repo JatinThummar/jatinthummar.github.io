@@ -27,6 +27,29 @@ const {
 } = Astro.props;
 
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+/**
+ * Normalise a canonical URL to the form the server actually serves.
+ *
+ * Astro builds directory-style output, so GitHub Pages serves `/about/`
+ * and 301-redirects the bare `/about`. A canonical pointing at the bare
+ * form therefore points at a redirect rather than a final URL, which
+ * Google reports as "Page with redirect" and declines to index.
+ *
+ * Normalising here rather than at each call site means a page cannot get
+ * this wrong — every page passed a slashless URL and all 41 were broken.
+ */
+function toCanonical(input: string): string {
+	const url = new URL(input, siteUrl);
+	// Leave real files alone (/rss.xml, /llms.txt) — only directories get a slash.
+	const lastSegment = url.pathname.split('/').pop() ?? '';
+	if (!url.pathname.endsWith('/') && !lastSegment.includes('.')) {
+		url.pathname += '/';
+	}
+	return url.href;
+}
+
+const canonicalHref = toCanonical(canonicalUrl);
 ---
 
 <html lang="en">
@@ -57,7 +80,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
 		<meta name="author" content="Jatin Thummar" />
-		<link rel="canonical" href={canonicalUrl} />
+		<link rel="canonical" href={canonicalHref} />
 		<meta name="robots" content="index, follow" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<link rel="alternate" type="application/rss+xml" title="Jatin Thummar's Blog" href="/rss.xml" />
@@ -68,7 +91,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 
 		<!-- Open Graph -->
 		<meta property="og:type" content={ogType} />
-		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:url" content={canonicalHref} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:site_name" content="Jatin Thummar" />
@@ -81,7 +104,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 		<!-- Twitter / X -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:image" content={ogImageUrl} />
-		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:url" content={canonicalHref} />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:creator" content="@jatinthummarx" />

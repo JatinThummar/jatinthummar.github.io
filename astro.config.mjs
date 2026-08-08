@@ -53,8 +53,9 @@ export default defineConfig({
 	},
 	integrations: [
 		sitemap({
-			// Drop unused namespaces — no news/video/i18n content on this site.
-			namespaces: { news: false, video: false, xhtml: false },
+			// Drop unused namespaces — no news/video/i18n content on this site,
+			// and no <image:image> entries either, so that one goes too.
+			namespaces: { news: false, video: false, xhtml: false, image: false },
 			// Google ignores changefreq and priority — only lastmod matters.
 			// Use serialize() to set accurate lastmod per page.
 			serialize(item) {
