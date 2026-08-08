@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+// Imported (not hardcoded) so the preload href tracks Astro's content hash.
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 
 interface Props {
 	title: string;
@@ -30,6 +32,13 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		{
+			/* Must precede the stylesheet: without it the font is only discovered
+		    after the CSS parses, so it starts downloading two round trips late
+		    and lands mid-render as a visible swap. crossorigin is required on
+		    font preloads even same-origin, or the fetch is made twice. */
+		}
+		<link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

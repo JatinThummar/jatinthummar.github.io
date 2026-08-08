@@ -3,6 +3,38 @@
 @plugin "@tailwindcss/typography";
 
 /* ==========================================================
+   METRIC-MATCHED FALLBACK
+
+   Inter loads with font-display: swap, so text paints in a
+   fallback face first. If that face has different metrics the
+   swap reflows every line — the flash you see on load.
+
+   These overrides rescale the fallback so its x-height, ascent
+   and descent match Inter exactly. The swap still happens, but
+   nothing moves: only the glyph shapes change.
+
+   Derived from the shipped font file (upm 2048, asc 1984,
+   desc -494, lineGap 0, xHeight 1118) against Arial's metrics
+   (xHeight 1062/2048):
+     size-adjust  = (1118/2048) / (1062/2048)        = 105.27%
+     ascent       = (1984/2048) / 1.0527             =  92.02%
+     descent      = ( 494/2048) / 1.0527             =  22.91%
+
+   Arial, Helvetica and Liberation Sans are metric-compatible by
+   design, so one set of numbers covers Windows, macOS and Linux.
+   Android resolves to Roboto, which is close but not exact.
+   ========================================================== */
+
+@font-face {
+	font-family: 'Inter Fallback';
+	src: local('Helvetica Neue'), local('Helvetica'), local('Arial'), local('Liberation Sans');
+	size-adjust: 105.27%;
+	ascent-override: 92.02%;
+	descent-override: 22.91%;
+	line-gap-override: 0%;
+}
+
+/* ==========================================================
    BRAND PALETTE
 
    Static colors available across themes. Pick from these
@@ -36,9 +68,12 @@
 
 @theme inline {
 	/* -- Typography -- */
+	/* 'Inter Fallback' sits directly behind Inter so the pre-swap
+	   paint is already metrically identical. The generic stack
+	   below it only applies if no local face resolves. */
 	--font-sans:
-		'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-		Arial, sans-serif;
+		'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif;
 
 	/* -- Surface -- */
 	--color-surface: var(--surface); /* page background */
