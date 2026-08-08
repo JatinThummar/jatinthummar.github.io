@@ -62,25 +62,30 @@ All tokens defined in `src/styles/global.css` via `@theme inline` (Tailwind v4) 
 
 ### Typography Scale
 
+The reading scale bottoms out at 14px. Nothing that carries meaning should be
+smaller — 12px is reserved for the footer copyright.
+
 - **Page title (h1):** `text-4xl font-bold tracking-tight`
-- **Inner page title (h1):** `text-3xl font-bold tracking-tight`
-- **Section heading (h2):** `text-xl font-bold`
-- **Card title (h3):** `text-base font-semibold text-emphasis`
-- **Card subtitle:** `text-muted text-xs`
-- **Body/description:** `text-subtle text-sm leading-relaxed` (or `text-lg` for hero)
-- **Metadata (dates, read time):** `text-muted text-xs`
+- **Inner page title (h1):** `text-3xl sm:text-4xl font-bold tracking-tight leading-[1.2]`
+- **Section heading (h2):** `text-2xl font-bold`
+- **Card title (h3):** `text-lg font-semibold text-emphasis`
+- **Card subtitle:** `text-muted text-sm`
+- **Body/description:** `text-subtle text-lg leading-[1.75]` (matches the 18px blog prose; `text-base leading-[1.7]` inside cards)
+- **Blog list item title:** `text-base font-semibold text-emphasis`
+- **Metadata (dates, read time):** `text-muted text-sm`
 - **Greeting/secondary:** `text-muted text-lg`
 - **Highlighted keywords:** `text-emphasis font-medium`
+- **Blog prose:** 18px body / 1.75, h2 24px, h3 20px, h4 18px — set in `.prose-custom`, not utilities
 
 ### Spacing & Layout
 
 - **Page container:** `max-w-3xl w-full mx-auto py-20` (768px — shared by all pages, the footer, and the blog TOC bar)
 - **Body wrapper:** `min-h-screen bg-surface text-on-surface px-6`
-- **Home page:** adds `flex items-center justify-center` for vertical centering
+- **Home page:** top-aligned like the rest, but `sm:pt-32` for extra headroom; avatar stacks above the name at every width
 - **Inner pages:** top-aligned flow (no centering), with back-link at top
 - **Section gaps:** `mb-12` between major sections, `<Separator class="my-12" />`
 - **Card gaps:** `mt-4` between stacked cards
-- **Tag pills:** `px-3 py-1 text-sm rounded-full bg-tag-bg text-tag-text`
+- **Tag pills:** `px-3 py-1 text-base rounded-full bg-tag-bg text-tag-text`
 
 ### Interactive Patterns
 
@@ -293,8 +298,10 @@ Example pattern for a scroll-animated section:
 ### Fonts
 
 - **Prefer system fonts or a single variable font** — multiple font files hurt LCP
-- Currently using system font stack (no external font files = zero font load cost)
-- If adding a custom font: use `@fontsource-variable/*` for self-hosted variable fonts (no Google Fonts CDN round-trip)
+- Currently **Inter Variable**, self-hosted via `@fontsource-variable/inter/wght.css` (imported in `global.css`, exposed as `--font-sans`). Only the latin subset (~48KB) downloads for English pages; `unicode-range` gates the rest.
+- The blog OG image generator also renders in Inter (from the Google Fonts CDN, since satori needs raw font buffers), so cards and site now match.
+- We use the `wght.css` entry, not `opsz.css`. The optical-sizing axis refines large headings but costs ~25KB more on the latin file — swap the import if that tradeoff changes.
+- If adding another custom font: use `@fontsource-variable/*` for self-hosted variable fonts (no Google Fonts CDN round-trip)
 
 ### SEO Checklist (Every Page)
 

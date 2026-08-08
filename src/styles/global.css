@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/merriweather/wght.css';
+@import '@fontsource-variable/inter/wght.css';
 @plugin "@tailwindcss/typography";
 
 /* ==========================================================
@@ -36,7 +36,9 @@
 
 @theme inline {
 	/* -- Typography -- */
-	--font-sans: 'Merriweather Variable', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+	--font-sans:
+		'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+		Arial, sans-serif;
 
 	/* -- Surface -- */
 	--color-surface: var(--surface); /* page background */
@@ -235,47 +237,139 @@
 	font-size: 1.125rem; /* 18px */
 	line-height: 1.75; /* 31.5px */
 
-	& p {
-		margin-top: 1.375em;
-		margin-bottom: 1.375em;
+	/* ==== PROSE SPACING SYSTEM ====================================
+
+	   One rule governs everything: space marks the BOUNDARY between
+	   groups, never the inside of one. Readers infer structure from
+	   proximity, so a heading must sit closer to the text it owns
+	   than to the section it follows. Equal margins on both sides
+	   destroy that signal — the heading floats midway and every
+	   level reads the same.
+
+	   Two roles, never mixed:
+
+	     OPEN  — starts a new group. margin-top, headings and hr only.
+	             Larger for higher rank.
+	     BIND  — holds a group together. margin-bottom, everything.
+	             Smaller for tighter coupling.
+
+	   Every flow element is bottom-margin ONLY. Adjacent margins
+	   collapse to the larger value, so any margin-top on a paragraph
+	   would silently override the heading's margin-bottom above it —
+	   that is the bug this replaces. With one direction, the token
+	   you read is the gap you get.
+
+	   Tokens are rem, never em: em resolves against the element's own
+	   font-size, so a single `2em` means 48px on an h2 but 36px on an
+	   h3, and the scale drifts every time a heading is resized.
+
+	   Resulting rhythm (18px body, 31.5px line):
+
+	     element   open   bind   ratio
+	     h2         48     16     3.0
+	     h3         40     12     3.3
+	     h4         32      8     4.0
+	     p          --     24      --
+	     li         --      8      --
+
+	   Ratio climbs as rank falls: the smaller the heading, the more
+	   decisively it binds downward, which is what keeps an h4 from
+	   reading as just another paragraph break.
+	   ============================================================== */
+
+	/* OPEN — space that starts a group */
+	--prose-open-h2: 3rem; /* 48px */
+	--prose-open-h3: 2.5rem; /* 40px */
+	--prose-open-h4: 2rem; /* 32px */
+	--prose-open-break: 3.5rem; /* 56px — hr, the hardest divide */
+	--prose-open-stacked: 1.25rem; /* 20px — heading directly on heading */
+
+	/* BIND — space that holds a group together */
+	--prose-bind-flow: 1.5rem; /* 24px — block to sibling block */
+	--prose-bind-h2: 1rem; /* 16px — h2 to its first block */
+	--prose-bind-h3: 0.75rem; /* 12px — h3 to its first block */
+	--prose-bind-h4: 0.5rem; /* 8px  — h4 to its first block */
+	--prose-bind-tight: 0.5rem; /* 8px  — inside a list */
+
+	& p,
+	& ul,
+	& ol,
+	& blockquote,
+	& pre,
+	& table,
+	& figure,
+	& img {
+		margin-top: 0;
+		margin-bottom: var(--prose-bind-flow);
 	}
 
 	& h2 {
-		margin-top: 2em;
-		margin-bottom: 0.6em;
+		margin-top: var(--prose-open-h2);
+		margin-bottom: var(--prose-bind-h2);
 		font-size: 1.5rem; /* 24px */
 		line-height: 1.35;
+		letter-spacing: -0.011em;
 	}
 
 	& h3 {
-		margin-top: 1.75em;
-		margin-bottom: 0.5em;
+		margin-top: var(--prose-open-h3);
+		margin-bottom: var(--prose-bind-h3);
 		font-size: 1.25rem; /* 20px */
 		line-height: 1.4;
+		letter-spacing: -0.008em;
 	}
 
 	& h4 {
-		margin-top: 1.5em;
-		margin-bottom: 0.5em;
+		margin-top: var(--prose-open-h4);
+		margin-bottom: var(--prose-bind-h4);
 		font-size: 1.125rem; /* 18px */
 		line-height: 1.5;
 	}
 
+	/* A heading stacked straight onto another is one unit opening,
+	   not two — collapse the second OPEN down to a bind-sized gap. */
+	& h2 + h3,
+	& h3 + h4 {
+		margin-top: var(--prose-open-stacked);
+	}
+
+	/* The article edges are already a boundary; don't double it. */
+	& > *:first-child {
+		margin-top: 0;
+	}
+
+	& > *:last-child {
+		margin-bottom: 0;
+	}
+
 	& ul,
 	& ol {
-		margin-top: 1.25em;
-		margin-bottom: 1.25em;
 		padding-left: 1.5em;
 	}
 
+	/* A list is ONE group. Items bind tightly to each other, and the
+	   list as a whole takes the normal flow gap from its neighbours. */
 	& li {
-		margin-top: 0.5em;
-		margin-bottom: 0.5em;
+		margin-top: 0;
+		margin-bottom: var(--prose-bind-tight);
 	}
 
 	& li > p {
-		margin-top: 0.5em;
-		margin-bottom: 0.5em;
+		margin-bottom: var(--prose-bind-tight);
+	}
+
+	& li > ul,
+	& li > ol {
+		margin-top: var(--prose-bind-tight);
+		margin-bottom: var(--prose-bind-tight);
+	}
+
+	/* Last child of any container never pushes against its own edge —
+	   the container's own bind already owns that space. */
+	& li:last-child,
+	& li > :last-child,
+	& blockquote > :last-child {
+		margin-bottom: 0;
 	}
 
 	& blockquote {
@@ -313,9 +407,23 @@
 		text-decoration-thickness: 1px;
 	}
 
+	/* hr is the only symmetric element in the system: it belongs to
+	   neither side, so it opens equally in both directions. Its gap
+	   must beat the largest OPEN or the h2 after it swallows the
+	   divider into its own section. */
 	& hr {
-		margin-top: 2.5em;
-		margin-bottom: 2.5em;
+		margin-top: var(--prose-open-break);
+		margin-bottom: var(--prose-open-break);
+	}
+
+	/* Pin the post-divider gap to the break token alone. Collapsing
+	   would otherwise hand this gap to whichever value is larger, so
+	   lowering --prose-open-break below --prose-open-h2 would leave
+	   the hr closer to the text above than the heading below — a
+	   divider that visually belongs to the section it just ended. */
+	& hr + h2,
+	& hr + h3 {
+		margin-top: 0;
 	}
 }
 
