@@ -269,8 +269,8 @@
 	--tw-prose-th-borders: var(--border);
 	--tw-prose-td-borders: var(--border);
 
-	font-size: 1.125rem; /* 18px */
-	line-height: 1.75; /* 31.5px */
+	font-size: 1.125rem; /* 18px at every width — see the note below */
+	line-height: 1.65; /* 29.7px — mobile measure is ~40 characters */
 
 	/* ==== PROSE SPACING SYSTEM ====================================
 
@@ -298,33 +298,65 @@
 	   font-size, so a single `2em` means 48px on an h2 but 36px on an
 	   h3, and the scale drifts every time a heading is resized.
 
-	   Resulting rhythm (18px body, 31.5px line):
+	   Resulting rhythm (18px body, 31.5px line), mobile / >=640px:
 
-	     element   open   bind   ratio
-	     h2         48     16     3.0
-	     h3         40     12     3.3
-	     h4         32      8     4.0
-	     p          --     24      --
-	     li         --      8      --
+	     element   open      bind     ratio
+	     h2         36 / 48   12 / 16   3.0
+	     h3         32 / 40   10 / 12   3.2
+	     h4         28 / 32    8 /  8   3.5
+	     p          --        20 / 24    --
+	     li         --         8 /  8    --
 
 	   Ratio climbs as rank falls: the smaller the heading, the more
 	   decisively it binds downward, which is what keeps an h4 from
 	   reading as just another paragraph break.
+
+	   Mobile-first, because a phone viewport is roughly a third the
+	   height of a laptop's — the same 48px section gap costs three
+	   times as much of the screen there. Only the magnitudes shrink;
+	   the ratios that carry the hierarchy are preserved, so the
+	   structure reads identically at both sizes.
+
+	   Font sizes never scale DOWN for mobile — 18px body and a 24px
+	   h2 are already correct for a phone, and shrinking them would
+	   trade readability for space this spacing pass already recovered.
+	   They scale UP at 48rem instead; see the desktop type step at
+	   the end of this block for why measure demands it.
 	   ============================================================== */
 
 	/* OPEN — space that starts a group */
-	--prose-open-h2: 3rem; /* 48px */
-	--prose-open-h3: 2.5rem; /* 40px */
-	--prose-open-h4: 2rem; /* 32px */
-	--prose-open-break: 3.5rem; /* 56px — hr, the hardest divide */
-	--prose-open-stacked: 1.25rem; /* 20px — heading directly on heading */
+	--prose-open-h2: 2.25rem; /* 36px */
+	--prose-open-h3: 2rem; /* 32px */
+	--prose-open-h4: 1.75rem; /* 28px */
+	--prose-open-break: 2.5rem; /* 40px — hr, the hardest divide */
+	--prose-open-stacked: 1rem; /* 16px — heading directly on heading */
 
 	/* BIND — space that holds a group together */
-	--prose-bind-flow: 1.5rem; /* 24px — block to sibling block */
-	--prose-bind-h2: 1rem; /* 16px — h2 to its first block */
-	--prose-bind-h3: 0.75rem; /* 12px — h3 to its first block */
+	--prose-bind-flow: 1.25rem; /* 20px — block to sibling block */
+	--prose-bind-h2: 0.75rem; /* 12px — h2 to its first block */
+	--prose-bind-h3: 0.625rem; /* 10px — h3 to its first block */
 	--prose-bind-h4: 0.5rem; /* 8px  — h4 to its first block */
 	--prose-bind-tight: 0.5rem; /* 8px  — inside a list */
+
+	/* Room to breathe once the viewport can afford it. Only the two
+	   token groups change — every rule below reads through them, so
+	   the whole rhythm rescales from these nine lines. */
+	@media (width >= 40rem) {
+		/* Leading tracks measure, not font-size. The eye needs more
+		   vertical separation to find the next line start as lines get
+		   longer; at the ~40-character mobile measure the same 1.75
+		   reads as slack. 610px column -> ~62 chars -> 1.75. */
+		line-height: 1.75; /* 31.5px */
+
+		--prose-open-h2: 3rem; /* 48px */
+		--prose-open-h3: 2.5rem; /* 40px */
+		--prose-open-h4: 2rem; /* 32px */
+		--prose-open-break: 3.5rem; /* 56px */
+		--prose-open-stacked: 1.25rem; /* 20px */
+		--prose-bind-flow: 1.5rem; /* 24px */
+		--prose-bind-h2: 1rem; /* 16px */
+		--prose-bind-h3: 0.75rem; /* 12px */
+	}
 
 	& p,
 	& ul,
@@ -459,6 +491,39 @@
 	& hr + h2,
 	& hr + h3 {
 		margin-top: 0;
+	}
+
+	/* ---- Desktop type step -------------------------------------
+	   The column caps at 768px (max-w-3xl). At 18px that runs ~90
+	   characters per line, well past the 75 ceiling where the eye
+	   starts losing its place on the return sweep.
+
+	   The fix is to scale type UP, not down: bigger glyphs mean
+	   fewer of them per line. 20px brings the measure to ~81, and
+	   the 1.75 leading set at 40rem suits the longer line.
+
+	     viewport   column   @18px   @20px
+	        390       342      40      --
+	        768       720      --      76
+	       1440       768      --      81
+
+	   Must come after the h2/h3/h4 rules above: a media query adds
+	   no specificity, so source order alone decides the winner.
+	   -------------------------------------------------------------- */
+	@media (width >= 48rem) {
+		font-size: 1.25rem; /* 20px */
+
+		& h2 {
+			font-size: 1.625rem; /* 26px */
+		}
+
+		& h3 {
+			font-size: 1.375rem; /* 22px */
+		}
+
+		& h4 {
+			font-size: 1.25rem; /* 20px */
+		}
 	}
 }
 

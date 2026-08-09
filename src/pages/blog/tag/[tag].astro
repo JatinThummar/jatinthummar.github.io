@@ -35,7 +35,7 @@ const description = `Blog posts tagged with "${tag}".`;
 	canonicalUrl={`${siteUrl}/blog/tag/${tag}`}
 	ogType="blog"
 >
-	<main class="max-w-3xl w-full mx-auto py-20">
+	<main class="max-w-3xl w-full mx-auto py-12 sm:py-20">
 		<a
 			href="/blog"
 			class="inline-flex items-center gap-1.5 text-muted hover:text-emphasis transition text-sm mb-10"
@@ -59,7 +59,7 @@ const description = `Blog posts tagged with "${tag}".`;
 		</a>
 
 		<div class="flex items-center justify-between mb-2">
-			<h1 class="text-3xl font-bold tracking-tight">#{tag}</h1>
+			<h1 class="text-3xl sm:text-4xl font-bold tracking-tight">#{tag}</h1>
 			<ViewToggle />
 		</div>
 		<p class="text-subtle text-lg mb-6">
